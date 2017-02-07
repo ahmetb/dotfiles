@@ -2,8 +2,6 @@ syntax on
 set autoindent
 set number
 
-execute pathogen#infect() 
-
 set ttyfast
 set mouse=a
 set ttymouse=xterm2

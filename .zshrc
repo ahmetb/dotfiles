@@ -89,34 +89,27 @@ retry() {
 }
 
 # coreutils
+#   To install: brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
 # virtualenv
-export WORKON_HOME=$HOME/workspace/.virtualenvs
-source "/usr/local/bin/virtualenvwrapper.sh"
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+  export WORKON_HOME=$HOME/workspace/.virtualenvs
+  source "/usr/local/bin/virtualenvwrapper.sh"
+fi
 
 # gcloud
-# export PATH=$PATH:/Users/$USER/google-cloud-sdk/bin
-source /Users/$USER/google-cloud-sdk/completion.zsh.inc
+#  or just this: export PATH=$PATH:/Users/$USER/google-cloud-sdk/bin
 if [ -f "/Users/$USER/google-cloud-sdk/completion.zsh.inc" ]; then
   source "/Users/$USER/google-cloud-sdk/completion.zsh.inc"
 fi
 
-# gpg signing stuff https://github.com/pstadler/keybase-gpg-github
-GPG_TTY=$(tty)
-export GPG_TTY
-if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
-  source ~/.gnupg/.gpg-agent-info
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-fi
-
-# iterm2 integration
+# iTerm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/$USER/google-cloud-sdk/path.zsh.inc ]; then
-  source "/Users/$USER/google-cloud-sdk/path.zsh.inc"
+# GPG integration: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
+if [ -f "$HOME/.gnupg/gpg_profile" ]; then
+  source "$HOME/.gnupg/gpg_profile"
 fi
