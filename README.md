@@ -1,2 +1,0 @@
-# dotfiles
-Ahmet's dotfiles
