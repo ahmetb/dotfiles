@@ -105,8 +105,12 @@ fi
 
 # gcloud
 #  or just this: export PATH=$PATH:/Users/$USER/google-cloud-sdk/bin
-if [ -f "/Users/$USER/google-cloud-sdk/completion.zsh.inc" ]; then
+if [ -f "/Users/$USER/google-cloud-sdk/completion.zsh.inc" ]; then # manual installatioon
   source "/Users/$USER/google-cloud-sdk/completion.zsh.inc"
+fi
+if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then # brew cask installation
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # iTerm2 integration
