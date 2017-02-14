@@ -120,3 +120,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if [ -f "$HOME/.gnupg/gpg_profile" ]; then
   source "$HOME/.gnupg/gpg_profile"
 fi
+
+# go toosl
+export PATH="$PATH:/tmp/gotools/bin"
