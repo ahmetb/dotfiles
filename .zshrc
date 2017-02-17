@@ -45,7 +45,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew sublime zsh-syntax-highlighting cloudapp docker docker-compose colorize colored-man-pages zsh-wakatime)
+plugins=(git sublime zsh-syntax-highlighting cloudapp docker docker-compose colorize colored-man-pages zsh-wakatime)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
