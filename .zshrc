@@ -49,6 +49,7 @@ plugins=(git brew sublime zsh-syntax-highlighting cloudapp docker docker-compose
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
 
