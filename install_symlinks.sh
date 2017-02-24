@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eou pipefail
 IFS=$'\n\t'
-readonly SCRIPT_DIR=$(realpath $(dirname $(readlink -f $0)))
+readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 touch ~/.hushlogin
 
@@ -11,7 +11,8 @@ for f in .zshrc \
 	.editorconfig \
 	.github_username \
 	.tmux.conf; do
-	unlink "$HOME/$f"
+	if [ -f "$HOME/$f" ]; then rm "$HOME/$f"; fi
+	if [ -L "$HOME/$f" ]; then unlink "$HOME/$f"; fi
 	ln -s "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
