@@ -96,7 +96,8 @@ Misc:
 ```
 brew install \
 	Caskroom/cask/coconutbattery \
-	Caskroom/cask/slack
+	Caskroom/cask/slack \
+	Caskroom/cask/spotify
 ```
 
 ## Settings Sync
