@@ -95,6 +95,7 @@ Misc:
 
 ```
 brew install \
+	Caskroom/cask/coconutbattery \
 	Caskroom/cask/slack
 ```
 
