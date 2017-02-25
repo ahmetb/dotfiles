@@ -77,6 +77,20 @@ brew install \
 	Caskroom/cask/visual-studio-code
 ```
 
+Containers:
+
+```
+brew install \
+	kubectl \
+	Caskroom/cask/docker \
+	Caskroom/cask/minikube \
+	docker-machine-driver-xhyve
+
+# minikube uses xhyve, which requires privileged access to the hypervisor
+sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+```
+
 Misc:
 
 ```
