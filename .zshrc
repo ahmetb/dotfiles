@@ -61,6 +61,7 @@ alias dir='ls'
 alias la='ls -lah'
 alias ll='ls -l'
 alias ls-l='ls -l'
+alias j='jobs'
 alias vi=vim
 alias grep='grep --color'
 alias md='mkdir -p'

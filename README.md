@@ -12,10 +12,14 @@
 - Show Path Bar on Finder.
 - Move $HOME folder to Finder sidebar.
 
+
 - Shortcuts
   - Accessibility: Invert colors: Cmd+Shift+I
   - Screenshots: Save selected area to file: Cmd+Shift+4
   - Screenshost: Save selected area to clipboard: Cmd+Shift+3
+- Hot Corners:
+  - Top-right: Put Display to Sleep
+  - clear others
 
 Tweaks:
 
