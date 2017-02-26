@@ -60,6 +60,7 @@ brew install coreutils \
 	proctools \
 	htop \
 	pstree \
+	tree \
 	gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 ```
 
