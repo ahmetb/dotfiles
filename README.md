@@ -61,6 +61,7 @@ brew install coreutils \
 	htop \
 	pstree \
 	tree \
+	watch \
 	gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 ```
 
