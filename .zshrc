@@ -123,5 +123,5 @@ if [ -f "$HOME/.gnupg/gpg_profile" ]; then
   source "$HOME/.gnupg/gpg_profile"
 fi
 
-# go toosl
-export PATH="$PATH:/tmp/gotools/bin"
+# go tools path
+export PATH="$PATH:$HOME/gotools/bin"
