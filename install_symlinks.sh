@@ -12,8 +12,7 @@ for f in .zshrc \
 	.github_username \
 	.tmux.conf; do
 	if [ -f "$HOME/$f" ]; then rm "$HOME/$f"; fi
-	if [ -L "$HOME/$f" ]; then unlink "$HOME/$f"; fi
-	ln -s "$SCRIPT_DIR/$f" "$HOME/$f"
+	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
 # gnupg
@@ -22,5 +21,5 @@ if [ -f "$HOME/.gnupg" ] && [ ! -L "$HOME/.gnupg" ];then
 	exit 1
 else
 	[ -L "$HOME/.gnupg" ] && unlink "$HOME/.gnupg"
-	ln -s "$SCRIPT_DIR/.gnupg" "$HOME/.gnupg"
+	ln -sf "$SCRIPT_DIR/.gnupg" "$HOME/.gnupg"
 fi
