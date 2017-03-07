@@ -76,6 +76,7 @@ brew install \
 	jq \
 	ack \
 	protobuf \
+	wget \
 	Caskroom/cask/google-cloud-sdk \
 	Caskroom/cask/visual-studio-code
 ```
