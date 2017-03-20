@@ -84,6 +84,7 @@ alias gc='git commit -S -v -s'
 alias o='less'
 alias k='kubectl'
 alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
+alias gdc='git diff --cached'
 
 
 retry() {
