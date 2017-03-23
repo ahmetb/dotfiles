@@ -1,6 +1,8 @@
 syntax on
 set autoindent
 set number
+set ruler
+set colorcolumn=80
 
 set ttyfast
 set mouse=a
