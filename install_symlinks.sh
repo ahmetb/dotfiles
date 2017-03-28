@@ -3,9 +3,15 @@ set -eou pipefail
 IFS=$'\n\t'
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+set -x
+
+# suppress shell login message
 touch ~/.hushlogin
 
-set -x
+# disable smart quotes and dashes
+defaults write 'Apple Global Domain' NSAutomaticDashSubstitutionEnabled 0
+defaults write 'Apple Global Domain' NSAutomaticQuoteSubstitutionEnabled 0
+
 for f in .zshrc \
 	.vimrc \
 	.editorconfig \

@@ -10,4 +10,3 @@ set ttymouse=xterm2
 
 set backspace=2 " make backspace work like most other apps
 set backspace=indent,eol,start
-
