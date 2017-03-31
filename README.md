@@ -71,6 +71,7 @@ Development Tools:
 brew install \
 	git \
 	diff-so-fancy \
+	ccat \
 	hub \
 	go \
 	jq \

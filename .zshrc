@@ -45,7 +45,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime zsh-syntax-highlighting cloudapp docker kubectl colorize colored-man-pages zsh-wakatime zsh-completions)
+plugins=(git sublime zsh-syntax-highlighting cloudapp docker kubectl colorize colored-man-pages zsh-completions)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -66,29 +66,31 @@ alias vi=vim
 alias grep='grep --color'
 alias md='mkdir -p'
 alias ping='ping -c 3'
-alias serve=http-server
-alias serve2='python -m SimpleHTTPServer 9009'
+
 alias slp='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias bd='bg && disown %1'
-alias d='docker'
-alias dm='docker-machine'
 alias pg='ps ax | grep -v "grep" | grep'
+alias o='less'
 alias page='less -S'
 alias start=open
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
-alias fixvpn="sudo route -n flush && sudo networksetup -setv4off Wi-Fi && sudo networksetup -setdhcp Wi-Fi"
-alias "docker ps"=docker ps --format 'table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Created}}'
-alias git='hub'
-alias gc='git commit -S -v -s'
-alias o='less'
-alias k='kubectl'
-alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
-alias gdc='git diff --cached'
 
+alias d='docker'
+alias dm='docker-machine'
+alias k='kubectl'
+
+alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
+alias gc='git commit -S -v -s'
+alias gdc='git diff --cached'
+alias git='hub'
 
 retry() {
-    while true; do $@; sleep 1; done
+  while true; do $@; sleep 1; done
+}
+
+mcd() {
+  mkdir -p "$1" && cd "$1"
 }
 
 # coreutils
