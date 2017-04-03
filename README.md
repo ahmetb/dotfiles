@@ -78,9 +78,14 @@ brew install \
 	ack \
 	protobuf \
 	wget \
+	fzf \
 	Caskroom/cask/google-cloud-sdk \
 	Caskroom/cask/visual-studio-code
 ```
+
+Install fzf shell completion/finder:
+
+    /usr/local/opt/fzf/install
 
 Containers:
 

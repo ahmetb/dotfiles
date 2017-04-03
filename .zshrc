@@ -128,3 +128,5 @@ fi
 
 # go tools path
 export PATH="$PATH:$HOME/gotools/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
