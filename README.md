@@ -76,6 +76,7 @@ brew install \
 	go \
 	jq \
 	ack \
+	the_silver_searcher \
 	protobuf \
 	wget \
 	fzf \
