@@ -47,6 +47,9 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git sublime zsh-syntax-highlighting cloudapp docker kubectl colorize colored-man-pages zsh-completions)
 
+# Reload the zsh-completions
+autoload -U compinit && compinit
+
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export EDITOR=vim

@@ -54,3 +54,8 @@ else
 	[ -L "$HOME/.gnupg" ] && unlink "$HOME/.gnupg"
 	ln -sf "$SCRIPT_DIR/.gnupg" "$HOME/.gnupg"
 fi
+
+# install zsh-completions
+ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
+[[ -d "$ZSH_COMPLETIONS" ]] || git clone \
+	https://github.com/zsh-users/zsh-completions "$ZSH_COMPLETIONS"
