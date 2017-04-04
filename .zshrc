@@ -48,7 +48,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git sublime zsh-syntax-highlighting cloudapp docker kubectl colorize colored-man-pages zsh-completions)
 
 # Reload the zsh-completions
-autoload -U compinit && compinit
+# autoload -U compinit && compinit
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -133,3 +133,4 @@ fi
 export PATH="$PATH:$HOME/gotools/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.kubectx.bash ] && source ~/.kubectx.bash

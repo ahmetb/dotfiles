@@ -133,7 +133,8 @@ brew install \
 
     git config --global user.name "Ahmet Alp Balkan"
     git config --global user.email 'email@here.com'
-    git config --global core.pager "diff-so-fancy | less --tabs=1,5 -R"
+    git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+
 
 Generate key with a password:
 
