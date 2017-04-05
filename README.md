@@ -1,5 +1,19 @@
 # ahmet’s macOS Setup
 
+## Shell
+
+Install oh-my-zsh from https://github.com/robbyrussell/oh-my-zsh
+
+## Package manager
+
+- Install Homebrew: https://brew.sh
+- Run `brew analytics off`
+
+## Install symlinks
+
+Run `./install_symlinks.sh` to install the dotfiles. Restart the shell for it to
+take effect.
+
 ## OS Settings
 
 - Invert Trackpad Scroll Direction to non-natural.
@@ -13,13 +27,13 @@
 - Move $HOME folder to Finder sidebar.
 
 
-- Shortcuts
+- Set shortcuts
   - Accessibility: Invert colors: Cmd+Shift+I
   - Screenshots: Save selected area to file: Cmd+Shift+4
   - Screenshost: Save selected area to clipboard: Cmd+Shift+3
 - Hot Corners:
   - Top-right: Put Display to Sleep
-  - clear others
+  - Clear other corners
 
 Tweaks:
 
@@ -32,84 +46,48 @@ defaults write com.apple.finder NewWindowTarget -string "PfLo" && \
   defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
 chflags nohidden ~/Library                               # Unhide ~/Library
+
+# disable smart quotes and dashes
+defaults write 'Apple Global Domain' NSAutomaticDashSubstitutionEnabled 0
+defaults write 'Apple Global Domain' NSAutomaticQuoteSubstitutionEnabled 0
 ```
 
-## Base Software
 
-- Install Homebrew: https://brew.sh
-  - `brew analytics off`
-- Install iTerm2:
-  - `brew install Caskroom/cask/iterm2`
-- Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
+## Installing software
 
-## Other Software
+All software installed on the system must be listed in `Brewfile`. This is
+symlinked at `~/.Brewfile` and used by `brew bundle`.
 
-Utilities:
+To install all the software:
 
-    brew cask install spectacle flux clipmenu
+    brew bundle install --global
 
-- Security->Accessibility: Give Spectacle access
-- Launch Spectacle at Login
-- Launch ClipMenu at Login and hide from Menu Bar
+To remove software not declared in Brewfile:
 
-System Tools:
+    brew bundle cleanup --global
 
-```
-brew install coreutils \
-	findutils \
-	proctools \
-	htop \
-	pstree \
-	tree \
-	watch \
-	gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-```
+To save installed software to Brewfile (you should still reorganize file once
+saved):
 
-Development Tools:
+    brew bundle dump --global
 
-```
-brew install \
-	git \
-	diff-so-fancy \
-	ccat \
-	hub \
-	go \
-	jq \
-	ack \
-	the_silver_searcher \
-	protobuf \
-	wget \
-	fzf \
-	Caskroom/cask/google-cloud-sdk \
-	Caskroom/cask/visual-studio-code
-```
+## Post-insatllation Configuration
 
-Install fzf shell completion/finder:
+- **Spectacle**
+  - Security->Accessibility: Give access
+  - Launch at Login
+- **ClipMenu**
+  - Launch at Login
+  - Hide from Menu Bar
+- **fzf** completion scripts:
 
-    /usr/local/opt/fzf/install
+      /usr/local/opt/fzf/install
 
-Containers:
+- **minikube** xhyve driver:
 
-```
-brew install \
-	kubectl \
-	Caskroom/cask/docker \
-	Caskroom/cask/minikube \
-	docker-machine-driver-xhyve
-
-# minikube uses xhyve, which requires privileged access to the hypervisor
-sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-```
-
-Misc:
-
-```
-brew install \
-	Caskroom/cask/coconutbattery \
-	Caskroom/cask/slack \
-	Caskroom/cask/spotify
-```
+		# minikube uses xhyve, which requires privileged access to the hypervisor
+		sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+		sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
 
 ## Settings Sync
 
