@@ -17,6 +17,7 @@ brew 'gnu-indent'
 brew 'gnu-getopt'
 
 # Development tools
+cask 'iterm2'
 brew 'bash'
 brew 'bash-completion'
 brew 'ack'
@@ -42,15 +43,13 @@ brew 'gnupg'
 brew 'gpg-agent'
 
 # Containers
-brew 'docker-machine-driver-xhyve'
-cask 'minikube'
 brew 'kubernetes-cli'
 brew 'kubernetes-helm'
+cask 'minikube'
+brew 'docker-machine-driver-xhyve'
 
 # Desktop Software
 brew 'keybase'
 cask 'clipmenu'
 cask 'google-cloud-sdk'
 cask 'keybase'
-
-# Categorize:
