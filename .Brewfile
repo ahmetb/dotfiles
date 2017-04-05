@@ -36,11 +36,13 @@ brew 'the_silver_searcher'
 brew 'tree'
 brew 'vim'
 brew 'wget'
+cask 'google-cloud-sdk'
 
 # Code signing
 brew 'pinentry-mac'
 brew 'gnupg'
 brew 'gpg-agent'
+brew 'keybase'
 
 # Containers
 brew 'kubernetes-cli'
@@ -49,7 +51,7 @@ cask 'minikube'
 brew 'docker-machine-driver-xhyve'
 
 # Desktop Software
-brew 'keybase'
 cask 'clipmenu'
-cask 'google-cloud-sdk'
 cask 'keybase'
+cask 'recordit'
+cask 'zoomus'
