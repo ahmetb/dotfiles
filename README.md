@@ -55,12 +55,12 @@ defaults write 'Apple Global Domain' NSAutomaticQuoteSubstitutionEnabled 0
 
 ## Installing software
 
-All software installed on the system must be listed in `Brewfile`. This is
+All software installed on the system must be listed in `.Brewfile`. This is
 symlinked at `~/.Brewfile` and used by `brew bundle`.
 
-To install all the software:
+To install all the software, add it to `.Brewfile` and run:
 
-    brew bundle install --global
+    brew bundle --global
 
 To remove software not declared in Brewfile:
 
