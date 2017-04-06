@@ -42,7 +42,7 @@ cask 'google-cloud-sdk'
 brew 'pinentry-mac'
 brew 'gnupg'
 brew 'gpg-agent'
-brew 'keybase'
+cask 'keybase'
 
 # Containers
 brew 'kubernetes-cli'
@@ -52,6 +52,5 @@ brew 'docker-machine-driver-xhyve'
 
 # Desktop Software
 cask 'clipmenu'
-cask 'keybase'
 cask 'recordit'
 cask 'zoomus'
