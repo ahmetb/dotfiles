@@ -37,6 +37,7 @@ brew 'tree'
 brew 'vim'
 brew 'wget'
 cask 'google-cloud-sdk'
+brew 'watch'
 
 # Code signing
 brew 'pinentry-mac'
