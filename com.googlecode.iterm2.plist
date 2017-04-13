@@ -2435,11 +2435,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1690 734 867 739 0 0 3360 1867 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>299 1101 918 512 0 0 3360 1867 </string>
+	<string>615 548 796 473 0 0 3360 1867 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2 28 3281 1832 0 0 3360 1867 </string>
+	<string>2 1168 1225 692 0 0 3360 1867 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1 1168 1225 692 0 0 3360 1867 </string>
+	<string>911 499 1225 692 0 0 3360 1867 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2662,7 +2662,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
@@ -3312,6 +3312,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.14</string>
+	<string>3.0.15</string>
 </dict>
 </plist>
