@@ -88,6 +88,7 @@ alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code 
 alias gc='git commit -S -v -s'
 alias gdc='git diff --cached'
 alias git='hub'
+alias kubectx='~/workspace/kubectx/kubectx'
 
 retry() {
   while true; do $@; sleep 1; done
