@@ -20,6 +20,7 @@ GOPKGS=(
 
 	# other go dev
 	github.com/kardianos/govendor \
+	github.com/tools/godep \
 
 	# misc
 	github.com/shurcooL/markdownfmt
