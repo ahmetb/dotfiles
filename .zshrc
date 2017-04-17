@@ -83,12 +83,14 @@ alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 
 alias d='docker'
 alias dm='docker-machine'
 alias k='kubectl'
+alias kubectx='~/workspace/kubectx/kubectx'
+alias klo='kubectl logs -f'
+alias kex='kubectl exec -i -t'
 
 alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
 alias gc='git commit -S -v -s'
 alias gdc='git diff --cached'
 alias git='hub'
-alias kubectx='~/workspace/kubectx/kubectx'
 
 retry() {
   while true; do $@; sleep 1; done
