@@ -39,11 +39,15 @@ brew 'wget'
 cask 'google-cloud-sdk'
 brew 'watch'
 
-# Code signing
+# Commit signing
 brew 'pinentry-mac'
 brew 'gnupg'
 brew 'gpg-agent'
 cask 'keybase'
+
+# kubernetes dev
+brew 'hg'
+brew 'etcd'
 
 # Containers
 brew 'kubernetes-cli'
