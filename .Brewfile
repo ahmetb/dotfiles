@@ -5,16 +5,18 @@ tap 'homebrew/core'
 tap 'homebrew/dupes'
 
 # System tools
-brew 'findutils'
-brew 'proctools'
 brew 'coreutils'
-brew 'htop'
-brew 'gnu-tar'
-brew 'gnu-sed'
+brew 'proctools'
+brew 'findutils', args: ['with-default-names']
+brew 'htop', args: ['with-ncurses']
+brew 'gnu-tar', args: ['with-default-names']
+brew 'gnu-which', args: ['with-default-names']
+brew 'gnu-sed', args: ['with-default-names']
+brew 'gnu-indent', args: ['with-default-names']
 brew 'gawk'
 brew 'gnutls'
-brew 'gnu-indent'
 brew 'gnu-getopt'
+brew 'screen'
 
 # Development tools
 cask 'iterm2'
@@ -38,6 +40,7 @@ brew 'vim'
 brew 'wget'
 cask 'google-cloud-sdk'
 brew 'watch'
+brew 'wdiff', args: ['with-gettext']
 
 # Commit signing
 brew 'pinentry-mac'
