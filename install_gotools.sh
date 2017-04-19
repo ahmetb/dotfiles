@@ -17,6 +17,7 @@ GOPKGS=(
 	github.com/cweill/gotests/... \
 	sourcegraph.com/sqs/goreturns \
 	golang.org/x/tools/cmd/goimports \
+	github.com/fatih/gomodifytags \
 
 	# other go dev
 	github.com/kardianos/govendor \
