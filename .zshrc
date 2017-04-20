@@ -91,6 +91,7 @@ alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code 
 alias gc='git commit -S -v -s'
 alias gdc='git diff --cached'
 alias git='hub'
+alias gpp='git push ahmetb HEAD && hub pull-request'
 
 retry() {
   while true; do $@; sleep 1; done
