@@ -88,6 +88,8 @@ alias klo='kubectl logs -f'
 alias kex='kubectl exec -i -t'
 alias kg='kubectl get'
 alias kd='kubectl describe'
+alias ka='kubectl apply -f'
+alias krm='kubectl delete'
 
 alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
 alias gc='git commit -S -v -s'
