@@ -83,7 +83,6 @@ alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 
 alias d='docker'
 alias dm='docker-machine'
 alias k='kubectl'
-alias kubectx='~/workspace/kubectx/kubectx'
 alias gke='gcloud container clusters'
 alias klo='kubectl logs -f'
 alias kex='kubectl exec -i -t'
@@ -143,4 +142,4 @@ fi
 export PATH="$PATH:$HOME/gotools/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.kubectx.bash ] && source ~/.kubectx.bash
+[ -f /usr/local/etc/bash_completion.d/kubectx ] && source /usr/local/etc/bash_completion.d/kubectx
