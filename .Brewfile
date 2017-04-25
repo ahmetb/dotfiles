@@ -59,7 +59,7 @@ cask 'minikube'
 brew 'docker-machine-driver-xhyve'
 
 # Desktop Software
-cask 'clipmenu'
+cask 'clipy'
 cask 'recordit'
 cask 'zoomus'
 cask 'flux'
@@ -67,3 +67,4 @@ cask 'spectacle'
 cask 'spotify'
 cask '1password'
 cask 'dropbox'
+cask 'google-chrome'

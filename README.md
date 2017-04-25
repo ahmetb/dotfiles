@@ -76,9 +76,11 @@ saved):
 - **Spectacle**
   - Security->Accessibility: Give access
   - Launch at Login
-- **ClipMenu**
+- **Clipy**
   - Launch at Login
   - Hide from Menu Bar
+  - Set history size to 200
+  - Set paste key to <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>
 - **fzf** completion scripts:
 
       /usr/local/opt/fzf/install
