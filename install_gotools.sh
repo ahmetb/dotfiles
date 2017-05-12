@@ -22,6 +22,7 @@ GOPKGS=(
 	# other go dev
 	github.com/kardianos/govendor \
 	github.com/tools/godep \
+	go get -u github.com/golang/dep/cmd/dep \
 
 	# misc
 	github.com/shurcooL/markdownfmt
