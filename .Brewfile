@@ -58,6 +58,7 @@ brew 'docker-machine-driver-xhyve'
 
 # kubernetes dev
 brew 'hg'
+brew 'bazel'
 brew 'etcd'
 
 # Desktop Software

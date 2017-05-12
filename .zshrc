@@ -144,4 +144,3 @@ fi
 export PATH="$PATH:$HOME/gotools/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/local/etc/bash_completion.d/kubectx ] && source /usr/local/etc/bash_completion.d/kubectx

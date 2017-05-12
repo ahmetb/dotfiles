@@ -23,6 +23,7 @@ GOPKGS=(
 	github.com/kardianos/govendor \
 	github.com/tools/godep \
 	github.com/golang/dep/cmd/dep \
+	github.com/golang/protobuf/protoc-gen-go
 
 	# misc
 	github.com/shurcooL/markdownfmt
