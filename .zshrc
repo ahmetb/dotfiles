@@ -51,7 +51,7 @@ plugins=(git sublime zsh-syntax-highlighting cloudapp docker kubectl colorize co
 # autoload -U compinit && compinit
 
 # User configuration
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
@@ -115,6 +115,7 @@ PATH="/usr/local/opt/gnu-getopt/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 # virtualenv
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then

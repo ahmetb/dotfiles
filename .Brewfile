@@ -18,6 +18,7 @@ brew 'gawk'
 brew 'gnutls'
 brew 'gnu-getopt'
 brew 'screen'
+brew 'ncurses'
 
 # Development tools
 cask 'iterm2'
