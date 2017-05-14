@@ -43,6 +43,7 @@ brew 'wget'
 cask 'google-cloud-sdk'
 brew 'watch'
 brew 'wdiff', args: ['with-gettext']
+brew 'entr'
 
 # Commit signing
 brew 'pinentry-mac'
