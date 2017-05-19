@@ -98,6 +98,7 @@ alias gc='git commit -S -v -s'
 alias gdc='git diff --cached'
 alias git='hub'
 alias gpp='git push ahmetb HEAD && hub pull-request'
+alias gpah='git push ahmetb HEAD'
 
 retry() {
   while true; do $@; sleep 1; done
