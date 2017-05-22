@@ -108,6 +108,10 @@ mcd() {
   mkdir -p "$1" && cd "$1"
 }
 
+goto() {
+  cd $(dirname $(readlink -f $(which "$@")))
+}
+
 # coreutils
 #   To install: brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
