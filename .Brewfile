@@ -57,6 +57,7 @@ brew 'kubernetes-helm'
 brew 'kubectx'
 cask 'minikube'
 brew 'docker-machine-driver-xhyve'
+brew 'cfssl'
 
 # kubernetes dev
 brew 'hg'
