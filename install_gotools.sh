@@ -8,7 +8,7 @@ GOPKGS=(
 	# vscode-go tools
 	github.com/nsf/gocode \
 	github.com/tpng/gopkgs \
-	github.com/lukehoban/go-outline \
+	github.com/ramya-rao-a/go-outline \
 	github.com/acroca/go-symbols \
 	golang.org/x/tools/cmd/guru \
 	golang.org/x/tools/cmd/gorename \
