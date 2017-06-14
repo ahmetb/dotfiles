@@ -19,6 +19,7 @@ brew 'gnutls'
 brew 'gnu-getopt'
 brew 'screen'
 brew 'ncurses'
+brew 'pv'
 
 # Development tools
 cask 'iterm2'
