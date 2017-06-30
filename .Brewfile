@@ -3,7 +3,6 @@ tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/dupes'
-tap 'ahmetb/kubectx', 'https://github.com/ahmetb/kubectx.git'
 
 # System tools
 brew 'coreutils'
@@ -55,7 +54,7 @@ cask 'keybase'
 # Containers
 brew 'kubernetes-cli'
 brew 'kubernetes-helm'
-brew 'kubectx'
+brew 'kubectx' # ❤️
 cask 'minikube'
 brew 'docker-machine-driver-xhyve'
 brew 'cfssl'
