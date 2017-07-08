@@ -112,6 +112,15 @@ goto() {
   cd $(dirname $(readlink -f $(which "$@")))
 }
 
+portkill() {
+  ps="$(lsof -t -i:$1)"
+  if [[ -z "$ps" ]]; then
+    echo "no processes found"
+  else
+    kill -9 $ps && echo $ps
+  fi
+}
+
 # coreutils
 #   To install: brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
