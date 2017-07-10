@@ -83,6 +83,7 @@ alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 alias ccat='ccat --bg=dark'
 
 alias d='docker'
+alias dr='docker run --rm -i -t'
 alias dm='docker-machine'
 alias k='kubectl'
 alias gke='gcloud container clusters'
