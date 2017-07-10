@@ -61,7 +61,6 @@ brew 'cfssl'
 
 # kubernetes dev
 brew 'hg'
-brew 'bazel'
 brew 'etcd'
 
 # Desktop Software
