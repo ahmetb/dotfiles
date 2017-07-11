@@ -100,6 +100,9 @@ alias gdc='git diff --cached'
 alias git='hub'
 alias gpp='git push ahmetb HEAD && hub pull-request'
 alias gpah='git push ahmetb HEAD'
+alias glah='git pull ahmetb HEAD'
+alias gfah='git fetch ahmetb HEAD'
+alias glom='git pull origin master'
 
 retry() {
   while true; do $@; sleep 1; done
