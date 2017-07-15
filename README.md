@@ -71,7 +71,7 @@ saved):
 
     brew bundle dump --global
 
-## Post-insatllation Configuration
+## Post-installation Configuration
 
 - **Spectacle**
   - Security->Accessibility: Give access
@@ -111,10 +111,9 @@ saved):
 
 ## Git Setup
 
-    git config --global user.name "Ahmet Alp Balkan"
-    git config --global user.email 'email@here.com'
-    git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+Run:
 
+    ./git_setup.sh
 
 Generate key with a password:
 

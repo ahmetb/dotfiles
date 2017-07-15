@@ -33,4 +33,3 @@ ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
 	https://github.com/zsh-users/zsh-completions "$ZSH_COMPLETIONS"
 
 # git setup
-git config --global core.excludesfile ~/.gitignore_global
