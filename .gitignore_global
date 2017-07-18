@@ -1,6 +1,6 @@
 # Compiled source #
 ###################
-*.com
+# *.com # this shit is causing vendor/cloud.google.com to be ignored.
 *.class
 *.dll
 *.exe
