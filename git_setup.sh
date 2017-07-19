@@ -11,7 +11,7 @@ git config --global user.name "Ahmet Alp Balkan"
 git config --global user.email "${EMAIL_1}@${EMAIL_2}"
 
 # diff-so-fancy and its color scheme
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+git config --global core.pager "diff-so-fancy | less --tabs=4 -RF"
 git config --global color.ui true
 git config --global color.diff-highlight.oldNormal "red bold"
 git config --global color.diff-highlight.oldHighlight "red bold 52"
