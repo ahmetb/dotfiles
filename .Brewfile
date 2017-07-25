@@ -28,6 +28,7 @@ brew 'ack'
 brew 'ccat'
 brew 'diff-so-fancy'
 brew 'git'
+brew 'gti' # lol
 brew 'go'
 brew 'fzf'
 brew 'hub'
