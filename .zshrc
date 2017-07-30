@@ -136,6 +136,7 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 # virtualenv
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
   export WORKON_HOME=$HOME/workspace/.virtualenvs
   source "/usr/local/bin/virtualenvwrapper.sh"
