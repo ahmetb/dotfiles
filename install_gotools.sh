@@ -28,6 +28,7 @@ GOPKGS=(
 
 	# misc
 	github.com/jessfraz/reg \
-	github.com/shurcooL/markdownfmt
+	github.com/shurcooL/markdownfmt \
+	github.com/cpuguy83/go-md2man
 	)
-GOPATH="$GOTOOLS" go get -u "${GOPKGS[@]}"
+GOPATH="$GOTOOLS" go get -u -v "${GOPKGS[@]}"

@@ -34,6 +34,7 @@ brew 'fzf'
 brew 'hub'
 brew 'jq'
 brew 'node'
+brew 'openssl', args: ['without-tests']
 brew 'openssh'
 brew 'protobuf'
 brew 'pstree'

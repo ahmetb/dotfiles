@@ -45,7 +45,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime zsh-syntax-highlighting cloudapp docker kubectl colorize colored-man-pages zsh-completions)
+plugins=(git sublime zsh-syntax-highlighting cloudapp docker colorize colored-man-pages zsh-completions)
 
 # Reload the zsh-completions
 # autoload -U compinit && compinit
@@ -165,4 +165,8 @@ fi
 # go tools path
 export PATH="$PATH:$HOME/gotools/bin"
 
+# kubectl completion
+source <(kubectl completion zsh)
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
