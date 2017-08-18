@@ -101,7 +101,7 @@ alias git='hub'
 alias gpp='git push ahmetb HEAD && hub pull-request'
 alias gpah='git push ahmetb HEAD'
 alias glah='git pull ahmetb HEAD'
-alias gfah='git fetch ahmetb HEAD'
+alias gfah='git fetch ahmetb'
 alias glom='git pull origin master'
 
 retry() {
