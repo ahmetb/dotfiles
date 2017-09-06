@@ -103,6 +103,7 @@ alias gpah='git push ahmetb HEAD'
 alias glah='git pull ahmetb HEAD'
 alias gfah='git fetch ahmetb'
 alias glom='git pull origin master'
+alias grom='git rebase origin/master'
 
 retry() {
   while true; do $@; sleep 1; done
