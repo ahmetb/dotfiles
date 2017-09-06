@@ -70,6 +70,8 @@ alias grep='grep --color'
 alias md='mkdir -p'
 alias ping='ping -c 3'
 alias pstree='pstree -w'
+alias c='pbcopy'
+alias p='pbpaste'
 
 alias slp='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias bd='bg && disown %1'
