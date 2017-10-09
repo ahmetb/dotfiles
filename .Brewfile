@@ -61,6 +61,10 @@ cask 'minikube'
 brew 'docker-machine-driver-xhyve'
 brew 'cfssl'
 
+# Fun tools
+brew 'asciinema'
+brew 'lolcat'
+
 # kubernetes dev
 brew 'hg'
 brew 'etcd'

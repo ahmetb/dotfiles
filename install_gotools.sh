@@ -12,7 +12,7 @@ mkdir -p "$GOTOOLS"
 GOPKGS=(
 	# vscode-go tools
 	github.com/nsf/gocode \
-	github.com/tpng/gopkgs \
+	github.com/uudashr/gopkgs/cmd/gopkgs \
 	github.com/ramya-rao-a/go-outline \
 	github.com/acroca/go-symbols \
 	golang.org/x/tools/cmd/guru \
