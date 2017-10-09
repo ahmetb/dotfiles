@@ -2,6 +2,9 @@
 IFS=$'\n\t'
 set -xeou pipefail
 
+if [ -f /usr/local/bin/goclone ]; then
+	sudo unlink /usr/local/bin/goclone
+fi
 sudo ln -s /Users/$USER/workspace/goclone/goclone /usr/local/bin/goclone
 
 GOTOOLS=~/gotools
