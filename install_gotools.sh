@@ -2,6 +2,8 @@
 IFS=$'\n\t'
 set -xeou pipefail
 
+sudo ln -s /Users/$USER/workspace/goclone/goclone /usr/local/bin/goclone
+
 GOTOOLS=~/gotools
 mkdir -p "$GOTOOLS"
 GOPKGS=(
@@ -31,4 +33,6 @@ GOPKGS=(
 	github.com/shurcooL/markdownfmt \
 	github.com/cpuguy83/go-md2man
 	)
+
 GOPATH="$GOTOOLS" go get -u -v "${GOPKGS[@]}"
+
