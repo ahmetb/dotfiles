@@ -56,6 +56,9 @@ export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
 
+# Use userland brew if exists
+export PATH="$HOME/.homebrew/bin:$PATH"
+
 # Aliases 
 alias cd..='cd ..'
 alias ls='ls --color'

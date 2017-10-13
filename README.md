@@ -2,19 +2,25 @@
 
 ## Shell
 
-Install oh-my-zsh from https://github.com/robbyrussell/oh-my-zsh
-
-## Package manager
-
-- Install Homebrew: https://brew.sh
-- Run `brew analytics off`
+Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
 
 ## Install symlinks
 
 Run `./install_symlinks.sh` to install the dotfiles. Restart the shell for it to
 take effect.
 
+## Package manager
+
+- Install Homebrew &mdash;to `$HOME/.homebrew` instead of /usr/local:
+
+    git clone https://github.com/Homebrew/brew.git $HOME/.homebrew
+
+- Run `which brew` to confirm the one in home directory is picked up.
+- Run `brew analytics off`
+
 ## OS Settings
+
+> TODO: find `defaults write` commands for these.
 
 - Invert Trackpad Scroll Direction to non-natural.
 - Show battery percentage on menu bar.
@@ -65,11 +71,6 @@ To install all the software, add it to `.Brewfile` and run:
 To remove software not declared in Brewfile:
 
     brew bundle cleanup --global
-
-To save installed software to Brewfile (you should still reorganize file once
-saved):
-
-    brew bundle dump --global
 
 ## Post-installation Configuration
 
