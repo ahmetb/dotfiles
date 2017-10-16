@@ -143,8 +143,11 @@ PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/ncurses/bin:$PATH"
 PATH="$HOMEBREW/opt/openssl/bin:$PATH"
 
+# git: use system ssh for git, otherwise UseKeychain option doesn't  work
+export GIT_SSH=/usr/bin/ssh
+
 # python: replace system python
-export PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
+PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 
 # virtualenvwrapper
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
@@ -171,7 +174,7 @@ if [ -f "$HOME/.gnupg/gpg_profile" ]; then
 fi
 
 # go tools path
-export PATH="$PATH:$HOME/gotools/bin"
+PATH="$PATH:$HOME/gotools/bin"
 
 # kubectl completion
 source <(kubectl completion zsh)
@@ -179,3 +182,5 @@ source <(kubectl completion zsh)
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# finally, export the PATH
+export PATH="$PATH"
