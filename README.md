@@ -131,13 +131,6 @@ Upload the key to GitHub. https://github.com/settings/keys
 
 Save this to ~/.ssh/config:
 
-```
-Host github.com
-	HostName github.com
-	User git
-	IdentityFile ~/.ssh/github_rsa
-```
-
 Test connection:
 
     ssh -T git@github.com -i ~/.ssh/github_rsa

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 EMAIL_1="ahmetb"
 EMAIL_2="google.com"
@@ -23,3 +24,11 @@ git config --global color.diff.commit "227 bold"
 git config --global color.diff.old "red bold"
 git config --global color.diff.new "green bold"
 git config --global color.diff.whitespace "red reverse"
+
+# install symlink for ssh config
+SSH_CONFIG="$HOME/.ssh/config"
+if [[ -f "$SSH_CONFIG" ]]; then
+	rm "$SSH_CONFIG"
+fi
+ln -s "$SCRIPT_DIR/ssh_config" "$SSH_CONFIG"
+
