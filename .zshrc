@@ -57,7 +57,8 @@ export EDITOR=vim
 source $ZSH/oh-my-zsh.sh
 
 # Use userland brew if exists
-export PATH="$HOME/.homebrew/bin:$PATH"
+export HOMEBREW="$HOME/.homebrew"
+export PATH="$HOMEBREW/bin:$PATH"
 
 # Aliases 
 alias cd..='cd ..'
@@ -133,16 +134,17 @@ portkill() {
 
 # coreutils
 #   To install: brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-getopt/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/ncurses/bin:$PATH"
+MANPATH="$HOMEBREW/opt/coreutils/libexec/gnuman:$MANPATH"
+PATH="$HOMEBREW/opt/coreutils/libexec/gnubin:$PATH"
+PATH="$HOMEBREW/opt/gnu-getopt/libexec/gnubin:$PATH"
+PATH="$HOMEBREW/opt/gnu-indent/libexec/gnubin:$PATH"
+PATH="$HOMEBREW/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="$HOMEBREW/opt/ncurses/bin:$PATH"
+PATH="$HOMEBREW/opt/openssl/bin:$PATH"
 
 # python: replace system python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 
 # virtualenvwrapper
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
@@ -174,5 +176,6 @@ export PATH="$PATH:$HOME/gotools/bin"
 # kubectl completion
 source <(kubectl completion zsh)
 
+# fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

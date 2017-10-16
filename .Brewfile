@@ -46,6 +46,8 @@ cask 'google-cloud-sdk'
 brew 'watch'
 brew 'wdiff', args: ['with-gettext']
 brew 'entr'
+brew 'python'
+brew 'python3'
 
 # Commit signing
 brew 'pinentry-mac'
