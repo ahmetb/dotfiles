@@ -91,14 +91,7 @@ alias ccat='ccat --bg=dark'
 alias d='docker'
 alias dr='docker run --rm -i -t'
 alias dm='docker-machine'
-alias k='kubectl'
 alias gke='gcloud container clusters'
-alias klo='kubectl logs -f'
-alias kex='kubectl exec -i -t'
-alias kg='kubectl get'
-alias kd='kubectl describe'
-alias ka='kubectl apply -f'
-alias krm='kubectl delete'
 
 alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
 alias gc='git commit -S -v -s'
@@ -181,6 +174,9 @@ source <(kubectl completion zsh)
 
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# kubectl aliases from https://github.com/ahmetb/kubectl-alias
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 
 # finally, export the PATH
 export PATH="$PATH"

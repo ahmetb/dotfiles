@@ -13,6 +13,7 @@ for f in .zshrc \
 	.editorconfig \
 	.github_username \
 	.gitignore_global \
+	.kubectl_aliases \
 	.tmux.conf; do
 	if [ -f "$HOME/$f" ]; then rm "$HOME/$f"; fi
 	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
