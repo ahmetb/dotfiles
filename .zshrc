@@ -1,10 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -45,10 +41,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime zsh-syntax-highlighting cloudapp docker colorize colored-man-pages zsh-completions)
-
-# Reload the zsh-completions
-# autoload -U compinit && compinit
+plugins=(git docker colored-man-pages zsh-completions)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
@@ -63,6 +56,11 @@ if [ ! -d $HOMEBREW ]; then
   export HOMEBREW=/usr/local
 fi
 export PATH="$HOMEBREW/bin:$PATH"
+
+fpath=("$HOMEBREW/share/zsh/site-functions" $fpath)
+
+# Reload the zsh-completions
+autoload -U compinit && compinit
 
 # Aliases 
 alias cd..='cd ..'
@@ -173,8 +171,8 @@ fi
 # go tools path
 PATH="$PATH:$HOME/gotools/bin"
 
-# kubectl completion
-source <(kubectl completion zsh)
+# kubectl completion (currently sourcing this is not needed because brew pkg brings completion script)
+# source <(kubectl completion zsh)
 
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
