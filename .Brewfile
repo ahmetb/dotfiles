@@ -19,6 +19,7 @@ brew 'gnu-getopt'
 brew 'screen'
 brew 'ncurses'
 brew 'pv'
+brew 'unrar'
 
 # Development tools
 cask 'iterm2'

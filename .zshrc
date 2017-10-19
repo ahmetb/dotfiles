@@ -58,6 +58,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Use userland brew if exists
 export HOMEBREW="$HOME/.homebrew"
+if [ ! -d $HOMEBREW ]; then
+  # fallback
+  export HOMEBREW=/usr/local
+fi
 export PATH="$HOMEBREW/bin:$PATH"
 
 # Aliases 
