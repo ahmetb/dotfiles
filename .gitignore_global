@@ -1,3 +1,7 @@
+# Editors #
+###########
+.vscode
+
 # Compiled source #
 ###################
 # *.com # this shit is causing vendor/cloud.google.com to be ignored.

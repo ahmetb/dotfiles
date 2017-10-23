@@ -55,7 +55,7 @@ if [ ! -d $HOMEBREW ]; then
   # fallback
   export HOMEBREW=/usr/local
 fi
-export PATH="$HOMEBREW/bin:$PATH"
+export PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
 
 fpath=("$HOMEBREW/share/zsh/site-functions" $fpath)
 
