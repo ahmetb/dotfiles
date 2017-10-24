@@ -94,6 +94,7 @@ alias d='docker'
 alias dr='docker run --rm -i -t'
 alias dm='docker-machine'
 alias gke='gcloud container clusters'
+alias gce='gcloud compute instances'
 
 alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
 alias gc='git commit -S -v -s'
