@@ -1,13 +1,6 @@
-# Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=7
@@ -24,23 +17,8 @@ export UPDATE_ZSH_DAYS=7
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker colored-man-pages zsh-completions)
 
 # User configuration
@@ -49,7 +27,7 @@ export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
 
-# Use userland brew if exists
+# Use userland brew path, if exists
 export HOMEBREW="$HOME/.homebrew"
 if [ ! -d $HOMEBREW ]; then
   # fallback
@@ -57,56 +35,13 @@ if [ ! -d $HOMEBREW ]; then
 fi
 export PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
 
+# Add zsh completion scripts installed via Homebrew
 fpath=("$HOMEBREW/share/zsh/site-functions" $fpath)
 
 # Reload the zsh-completions
 autoload -U compinit && compinit
 
-# Aliases 
-alias cd..='cd ..'
-alias ls='ls --color'
-alias l='ls -lF'
-alias dir='ls'
-alias la='ls -lah'
-alias ll='ls -l'
-alias ls-l='ls -l'
-alias j='jobs'
-alias vi=vim
-alias grep='grep --color'
-alias md='mkdir -p'
-alias ping='ping -c 3'
-alias pstree='pstree -w'
-alias c='pbcopy'
-alias p='pbpaste'
-
-alias slp='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
-alias bd='bg && disown %1'
-alias pg='ps ax | grep -v "grep" | grep'
-alias o='less'
-alias page='less -S'
-alias start=open
-alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
-alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
-alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
-alias ccat='ccat --bg=dark'
-
-alias d='docker'
-alias dr='docker run --rm -i -t'
-alias dm='docker-machine'
-alias gke='gcloud container clusters'
-alias gce='gcloud compute instances'
-
-alias gpc='export GOPATH=`pwd`;export PATH=$PATH:$HOME/gotools:$GOPATH/bin;code .'
-alias gc='git commit -S -v -s'
-alias gdc='git diff --cached'
-alias git='hub'
-alias gpp='git push ahmetb HEAD && hub pull-request'
-alias gpah='git push ahmetb HEAD'
-alias glah='git pull ahmetb HEAD'
-alias gfah='git fetch ahmetb'
-alias glom='git pull origin master'
-alias grom='git rebase origin/master'
-
+# Misc functions
 retry() {
   while true; do $@; sleep 1; done
 }
@@ -128,8 +63,51 @@ portkill() {
   fi
 }
 
+# Custom aliases 
+alias cd..='cd ..'
+alias ls='ls --color'
+alias l='ls -lF'
+alias dir='ls'
+alias la='ls -lah'
+alias ll='ls -l'
+alias ls-l='ls -l'
+alias j='jobs'
+alias vi='vim'
+alias grep='grep --color'
+alias ping='ping -c 3'
+alias pstree='pstree -w'
+alias c='pbcopy'
+alias p='pbpaste'
+alias slp='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+alias bd='bg && disown %1'
+alias pg='ps ax | grep -v "grep" | grep'
+alias o='less'
+alias page='less -S'
+alias start=open
+alias ccat='ccat --bg=dark'
+# cloud stuff
+alias d='docker'
+alias dr='docker run --rm -i -t'
+alias dm='docker-machine'
+alias gke='gcloud container clusters'
+alias gce='gcloud compute instances'
+# git aliases
+alias gc='git commit -S -v -s'
+alias gdc='git diff --cached'
+alias git='hub'
+alias gpp='git push ahmetb HEAD && hub pull-request'
+alias gpah='git push ahmetb HEAD'
+alias glah='git pull ahmetb HEAD'
+alias gfah='git fetch ahmetb'
+alias glom='git pull origin master'
+alias grom='git rebase origin/master'
+# misc shortcuts
+alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
+alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
+alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
+
+# PATH MANIPULATIONS
 # coreutils
-#   To install: brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
 MANPATH="$HOMEBREW/opt/coreutils/libexec/gnuman:$MANPATH"
 PATH="$HOMEBREW/opt/coreutils/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-getopt/libexec/gnubin:$PATH"
@@ -139,7 +117,10 @@ PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/ncurses/bin:$PATH"
 PATH="$HOMEBREW/opt/openssl/bin:$PATH"
 
-# git: use system ssh for git, otherwise UseKeychain option doesn't  work
+# go tools
+PATH="$PATH:$HOME/gotools/bin"
+
+# git: use system ssh for git, otherwise UseKeychain option doesn't work
 export GIT_SSH=/usr/bin/ssh
 
 # python: replace system python
@@ -151,11 +132,8 @@ if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
   source "/usr/local/bin/virtualenvwrapper.sh"
 fi
 
-# gcloud
+# gcloud completion scripts via brew cask installation
 #  or just this: export PATH=$PATH:/Users/$USER/google-cloud-sdk/bin
-if [ -f "/Users/$USER/google-cloud-sdk/completion.zsh.inc" ]; then # manual installatioon
-  source "/Users/$USER/google-cloud-sdk/completion.zsh.inc"
-fi
 if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then # brew cask installation
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
@@ -169,8 +147,6 @@ if [ -f "$HOME/.gnupg/gpg_profile" ]; then
   source "$HOME/.gnupg/gpg_profile"
 fi
 
-# go tools path
-PATH="$PATH:$HOME/gotools/bin"
 
 # kubectl completion (currently sourcing this is not needed because brew pkg brings completion script)
 # source <(kubectl completion zsh)
