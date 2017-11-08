@@ -49,6 +49,7 @@ brew 'wdiff', args: ['with-gettext']
 brew 'entr'
 brew 'python'
 brew 'python3'
+brew 'bats'
 
 # Commit signing
 brew 'pinentry-mac'
