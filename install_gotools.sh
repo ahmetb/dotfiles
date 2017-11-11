@@ -2,10 +2,13 @@
 IFS=$'\n\t'
 set -xeou pipefail
 
-if [ -f /usr/local/bin/goclone ]; then
-	sudo unlink /usr/local/bin/goclone
+GOCLONE="/Users/$USER/workspace/goclone/goclone"
+if [[ -L /usr/local/bin/goclone ]]; then
+	if [[ "$(readlink -f /usr/local/bin/goclone)" != "$GOCLONE" ]]; then
+		sudo unlink /usr/local/bin/goclone
+		sudo ln -s "$GOCLONE" /usr/local/bin/goclone
+	fi
 fi
-sudo ln -s /Users/$USER/workspace/goclone/goclone /usr/local/bin/goclone
 
 GOTOOLS=~/gotools
 mkdir -p "$GOTOOLS"
@@ -30,6 +33,8 @@ GOPKGS=(
 	github.com/tools/godep \
 	github.com/golang/dep/cmd/dep \
 	github.com/golang/protobuf/protoc-gen-go \
+	github.com/spf13/cobra/cobra \
+	github.com/ahmetb/govvv \
 
 	# misc
 	github.com/jessfraz/reg \
@@ -37,5 +42,5 @@ GOPKGS=(
 	github.com/cpuguy83/go-md2man
 	)
 
-GOPATH="$GOTOOLS" go get -u -v "${GOPKGS[@]}"
+GOPATH="$GOTOOLS" go get -u "${GOPKGS[@]}"
 
