@@ -23,6 +23,10 @@ plugins=(git docker colored-man-pages zsh-completions)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+if [ -n "$EXTRA_PATH" ]; then
+     export PATH="$EXTRA_PATH:$PATH"
+fi
+
 export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
