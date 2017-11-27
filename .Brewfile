@@ -50,6 +50,7 @@ brew 'entr'
 brew 'python'
 brew 'python3'
 brew 'bats'
+brew 'tldr'
 
 # Commit signing
 brew 'pinentry-mac'
@@ -84,3 +85,4 @@ cask '1password'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'coconutbattery'
+cask 'firefox'
