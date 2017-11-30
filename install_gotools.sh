@@ -14,19 +14,28 @@ GOTOOLS=~/gotools
 mkdir -p "$GOTOOLS"
 GOPKGS=(
 	# vscode-go tools
+	# from https://github.com/Microsoft/vscode-go/blob/master/src/goInstallTools.ts
 	github.com/nsf/gocode \
 	github.com/uudashr/gopkgs/cmd/gopkgs \
 	github.com/ramya-rao-a/go-outline \
 	github.com/acroca/go-symbols \
 	golang.org/x/tools/cmd/guru \
 	golang.org/x/tools/cmd/gorename \
+	github.com/fatih/gomodifytags \
+	github.com/haya14busa/goplay/cmd/goplay \
+	github.com/josharian/impl \
+	github.com/tylerb/gotype-live \
 	github.com/rogpeppe/godef \
+	golang.org/x/tools/cmd/godoc \
+	github.com/zmb3/gogetdoc \
+	golang.org/x/tools/cmd/goimports \
+	sourcegraph.com/sqs/goreturns \
 	github.com/golang/lint/golint \
 	github.com/cweill/gotests/... \
-	sourcegraph.com/sqs/goreturns \
-	golang.org/x/tools/cmd/goimports \
-	github.com/fatih/gomodifytags \
-	github.com/josharian/impl \
+	github.com/alecthomas/gometalinter \
+	honnef.co/go/tools/... \
+	github.com/sourcegraph/go-langserver \
+	github.com/derekparker/delve/cmd/dlv \
 
 	# other go dev
 	github.com/kardianos/govendor \
