@@ -40,6 +40,7 @@ GOPKGS=(
 	# other go dev
 	github.com/kardianos/govendor \
 	github.com/tools/godep \
+	github.com/Masterminds/glide \
 	github.com/golang/dep/cmd/dep \
 	github.com/golang/protobuf/protoc-gen-go \
 	github.com/spf13/cobra/cobra \
