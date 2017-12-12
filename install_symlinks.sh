@@ -6,7 +6,6 @@ readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # suppress shell login message
 [[ ! -f ~/.hushlogin ]] && touch ~/.hushlogin
 
-# install go-based tools
 for f in .zshrc \
 	.Brewfile \
 	.vimrc \
