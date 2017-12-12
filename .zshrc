@@ -67,6 +67,13 @@ portkill() {
   fi
 }
 
+measure() {
+  local ts=$(date +%s%N)
+  $@
+  local tt=$((($(date +%s%N) - $ts)/1000000))
+  echo "time took: $tt ms." >&2
+}
+
 # Custom aliases 
 alias cd..='cd ..'
 alias ls='ls --color'
