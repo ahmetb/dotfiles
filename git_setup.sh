@@ -13,6 +13,8 @@ git config --global user.email "${EMAIL_1}@${EMAIL_2}"
 
 # diff-so-fancy and its color scheme
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+git config --global core.editor "vim"
+git config --global gpg.program "gpg"
 git config --global color.ui true
 git config --global color.diff-highlight.oldNormal "red bold"
 git config --global color.diff-highlight.oldHighlight "red bold 52"
