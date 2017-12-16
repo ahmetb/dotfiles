@@ -72,6 +72,13 @@ To remove software not declared in Brewfile:
 
     brew bundle cleanup --global
 
+Some things that require manual installation after Homebrew:
+
+    # if pip requires sudo, something is wrong, b/c homebrew bundle should
+    # install a $USER-writable over system-python
+    pip install virtualenv
+    pip install virtualenvwrapper
+
 ## Post-installation Configuration
 
 - **Spectacle**
