@@ -139,9 +139,9 @@ export GIT_SSH=/usr/bin/ssh
 PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 
 # virtualenvwrapper
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
   export WORKON_HOME=$HOME/workspace/.virtualenvs
-  source "/usr/local/bin/virtualenvwrapper.sh"
+  source "$HOMEBREW/bin/virtualenvwrapper.sh"
 fi
 
 # gcloud completion scripts via brew cask installation
