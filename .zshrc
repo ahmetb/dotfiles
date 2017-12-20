@@ -168,6 +168,7 @@ fi
 
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+func kubectl(){ echo "+ kubectl $@"; command kubectl $@ }
 
 # kube-ps1
 # currently disabled b/c adds 200 ms delay to every shell prompt
