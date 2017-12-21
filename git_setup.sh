@@ -16,6 +16,7 @@ git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global core.editor "vim"
 git config --global gpg.program "gpg"
 git config --global color.ui true
+git config --global hub.protocol ssh # https://github.com/github/hub/issues/1614
 git config --global color.diff-highlight.oldNormal "red bold"
 git config --global color.diff-highlight.oldHighlight "red bold 52"
 git config --global color.diff-highlight.newNormal "green bold"
