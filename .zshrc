@@ -113,6 +113,7 @@ alias glah='git pull ahmetb HEAD'
 alias gfah='git fetch ahmetb'
 alias glom='git pull origin master'
 alias grom='git rebase origin/master'
+alias gpoh='git push origin HEAD'
 # misc shortcuts
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
