@@ -128,6 +128,7 @@ PATH="$HOMEBREW/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/ncurses/bin:$PATH"
+PATH="$HOMEBREW/opt/gettext/bin:$PATH"
 PATH="$HOMEBREW/opt/openssl/bin:$PATH"
 
 # go tools
@@ -174,6 +175,8 @@ fi
 # kube-ps1
 if [[ -f "$HOME/workspace/dotfiles/kube-ps1.sh" ]]; then
 	source "$HOME/workspace/dotfiles/kube-ps1.sh"
+	export KUBE_PS1_PREFIX='{'
+	export KUBE_PS1_SUFFIX='}'
 	PROMPT="\$(kube_ps1) $PROMPT"
 fi
 

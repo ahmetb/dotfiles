@@ -22,16 +22,17 @@
 
 # Default values for the prompt
 # Override these values in ~/.zshrc or ~/.bashrc
-KUBE_PS1_DEFAULT="${KUBE_PS1_DEFAULT:=true}"
+KUBE_PS1_BINARY_DEFAULT="${KUBE_PS1_DEFAULT:-true}"
+KUBE_PS1_BINARY="${KUBE_PS1_BINARY:-"kubectl"}"
 KUBE_PS1_DISABLE_PATH="${HOME}/.kube/kube-ps1/disabled"
-KUBE_PS1_BINARY="${KUBE_PS1_PLATFORM:="kubectl"}"
-KUBE_PS1_NS_ENABLE="${KUBE_PS1_NS_ENABLE:=true}"
+KUBE_PS1_NS_ENABLE="${KUBE_PS1_NS_ENABLE:-true}"
 KUBE_PS1_UNAME=$(uname)
-KUBE_PS1_DEFAULT_LABEL="${KUBE_PS1_DEFAULT_LABEL:="⎈ "}"
-KUBE_PS1_DEFAULT_LABEL_IMG="${KUBE_PS1_DEFAULT_LABEL_IMG:=false}"
+KUBE_PS1_LABEL_ENABLE="${KUBE_PS1_LABEL_ENABLE:-true}"
+KUBE_PS1_LABEL_DEFAULT="${KUBE_PS1_LABEL_DEFAULT:-"⎈ "}"
+KUBE_PS1_LABEL_USE_IMG="${KUBE_PS1_LABEL_USE_IMG:-false}"
 KUBE_PS1_LAST_TIME=0
 KUBE_PS1_PREFIX="("
-KUBE_PS1_SEPERATOR="|"
+KUBE_PS1_SEPARATOR="|"
 KUBE_PS1_DIVIDER=":"
 KUBE_PS1_SUFFIX=")"
 
@@ -48,33 +49,41 @@ _kube_ps1_shell_settings() {
       autoload -U add-zsh-hook
       add-zsh-hook precmd _kube_ps1_load
       zmodload zsh/stat
-      reset_color="%f"
-      blue="%F{blue}"
-      red="%F{red}"
-      cyan="%F{cyan}"
+      KUBE_PS1_RESET_COLOR="%f"
+      KUBE_PS1_LABEL_COLOR="%F{blue}"
+      KUBE_PS1_CTX_COLOR="%F{red}"
+      KUBE_PS1_NS_COLOR="%F{cyan}"
       ;;
     "bash")
-      reset_color=$(tput sgr0)
-      blue=$(tput setaf 4)
-      red=$(tput setaf 1)
-      cyan=$(tput setaf 6)
-      if [ -z "$PROMPT_COMMAND" ]; then
-        PROMPT_COMMAND=_kube_ps1_load
-      else
-        PROMPT_COMMAND="$PROMPT_COMMAND;_kube_ps1_load"
-      fi
+      # TODO: dont use tput
+      KUBE_PS1_RESET_COLOR=$(tput sgr0)
+      KUBE_PS1_LABEL_COLOR=$(tput setaf 4)
+      KUBE_PS1_CTX_COLOR=$(tput setaf 1)
+      KUBE_PS1_NS_COLOR=$(tput setaf 6)
+        # TODO: only add it if it's not there
+        PROMPT_COMMAND="${PROMPT_COMMAND:-:};_kube_ps1_load"
       ;;
   esac
 }
 
-kube_ps1_label() {
-  [[ "${KUBE_PS1_DEFAULT_LABEL_IMG}" == false ]] && return
-
-  if [[ "${KUBE_PS1_DEFAULT_LABEL_IMG}" == true ]]; then
-    local KUBE_LABEL="☸️ "
+_kube_ps1_binary() {
+  if [[ "${KUBE_PS1_BINARY_DEFAULT}" == true ]]; then
+    local KUBE_PS1_BINARY="${KUBE_PS1_BINARY_DEFAULT}"
+  elif [[ "${KUBE_PS1_BINARY_DEFAULT}" == false ]] && [[ "${KUBE_PS1_BINARY}" == "oc" ]];then
+    local KUBE_PS1_BINARY="oc"
   fi
 
-  KUBE_PS1_DEFAULT_LABEL="${KUBE_LABEL}"
+  KUBE_PS1_BINARY="${KUBE_PS1_BINARY}"
+}
+
+kube_ps1_label() {
+  [[ "${KUBE_PS1_LABEL_ENABLE}" == false ]] && return
+
+  if [[ "${KUBE_PS1_LABEL_USE_IMG}" == true ]]; then
+    local KUBE_PS1_LABEL_DEFAULT="☸️ "
+  fi
+
+  KUBE_PS1_LABEL="${KUBE_PS1_LABEL_DEFAULT}"
 }
 
 _kube_ps1_split() {
@@ -88,7 +97,7 @@ _kube_ps1_file_newer_than() {
   local file=$1
   local check_time=$2
 
-  if [[ "${KUBE_PS1_SHELL}" = "zsh" ]]; then
+  if [[ "${KUBE_PS1_SHELL}" == "zsh" ]]; then
     mtime=$(stat +mtime "${file}")
   elif [ x"$KUBE_PS1_UNAME" = x"Linux" ]; then
     mtime=$(stat -c %Y "${file}")
@@ -113,18 +122,6 @@ _kube_ps1_load() {
   done
 }
 
-_kube_ps1_binary() {
-  if [[ "${KUBE_PS1_DEFAULT}" == true ]]; then
-    local KUBE_PS1_BINARY="${KUBE_PS1_BINARY}"
-  elif [[ "${KUBE_PS1_DEFAULT}" == false ]] && [[ "${KUBE_PS1_BINARY}" == "kubectl" ]];then
-    local KUBE_BINARY="kubectl"
-  elif [[ "${KUBE_PS1_BINARY}" == "oc" ]]; then
-    local KUBE_PS1_BINARY="oc"
-  fi
-
-  KUBE_PS1_BINARY="${KUBE_PS1_BINARY}"
-}
-
 # TODO: Break this function apart:
 #       one for context and one for namespace
 _kube_ps1_get_context_ns() {
@@ -137,7 +134,7 @@ _kube_ps1_get_context_ns() {
     return 1
   fi
 
-  if [[ "${KUBE_PS1_NS_ENABLE}" = true ]]; then
+  if [[ "${KUBE_PS1_NS_ENABLE}" == true ]]; then
     KUBE_PS1_NAMESPACE="$(${KUBE_PS1_BINARY} config view --minify --output 'jsonpath={..namespace}')"
     # Set namespace to default if it is not defined
     KUBE_PS1_NAMESPACE="${KUBE_PS1_NAMESPACE:-default}"
@@ -163,15 +160,23 @@ kubeoff() {
 kube_ps1() {
   [ -f "${KUBE_PS1_DISABLE_PATH}" ] && return
 
-  KUBE_PS1="${reset_color}$KUBE_PS1_PREFIX"
-  KUBE_PS1+="${blue}$KUBE_PS1_DEFAULT_LABEL"
-  KUBE_PS1+="${reset_color}$KUBE_PS1_SEPERATOR"
-  KUBE_PS1+="${red}$KUBE_PS1_CONTEXT${reset_color}"
-  if [[ "${KUBE_PS1_NS_ENABLE}" = true ]]; then
-    KUBE_PS1+="$KUBE_PS1_DIVIDER"
-    KUBE_PS1+="${cyan}$KUBE_PS1_NAMESPACE${reset_color}"
+  # Prefix
+  KUBE_PS1="${KUBE_PS1_RESET_COLOR}${KUBE_PS1_PREFIX}"
+  # Label
+  if [[ "${KUBE_PS1_LABEL_ENABLE}" == true ]]; then
+    KUBE_PS1+="${KUBE_PS1_LABEL_COLOR}${KUBE_PS1_LABEL}"
+    KUBE_PS1+="${KUBE_PS1_RESET_COLOR}${KUBE_PS1_SEPARATOR}"
   fi
-  KUBE_PS1+="$KUBE_PS1_SUFFIX"
+  # Cluster Context
+  KUBE_PS1+="${KUBE_PS1_CTX_COLOR}${KUBE_PS1_CONTEXT}${KUBE_PS1_RESET_COLOR}"
+  # Namespace
+  if [[ "${KUBE_PS1_NS_ENABLE}" == true ]]; then
+    # Divider between context and namespace
+    KUBE_PS1+="${KUBE_PS1_DIVIDER}"
+    KUBE_PS1+="${KUBE_PS1_NS_COLOR}$KUBE_PS1_NAMESPACE${KUBE_PS1_RESET_COLOR}"
+  fi
+  # Suffix
+  KUBE_PS1+="${KUBE_PS1_SUFFIX}"
 
   echo "${KUBE_PS1}"
 }
