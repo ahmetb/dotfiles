@@ -51,6 +51,7 @@ brew 'wdiff', args: ['with-gettext']
 brew 'entr'
 brew 'bats'
 brew 'tldr'
+brew 'hugo'
 
 # Commit signing
 brew 'pinentry-mac'

@@ -174,9 +174,9 @@ fi
 
 # kube-ps1
 if [[ -f "$HOME/workspace/dotfiles/kube-ps1.sh" ]]; then
-	source "$HOME/workspace/dotfiles/kube-ps1.sh"
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
+	source "$HOME/workspace/dotfiles/kube-ps1.sh"
 	PROMPT="\$(kube_ps1) $PROMPT"
 fi
 
