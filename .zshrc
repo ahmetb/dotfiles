@@ -119,6 +119,13 @@ alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunn
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
 alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 
+func gcr() {
+    c=$(echo "$1" | grep -o \/ | wc -l)
+    if [[ 1 == $c ]]; then gcloud container images list --repository "$1"
+    elif [[ 2 == $c ]]; then gcloud container images list-tags "$1"
+    else; gcloud container images list; fi
+}
+
 # PATH MANIPULATIONS
 # coreutils
 MANPATH="$HOMEBREW/opt/coreutils/libexec/gnuman:$MANPATH"
