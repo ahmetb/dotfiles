@@ -56,6 +56,7 @@ chflags nohidden ~/Library                               # Unhide ~/Library
 # disable smart quotes and dashes
 defaults write 'Apple Global Domain' NSAutomaticDashSubstitutionEnabled 0
 defaults write 'Apple Global Domain' NSAutomaticQuoteSubstitutionEnabled 0
+defaults write 'Apple Global Domain' NSAutomaticPeriodSubstitutionEnabled 0
 ```
 
 
