@@ -25,6 +25,10 @@ if [ -f "$HOME/.gnupg" ] && [ ! -L "$HOME/.gnupg" ];then
 else
 	[ -L "$HOME/.gnupg" ] && unlink "$HOME/.gnupg"
 	ln -sf "$SCRIPT_DIR/.gnupg" "$HOME/.gnupg"
+	# make directory unreadable by others
+	chmod -R o-rx "$SCRIPT_DIR/.gnupg"
+	# make symlink available only to current user
+	chmod 700 "$HOME/.gnupg"
 fi
 
 # install zsh-completions
