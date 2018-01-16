@@ -183,7 +183,6 @@ fi
 if [[ -f "$HOME/workspace/dotfiles/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
-	export KUBE_PS1_SEPARATOR=''
 	source "$HOME/workspace/dotfiles/kube-ps1.sh"
 	PROMPT="\$(kube_ps1) $PROMPT"
 fi
