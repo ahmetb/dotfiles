@@ -7,5 +7,12 @@ Host github.com
 	IdentityFile ~/.ssh/github_rsa
 	UseKeychain yes
 
-Host *.corp.google.com *.corp
+
+Match host *.corp.google.com
+ProxyCommand /usr/local/bin/corp-ssh-helper %h %p
+
+Match host *.c.googlers.com
+ProxyCommand /usr/local/bin/corp-ssh-helper %h %p
+
+Host *.corp.google.com *.corp *.googlers.com
 	ForwardAgent yes

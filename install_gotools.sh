@@ -47,9 +47,9 @@ GOPKGS=(
 	github.com/ahmetb/govvv \
 
 	# misc
-	github.com/jessfraz/reg \
 	github.com/shurcooL/markdownfmt \
-	github.com/cpuguy83/go-md2man
+	github.com/cpuguy83/go-md2man \
+	github.com/rgburke/grv/cmd/grv
 	)
 
 GOPATH="$GOTOOLS" go get -u "${GOPKGS[@]}"

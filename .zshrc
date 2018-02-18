@@ -50,6 +50,10 @@ retry() {
   while true; do $@; sleep 1; done
 }
 
+til() {
+  while true; do $@; if [ $? -eq 0 ]; then break; fi; sleep 1; done
+}
+
 mcd() {
   mkdir -p "$1" && cd "$1"
 }
@@ -89,6 +93,8 @@ alias ping='ping -c 3'
 alias pstree='pstree -w'
 alias c='pbcopy'
 alias p='pbpaste'
+alias pka='pbpaste | kubectl apply -f-'
+alias pt='pbpaste | tee'
 alias t='tee'
 alias slp='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias bd='bg && disown %1'
@@ -121,8 +127,8 @@ alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 
 func gcr() {
     c=$(echo "$1" | grep -o \/ | wc -l)
-    if [[ 1 == $c ]]; then gcloud container images list --repository "$1"
-    elif [[ 2 == $c ]]; then gcloud container images list-tags "$1"
+    if [[ 1 == $c ]]; then gcloud container images list --repository "$1" --limit=99999
+    elif [[ 2 == $c ]]; then gcloud container images list-tags "$1" --limit=99999
     else; gcloud container images list; fi
 }
 
