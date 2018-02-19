@@ -32,6 +32,7 @@ brew 'git'
 brew 'gti' # lol
 brew 'go'
 brew 'fzf'
+brew 'grv'
 brew 'hub'
 brew 'jq'
 brew 'node'
