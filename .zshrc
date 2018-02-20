@@ -32,7 +32,7 @@ if [ ! -d $HOMEBREW ]; then
   # fallback
   export HOMEBREW=/usr/local
 fi
-export PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
+PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
 
 # Add zsh completion scripts installed via Homebrew
 fpath=("$HOMEBREW/share/zsh/site-functions" $fpath)
@@ -156,7 +156,6 @@ if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
 fi
 
 # gcloud completion scripts via brew cask installation
-#  or just this: export PATH=$PATH:/Users/$USER/google-cloud-sdk/bin
 if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then # brew cask installation
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
