@@ -181,6 +181,9 @@ _kube_ps1_symbol() {
   local _KUBE_PS1_SYMBOL_DEFAULT
 
   # TODO: Test terminal capabilities
+  #       If LANG is set to POSIX, the hex will
+  #       work.
+  # [[ "$LC_CTYPE $LC_ALL" =~ "UTF" && $TERM != "linux" ]]
   #       Bash only supports \u \U since 4.2
   if [[ "${KUBE_PS1_SHELL}" == "bash" ]]; then
     if ((BASH_VERSINFO[0] >= 4)); then
@@ -229,10 +232,17 @@ _kube_ps1_file_newer_than() {
 }
 
 _kube_ps1_update_cache() {
-  [[ -n "${KUBE_PS1_TOGGLE}" ]] && return
-  [[ -f "${KUBE_PS1_DISABLE_PATH}" ]] && return
-
   local conf
+
+  if ! _kube_ps1_enabled; then
+    return
+  fi
+
+  if ! _kube_ps1_binary_check "${KUBE_PS1_BINARY}"; then
+    KUBE_PS1_CONTEXT="BINARY-N/A"
+    KUBE_PS1_NAMESPACE="N/A"
+    return
+  fi
 
   if [[ "${KUBECONFIG}" != "${KUBE_PS1_KUBECONFIG_CACHE}" ]]; then
     KUBE_PS1_KUBECONFIG_CACHE=${KUBECONFIG}
@@ -265,12 +275,6 @@ _kube_ps1_get_context_ns() {
     KUBE_PS1_LAST_TIME=$EPOCHSECONDS
   fi
 
-  if ! _kube_ps1_binary_check "${KUBE_PS1_BINARY}"; then
-    KUBE_PS1_CONTEXT="BINARY-N/A"
-    KUBE_PS1_NAMESPACE="N/A"
-    return
-  fi
-
   KUBE_PS1_CONTEXT="$(${KUBE_PS1_BINARY} config current-context 2>/dev/null)"
   if [[ -z "${KUBE_PS1_CONTEXT}" ]]; then
     KUBE_PS1_CONTEXT="N/A"
@@ -286,7 +290,7 @@ _kube_ps1_get_context_ns() {
 # Set shell options
 _kube_ps1_shell_settings
 
-_kube_toggle_on_usage() {
+_kubeon_usage() {
   cat <<"EOF"
 Toggle kube-ps1 prompt on
 
@@ -299,7 +303,7 @@ With no arguments, turn off kube-ps1 status for this shell instance (default).
 EOF
 }
 
-_kube_toggle_off_usage() {
+_kubeoff_usage() {
   cat <<"EOF"
 Toggle kube-ps1 prompt off
 
@@ -314,37 +318,47 @@ EOF
 
 kubeon() {
   if [[ "$#" -eq 0 ]]; then
-    unset KUBE_PS1_TOGGLE
+    KUBE_PS1_ENABLED=on
   elif [[ "${1}" == '-h' || "${1}" == '--help' ]]; then
-    _kube_toggle_on_usage
+    _kubeon_usage
   elif [[ "${1}" == '-g' || "${1}" == '--global' ]]; then
     rm -f "${KUBE_PS1_DISABLE_PATH}"
   else
     echo -e "error: unrecognized flag ${1}\\n"
-    _kube_toggle_on_usage
+    _kubeon_usage
     return
   fi
 }
 
 kubeoff() {
   if [[ "$#" -eq 0 ]]; then
-    export KUBE_PS1_TOGGLE=off
+    KUBE_PS1_ENABLED=off
   elif [[ "${1}" == '-h' || "${1}" == '--help' ]]; then
-    _kube_toggle_off_usage
+    _kubeoff_usage
   elif [[ "${1}" == '-g' || "${1}" == '--global' ]]; then
     mkdir -p "$(dirname $KUBE_PS1_DISABLE_PATH)"
     touch "${KUBE_PS1_DISABLE_PATH}"
   else
     echo -e "error: unrecognized flag ${1}\\n"
-    _kube_toggle_off_usage
+    _kubeoff_usage
     return
   fi
 }
 
+_kube_ps1_enabled() {
+  if [[ "${KUBE_PS1_ENABLED}" == "on" ]]; then
+    :
+  elif [[ "${KUBE_PS1_ENABLED}" == "off" ]] || [[ -f "${KUBE_PS1_DISABLE_PATH}" ]]; then
+    return 1
+  fi
+  return 0
+}
+
 # Build our prompt
 kube_ps1() {
-  [[ -n "${KUBE_PS1_TOGGLE}" ]] && return
-  [[ -f "${KUBE_PS1_DISABLE_PATH}" ]] && return
+  if ! _kube_ps1_enabled; then
+    return
+  fi
 
   local KUBE_PS1
   local KUBE_PS1_RESET_COLOR="$(_kube_ps1_color_fg reset_color)"
