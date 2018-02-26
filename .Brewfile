@@ -64,6 +64,7 @@ cask 'keybase'
 brew 'kubernetes-cli'
 brew 'kubernetes-helm'
 brew 'kubectx' # ❤️
+brew 'kube-ps1'
 cask 'minikube'
 brew 'docker-machine-driver-xhyve'
 brew 'cfssl'

@@ -181,10 +181,10 @@ fi
 # func kubectl(){ echo "$(tput setaf 3)+ kubectl $@ $(tput sgr0)"; command kubectl $@ }
 
 # kube-ps1
-if [[ -f "$HOME/workspace/dotfiles/kube-ps1.sh" ]]; then
+if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
-	source "$HOME/workspace/dotfiles/kube-ps1.sh"
+	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
 	PROMPT="\$(kube_ps1) $PROMPT"
 fi
 
