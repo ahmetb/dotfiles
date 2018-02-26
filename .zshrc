@@ -122,6 +122,7 @@ alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 
 alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 
 func gcr() {
+    [ -n "$1" ] && [[ ! "$1" =~ ^gcr.io ]] && 1="gcr.io/$1"
     c=$(echo "$1" | grep -o \/ | wc -l)
     if [[ 1 == $c ]]; then gcloud container images list --repository "$1" --limit=99999
     elif [[ 2 == $c ]]; then gcloud container images list-tags "$1" --limit=99999
