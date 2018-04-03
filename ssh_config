@@ -8,11 +8,11 @@ Host github.com
 	UseKeychain yes
 
 
-Match host *.corp.google.com
-ProxyCommand /usr/local/bin/corp-ssh-helper %h %p
-
-Match host *.c.googlers.com
-ProxyCommand /usr/local/bin/corp-ssh-helper %h %p
-
-Host *.corp.google.com *.corp *.googlers.com
-	ForwardAgent yes
+Host *.c.googlers.com
+  ProxyCommand /usr/local/bin/corp-ssh-helper -relay=sup-ssh-relay.corp.google.com %h %p
+  ForwardAgent yes
+  ForwardX11 no
+  ForwardX11Trusted no
+  StrictHostKeyChecking ask
+  XAuthLocation /usr/X11/bin/xauth
+  SendEnv LANG LC_*

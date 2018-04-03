@@ -53,6 +53,7 @@ brew 'entr'
 brew 'bats'
 brew 'tldr'
 brew 'hugo'
+brew 'shellcheck'
 
 # Commit signing
 brew 'pinentry-mac'
