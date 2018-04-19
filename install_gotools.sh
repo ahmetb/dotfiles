@@ -15,27 +15,28 @@ mkdir -p "$GOTOOLS"
 GOPKGS=(
 	# vscode-go tools
 	# from https://github.com/Microsoft/vscode-go/blob/master/src/goInstallTools.ts
-	github.com/nsf/gocode \
-	github.com/uudashr/gopkgs/cmd/gopkgs \
-	github.com/ramya-rao-a/go-outline \
-	github.com/acroca/go-symbols \
-	golang.org/x/tools/cmd/guru \
-	golang.org/x/tools/cmd/gorename \
-	github.com/fatih/gomodifytags \
-	github.com/haya14busa/goplay/cmd/goplay \
-	github.com/josharian/impl \
-	github.com/tylerb/gotype-live \
-	github.com/rogpeppe/godef \
-	golang.org/x/tools/cmd/godoc \
-	github.com/zmb3/gogetdoc \
-	golang.org/x/tools/cmd/goimports \
-	sourcegraph.com/sqs/goreturns \
-	github.com/golang/lint/golint \
-	github.com/cweill/gotests/... \
-	github.com/alecthomas/gometalinter \
-	honnef.co/go/tools/... \
-	github.com/sourcegraph/go-langserver \
-	github.com/derekparker/delve/cmd/dlv \
+github.com/acroca/go-symbols \
+github.com/alecthomas/gometalinter \
+github.com/cweill/gotests/... \
+github.com/derekparker/delve/cmd/dlv \
+github.com/fatih/gomodifytags \
+github.com/golang/lint/golint \
+github.com/haya14busa/goplay/cmd/goplay \
+github.com/josharian/impl \
+github.com/nsf/gocode \
+github.com/ramya-rao-a/go-outline \
+github.com/rogpeppe/godef \
+github.com/sourcegraph/go-langserver \
+github.com/tylerb/gotype-live \
+github.com/uudashr/gopkgs/cmd/gopkgs \
+github.com/zmb3/gogetdoc \
+golang.org/x/tools/cmd/godoc \
+golang.org/x/tools/cmd/goimports \
+golang.org/x/tools/cmd/gorename \
+golang.org/x/tools/cmd/guru \
+honnef.co/go/tools/... \
+sourcegraph.com/sqs/goreturns \
+github.com/davidrjenni/reftools/cmd/fillstruct \
 
 	# other go dev
 	github.com/kardianos/govendor \
