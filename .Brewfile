@@ -16,6 +16,7 @@ brew 'gnu-indent', args: ['with-default-names']
 brew 'gawk'
 brew 'gnutls'
 brew 'gnu-getopt'
+brew 'parallel'
 brew 'screen'
 brew 'ncurses'
 brew 'pv'
@@ -68,6 +69,7 @@ brew 'kubectx' # ❤️
 brew 'kube-ps1'
 cask 'minikube'
 brew 'docker-machine-driver-xhyve'
+brew 'skaffold'
 brew 'cfssl'
 
 # Fun tools
@@ -90,3 +92,4 @@ cask 'dropbox'
 cask 'google-chrome'
 cask 'coconutbattery'
 cask 'firefox'
+cask 'intel-power-gadget'

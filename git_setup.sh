@@ -11,12 +11,20 @@ set -x
 git config --global user.name "Ahmet Alp Balkan"
 git config --global user.email "${EMAIL_1}@${EMAIL_2}"
 
-# diff-so-fancy and its color scheme
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+
+# use https remotes and osxkeychain for creds
+git config --global credential.helper osxkeychain
+git config --global url.git\@github\.com\:.pushInsteadOf https://github.com/
+
 git config --global core.editor "vim"
 git config --global gpg.program "gpg"
+
+# use ssh in hub (commented out since pushInsteadOf)
+# git config --global hub.protocol ssh # https://github.com/github/hub/issues/1614
+
+# diff-so-fancy and its color scheme
+git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
 git config --global color.ui true
-git config --global hub.protocol ssh # https://github.com/github/hub/issues/1614
 git config --global color.diff-highlight.oldNormal "red bold"
 git config --global color.diff-highlight.oldHighlight "red bold 52"
 git config --global color.diff-highlight.newNormal "green bold"
