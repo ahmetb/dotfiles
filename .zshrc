@@ -50,7 +50,7 @@ til() {
 }
 
 mcd() {
-  mkdir -p "$1" && cd "$1"
+  mkdir -p "${1:?Need to specify an argument}" && cd "$1"
 }
 
 goto() {
