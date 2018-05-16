@@ -106,6 +106,7 @@ alias dm='docker-machine'
 alias gke='gcloud container clusters'
 alias gkedel='gcloud container clusters delete -q --async'
 alias gce='gcloud compute instances'
+alias gcssh='gcloud compute ssh'
 # git aliases
 alias gc='git commit -S -v -s'
 alias gdc='git diff --cached'

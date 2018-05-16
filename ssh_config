@@ -1,7 +1,7 @@
 # UseKeychain is not recognized by openssh, but recognized by system ssh on Mac
 IgnoreUnknown UseKeychain
 
-Host github.com
+Host github.com *.github.com
 	HostName github.com
 	User git
 	IdentityFile ~/.ssh/github_rsa
