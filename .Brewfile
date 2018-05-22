@@ -56,6 +56,7 @@ brew 'tldr'
 brew 'hugo'
 brew 'shellcheck'
 brew 'telnet'
+brew 'mitmproxy'
 
 # Commit signing
 brew 'pinentry-mac'
