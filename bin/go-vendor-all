@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Vendor stuff in $GOPATH/src to ./vendor/
+set -euo pipefail
+IFS=$'\n'
+
+[[ -d 'vendor/' ]] && ( echo >&2 "error: vendor/ exists, delete it first"; exit 1)
+(
+    set +u
+    [[ -n "$GOPATH" ]] || ( echo >&2 "error: \$GOPATH not set"; exit 1)
+)
+cur_repo="${PWD#$GOPATH/src/}"
+echo >&2 "(Current project: ${cur_repo})"
+
+mapfile -t deps < <(find "${GOPATH}/src" -name .git -type d | \
+    grep -Ev '^\.\/\.git$' | sed 's/\/\.git$//' | sed "s,^${GOPATH}/src/,," | \
+    grep -v "${cur_repo}")
+echo >&2 "-----------"
+echo >&2 "${deps[*]}"
+
+echo >&2 "-----------"
+read -p "Are you sure to delete vendor these ${#deps[@]} repos (y/N)? " -r
+echo
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    mkdir -p ./vendor
+    for dep in "${deps[@]}"; do
+        (
+        base="$(dirname "${dep}")"
+        set -x
+        mkdir -p "./vendor/${dep}"
+        mv -f "${GOPATH}/src/${dep}" "./vendor/${base}"
+        rm -rf -- "./vendor/${dep}/.git"
+        rm -rf -- "${GOPATH}/src/${dep}"
+        )
+    done
+fi

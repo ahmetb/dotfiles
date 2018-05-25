@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Run this script in the directory that contains vendor/ directory of a Go
+# repository. It cleans up subpackages unused in vendor/.
+set -euo pipefail
+IFS=$'\n'
+
+[[ ! -d 'vendor/' ]] && ( echo >&2 "error: there's no vendor/ here"; exit 1)
+
+# list of deps, in the form 'vendor/example.com/pkg/subpkg'
+get_deps() {
+	env GOOS="${1}" go list -f '{{join .Deps "\n"}}' ./... | \
+		grep -Eo 'vendor/.*' | sort | uniq
+}
+
+# list of vendor dirs, in the form 'vendor/example.com/pkg/subpkg'
+get_dirs() {
+	find 'vendor/' -mindepth 1 -type d | sort
+}
+
+find_unused() {
+	goos="${1}"
+	echo >&2 "Finding unused dependencies for GOOS=${goos}"
+	mapfile -t deps < <(get_deps "${goos}")
+	mapfile -t dirs < <(get_dirs)
+
+	for dir in "${dirs[@]}"; do
+		if ! echo "${deps[*]}" | grep -qE "^${dir}(/.*)?\$"; then
+			echo "${dir}"
+		fi
+	done
+}
+
+mapfile -t unused < <(cat <(find_unused linux) <(find_unused darwin) | sort | uniq)
+echo "${unused[*]}"
+echo >&2 "-----------"
+read -p "Are you sure to delete ${#unused[@]} directories listed above (y/N)? " -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	for dd in "${unused[@]}"; do
+		(
+			set -x; rm -rf -- "${dd}"
+		)
+	done
+fi
