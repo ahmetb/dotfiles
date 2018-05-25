@@ -192,5 +192,11 @@ if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	PROMPT="\$(kube_ps1) $PROMPT"
 fi
 
+# add dotfiles/bin to PATH
+if [[ -d "/Users/$USER/workspace/dotfiles/bin" ]]; then
+	PATH="/Users/$USER/workspace/dotfiles/bin:${PATH}"
+fi
+
 # finally, export the PATH
 export PATH="$PATH"
+
