@@ -12,6 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 # Run this script in the directory that contains vendor/ directory of a Go
 # repository. It cleans up subpackages unused in vendor/.
 set -euo pipefail
