@@ -13,6 +13,7 @@ brew 'gnu-tar', args: ['with-default-names']
 brew 'gnu-which', args: ['with-default-names']
 brew 'gnu-sed', args: ['with-default-names']
 brew 'gnu-indent', args: ['with-default-names']
+brew 'grep'
 brew 'gawk'
 brew 'gnutls'
 brew 'gnu-getopt'
