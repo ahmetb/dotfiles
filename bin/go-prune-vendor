@@ -15,15 +15,28 @@
 
 # Run this script in the directory that contains vendor/ directory of a Go
 # repository. It cleans up subpackages unused in vendor/.
-set -euo pipefail
+set -eo pipefail
 IFS=$'\n'
 
+[[ -n "$GOPATH" ]] || ( echo >&2 "error: \$GOPATH not set"; exit 1)
 [[ ! -d 'vendor/' ]] && ( echo >&2 "error: there's no vendor/ here"; exit 1)
+if [[ -z "$GEESE" ]]; then
+    GEESE="linux,darwin"
+    echo >&2 "\$GEESE not set. assuming: $GEESE"
+fi
 
 # list of deps, in the form 'vendor/example.com/pkg/subpkg'
 get_deps() {
-	env GOOS="${1}" go list -f '{{join .Deps "\n"}}' ./... | \
-		grep -Eo 'vendor/.*' | sort | uniq
+	IFS=',' read -r -a goos_list <<< "$1"
+	(
+		for goos in "${goos_list[@]}"; do
+			echo >&2 "Finding dependencies for GOOS=${goos}"
+			env GOOS="${goos}" go list -f '{{join .Deps "\n"}}' ./... | \
+				grep -Eo 'vendor/.*' | \
+					# https://github.com/golang/go/issues/25592
+					sed 's,golang_org/x/,golang.org/x/,'
+		done
+	) | sort | uniq
 }
 
 # list of vendor dirs, in the form 'vendor/example.com/pkg/subpkg'
@@ -32,11 +45,9 @@ get_dirs() {
 }
 
 find_unused() {
-	goos="${1}"
-	echo >&2 "Finding unused dependencies for GOOS=${goos}"
-	mapfile -t deps < <(get_deps "${goos}")
+	mapfile -t deps < <(get_deps "${GEESE}")
 	mapfile -t dirs < <(get_dirs)
-
+	echo >&2 "Finding unused dependencies in vendor/"
 	for dir in "${dirs[@]}"; do
 		if ! echo "${deps[*]}" | grep -qE "^${dir}(/.*)?\$"; then
 			echo "${dir}"
@@ -44,15 +55,15 @@ find_unused() {
 	done
 }
 
-mapfile -t unused < <(cat <(find_unused linux) <(find_unused darwin) | sort | uniq)
+mapfile -t unused < <(find_unused)
 echo "${unused[*]}"
 echo >&2 "-----------"
-read -p "Are you sure to delete ${#unused[@]} directories listed above (y/N)? " -r
+read -p "Delete ${#unused[@]} directories listed above (y/N)? " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	for dd in "${unused[@]}"; do
 		(
-			set -x; rm -rf -- "${dd}"
+			set -x; rm -rf -- "./${dd}"
 		)
 	done
 fi
