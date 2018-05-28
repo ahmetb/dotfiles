@@ -44,6 +44,12 @@ get_dirs() {
 	find 'vendor/' -mindepth 1 -type d | sed 's/$/\//' | sort
 }
 
+# omit subdirectories from the output if their parent directory appears in the
+# output
+filter_subdirs() {
+	awk '{if(k!="" && index($0,k)==1)next;k=$0}1'
+}
+
 find_unused_dirs() {
 	local deps
 	deps="$(get_deps "${GEESE}")"
