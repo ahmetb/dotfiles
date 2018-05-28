@@ -15,37 +15,59 @@
 
 # Run this script in the directory that contains vendor/ directory of a Go
 # repository. It cleans up subpackages unused in vendor/.
-set -eo pipefail
+#
+# OPTIONS:
+# - $GOPATH: required
+# - $GEESE: comma separated list of GOOS values to keep dependencies for
+# - $KEEP_TEST_DEPS: set to 1 to keep the test dependencies
+set -euo pipefail
 IFS=$'\n'
 
 [[ -n "$GOPATH" ]] || ( echo >&2 "error: \$GOPATH not set"; exit 1)
 [[ ! -d 'vendor/' ]] && ( echo >&2 "error: there's no vendor/ here"; exit 1)
-if [[ -z "$GEESE" ]]; then
+[[ -z "${KEEP_TEST_DEPS-}" ]] && (echo >&2 "\$KEEP_TEST_DEPS not set, will remove test dependencies")
+if [[ -z "${GEESE-}" ]]; then
     GEESE="linux,darwin"
     echo >&2 "\$GEESE not set. assuming: $GEESE"
 fi
+
+# returns list of test imports in vendor/
+test_imports() {
+	env GOOS="${1}" go list -f \
+				'{{join .TestImports "\n"}}' ./... | \
+				grep -Eo 'vendor/.*' | sort| uniq
+}
 
 # list of deps, in the form 'vendor/example.com/pkg/subpkg'
 get_deps() {
 	IFS=',' read -r -a goos_list <<< "$1"
 	(
 		for goos in "${goos_list[@]}"; do
-			echo >&2 "Finding dependencies for GOOS=${goos}"
-			env GOOS="${goos}" go list -f '{{join .Deps "\n"}}' ./... | \
-				grep -Eo 'vendor/.*' | \
-					# https://github.com/golang/go/issues/25592
-					sed 's,golang_org/x/,golang.org/x/,'
+			echo >&2 "Finding build dependencies for GOOS=${goos}"
+				env GOOS="${goos}" go list -f '{{join .Deps "\n"}}' ./... | \
+					grep -Eo 'vendor/.*'
 		done
+
+		if [[ -n "${KEEP_TEST_DEPS-}" ]]; then
+			mapfile -t ti < <(test_imports "${goos}")
+			echo "${ti[*]}"
+			# find vendored .Deps of each value in .TestImports
+			for td in "${ti[@]}"; do
+				echo >&2 "Finding dependencies of TestImport=${td} for GOOS=${goos}"
+				env GOOS="${goos}" go list -f '{{join .Deps "\n"}}' "./${td}" | \
+					grep -Eo 'vendor/.*'
+			done
+		fi
 	) | sed 's/$/\//' | sort | uniq
 }
 
-# list of vendor dirs, in the form 'vendor/example.com/pkg/subpkg'
+# list of dirs in vendor/ (excl. vendor/ itself), in the form
+# 'vendor/example.com/pkg/subpkg'.
 get_dirs() {
 	find 'vendor/' -mindepth 1 -type d | sed 's/$/\//' | sort
 }
 
-# omit subdirectories from the output if their parent directory appears in the
-# output
+# filter out subdirectories if their parent directory appears in the input
 filter_subdirs() {
 	awk '{if(k!="" && index($0,k)==1)next;k=$0}1'
 }
@@ -61,7 +83,7 @@ find_unused_dirs() {
 	done < <(get_dirs)
 }
 
-mapfile -t unused < <(find_unused_dirs)
+mapfile -t unused < <(find_unused_dirs | filter_subdirs)
 echo "${unused[*]}"
 echo >&2 "-----------"
 read -p "Delete ${#unused[@]} directories listed above (y/N)? " -r

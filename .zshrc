@@ -97,6 +97,7 @@ alias bd='bg && disown %1'
 alias pg='ps ax | grep -v "grep" | grep'
 alias o='less'
 alias no='yes n'
+alias cl='clear;clear'
 alias page='less -S'
 alias start=open
 alias ccat='ccat --bg=dark'
