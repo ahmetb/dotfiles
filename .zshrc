@@ -96,6 +96,7 @@ alias slp='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resourc
 alias bd='bg && disown %1'
 alias pg='ps ax | grep -v "grep" | grep'
 alias o='less'
+alias no='yes n'
 alias page='less -S'
 alias start=open
 alias ccat='ccat --bg=dark'

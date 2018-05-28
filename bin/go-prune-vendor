@@ -36,30 +36,30 @@ get_deps() {
 					# https://github.com/golang/go/issues/25592
 					sed 's,golang_org/x/,golang.org/x/,'
 		done
-	) | sort | uniq
+	) | sed 's/$/\//' | sort | uniq
 }
 
 # list of vendor dirs, in the form 'vendor/example.com/pkg/subpkg'
 get_dirs() {
-	find 'vendor/' -mindepth 1 -type d | sort
+	find 'vendor/' -mindepth 1 -type d | sed 's/$/\//' | sort
 }
 
-find_unused() {
-	mapfile -t deps < <(get_deps "${GEESE}")
-	mapfile -t dirs < <(get_dirs)
-	echo >&2 "Finding unused dependencies in vendor/"
-	for dir in "${dirs[@]}"; do
-		if ! echo "${deps[*]}" | grep -qE "^${dir}(/.*)?\$"; then
+find_unused_dirs() {
+	local deps
+	deps="$(get_deps "${GEESE}")"
+	while read -r dir; do
+		re=[^\b]*${dir}
+		if [[ ! "$deps" =~ $re ]]; then
 			echo "${dir}"
 		fi
-	done
+	done < <(get_dirs)
 }
 
-mapfile -t unused < <(find_unused)
+mapfile -t unused < <(find_unused_dirs)
 echo "${unused[*]}"
 echo >&2 "-----------"
 read -p "Delete ${#unused[@]} directories listed above (y/N)? " -r
-echo
+echo >&2
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	for dd in "${unused[@]}"; do
 		(

@@ -35,7 +35,7 @@ echo >&2 "${deps[*]}"
 
 echo >&2 "-----------"
 read -p "Are you sure to delete vendor these ${#deps[@]} repos (y/N)? " -r
-echo
+echo >&2
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     mkdir -p ./vendor
