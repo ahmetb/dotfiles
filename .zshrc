@@ -125,6 +125,7 @@ unalias grv
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
 alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
+alias kpl='kubectl plugin'
 
 func gcr() {
     [ -n "$1" ] && [[ ! "$1" =~ ^gcr.io ]] && 1="gcr.io/$1"
@@ -132,6 +133,12 @@ func gcr() {
     if [[ 1 == $c ]]; then gcloud container images list --repository "$1" --limit=99999
     elif [[ 2 == $c ]]; then gcloud container images list-tags "$1" --limit=99999
     else; gcloud container images list; fi
+}
+
+func kr() {
+    set -ux
+    kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t \
+    	--image="$1" tmp-"${RANDOM}"
 }
 
 # PATH MANIPULATIONS
