@@ -137,8 +137,10 @@ func gcr() {
 
 func kr() {
     set -ux
+    image="$1"
+    shift
     kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t \
-    	--image="$1" tmp-"${RANDOM}"
+    	--image="${image}" tmp-"${RANDOM}" $@
 }
 
 # PATH MANIPULATIONS
