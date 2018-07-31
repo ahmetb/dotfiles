@@ -89,6 +89,7 @@ alias pstree='pstree -w'
 alias c='pbcopy'
 alias p='pbpaste'
 alias pka='pbpaste | kubectl apply -f-'
+alias pkr='pbpaste | kubectl delete -f-'
 alias pt='pbpaste | tee'
 alias kx='kubectl explain'
 alias t='tee'
@@ -211,4 +212,3 @@ fi
 
 # finally, export the PATH
 export PATH="$PATH"
-
