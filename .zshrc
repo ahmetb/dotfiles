@@ -127,6 +127,8 @@ alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunn
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
 alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 alias kpl='kubectl plugin'
+alias c.='code .'
+alias code.='code .'
 
 func gcr() {
     [ -n "$1" ] && [[ ! "$1" =~ ^gcr.io ]] && 1="gcr.io/$1"
