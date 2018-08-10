@@ -11,12 +11,9 @@ set -x
 git config --global user.name "Ahmet Alp Balkan"
 git config --global user.email "${EMAIL_1}@${EMAIL_2}"
 
-
 # use https remotes and osxkeychain for creds
 git config --global credential.helper osxkeychain
 git config --global url.git\@github\.com\:.pushInsteadOf https://github.com/
-
-git config --global core.editor "vim"
 git config --global gpg.program "gpg"
 
 # use ssh in hub (commented out since pushInsteadOf)
@@ -43,3 +40,5 @@ if [[ -f "$SSH_CONFIG" ]]; then
 fi
 ln -s "$SCRIPT_DIR/ssh_config" "$SSH_CONFIG"
 
+# use vscode as the editor
+git config --global core.editor "code --wait"
