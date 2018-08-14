@@ -28,7 +28,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Use userland brew path, if exists
 export HOMEBREW="$HOME/.homebrew"
-if [ ! -d $HOMEBREW ]; then
+if [ ! -d "$HOMEBREW" ]; then
   # fallback
   export HOMEBREW=/usr/local
 fi
@@ -118,7 +118,7 @@ alias gpp='git push ahmetb HEAD && hub pull-request --browse'
 alias gpah='git push ahmetb HEAD'
 alias glah='git pull ahmetb HEAD'
 alias gfah='git fetch ahmetb'
-alias glom='git pull origin master'
+alias glom='git pull origin master --tags'
 alias grom='git rebase origin/master'
 alias gpoh='git push origin HEAD'
 unalias grv
@@ -126,6 +126,7 @@ unalias grv
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
 alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
+alias youtube-dl='docker run --rm -i -t -v $PWD:/data vimagick/youtube-dl'
 alias kpl='kubectl plugin'
 alias c.='code .'
 alias code.='code .'
