@@ -50,6 +50,7 @@ brew 'vim'
 brew 'wget'
 cask 'google-cloud-sdk'
 brew 'watch'
+brew 'fd'
 brew 'wdiff', args: ['with-gettext']
 brew 'entr'
 brew 'bats'
@@ -73,6 +74,7 @@ brew 'kube-ps1'
 cask 'minikube'
 brew 'docker-machine-driver-xhyve'
 brew 'skaffold'
+brew 'kustomize'
 brew 'cfssl'
 
 # Fun tools

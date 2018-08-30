@@ -19,7 +19,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git docker colored-man-pages zsh-completions)
+plugins=(git colored-man-pages zsh-completions)
 
 # User configuration
 export EDITOR=vim
@@ -130,6 +130,7 @@ alias youtube-dl='docker run --rm -i -t -v $PWD:/data vimagick/youtube-dl'
 alias kpl='kubectl plugin'
 alias c.='code .'
 alias code.='code .'
+alias fd='fd --no-ignore'
 
 func gcr() {
     [ -n "$1" ] && [[ ! "$1" =~ ^gcr.io ]] && 1="gcr.io/$1"
@@ -191,7 +192,7 @@ fi
 
 
 # kubectl completion (currently sourcing this is not needed because brew pkg brings completion script)
-# source <(kubectl completion zsh)
+source <(kubectl completion zsh)
 
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
