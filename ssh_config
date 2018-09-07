@@ -6,13 +6,3 @@ Host github.com *.github.com
 	User git
 	IdentityFile ~/.ssh/github_rsa
 	UseKeychain yes
-
-
-Host *.c.googlers.com
-  ProxyCommand /usr/local/bin/corp-ssh-helper -relay=sup-ssh-relay.corp.google.com %h %p
-  ForwardAgent yes
-  ForwardX11 no
-  ForwardX11Trusted no
-  StrictHostKeyChecking ask
-  XAuthLocation /usr/X11/bin/xauth
-  SendEnv LANG LC_*
