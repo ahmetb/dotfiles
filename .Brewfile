@@ -23,7 +23,7 @@ brew 'ncurses'
 brew 'pv'
 brew 'unrar'
 
-# Development tools
+# Development & Power Tools
 cask 'iterm2'
 brew 'bash'
 brew 'bash-completion'
@@ -41,8 +41,10 @@ brew 'node'
 brew 'openssl', args: ['without-tests']
 brew 'openssh'
 brew 'protobuf'
+brew 'prototool'
 brew 'pstree'
 brew 'the_silver_searcher'
+brew 'ripgrep'
 brew 'tree'
 brew 'python'
 brew 'python3'
@@ -51,6 +53,7 @@ brew 'wget'
 cask 'google-cloud-sdk'
 brew 'watch'
 brew 'fd'
+brew 'ncdu'
 brew 'wdiff', args: ['with-gettext']
 brew 'entr'
 brew 'bats'
