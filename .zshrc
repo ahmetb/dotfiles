@@ -120,6 +120,7 @@ alias gpah='git push ahmetb HEAD'
 alias glah='git pull ahmetb HEAD'
 alias gfah='git fetch ahmetb'
 alias glom='git pull origin master --tags'
+alias gloh='git pull origin HEAD --tags'
 alias grom='git rebase origin/master'
 alias gpoh='git push origin HEAD'
 unalias grv
