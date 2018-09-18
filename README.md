@@ -13,7 +13,7 @@ take effect.
 
 - Install Homebrew &mdash;to `$HOME/.homebrew` instead of /usr/local:
 
-    git clone https://github.com/Homebrew/brew.git $HOME/.homebrew
+      git clone https://github.com/Homebrew/brew.git $HOME/.homebrew
 
 - Run `which brew` to confirm the one in home directory is picked up.
 - Run `brew analytics off`
