@@ -26,7 +26,6 @@ export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
 
-# Use userland brew path, if exists
 export HOMEBREW="$HOME/.homebrew"
 if [ ! -d "$HOMEBREW" ]; then
   # fallback
@@ -73,6 +72,16 @@ measure() {
   echo "time took: $tt ms." >&2
 }
 
+_git_dbg() {
+  echo >&2 "$(tput setaf 1)+ git $@$(tput sgr0)"
+  git "$@"
+}
+
+_kubectl_dbg() {
+  echo >&2 "$(tput setaf 1)+ kubectl $@$(tput sgr0)"
+  kubectl "$@"
+}
+
 # Custom aliases 
 alias cd..='cd ..'
 alias ls='ls --color'
@@ -112,17 +121,17 @@ alias gkedel='gcloud container clusters delete -q --async'
 alias gce='gcloud compute instances'
 alias gcssh='gcloud compute ssh'
 # git aliases
-alias gc='git commit -S -v -s'
-alias gdc='git diff --cached'
+alias gc='_git_dbg commit -S -v -s'
+alias gdc='_git_dbg diff --cached'
 alias git='hub'
-alias gpp='git push ahmetb HEAD && hub pull-request --browse'
-alias gpah='git push ahmetb HEAD'
-alias glah='git pull ahmetb HEAD'
-alias gfah='git fetch ahmetb'
-alias glom='git pull origin master --tags'
-alias gloh='git pull origin HEAD --tags'
-alias grom='git rebase origin/master'
-alias gpoh='git push origin HEAD'
+alias gpp='_git_dbg push ahmetb HEAD && hub pull-request --browse'
+alias gpah='_git_dbg push ahmetb HEAD'
+alias glah='_git_dbg pull ahmetb HEAD'
+alias gfah='_git_dbg fetch ahmetb'
+alias glom='_git_dbg pull origin master --tags'
+alias gloh='_git_dbg pull origin HEAD --tags'
+alias grom='_git_dbg rebase origin/master'
+alias gpoh='_git_dbg push origin HEAD'
 unalias grv
 # misc shortcuts
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
@@ -197,7 +206,7 @@ fi
 source <(kubectl completion zsh)
 
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+type fzf &>/dev/null && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
