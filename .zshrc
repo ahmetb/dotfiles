@@ -225,5 +225,14 @@ if [[ -d "/Users/$USER/workspace/dotfiles/bin" ]]; then
 	PATH="/Users/$USER/workspace/dotfiles/bin:${PATH}"
 fi
 
+# kubectl plugins
+PATH="$HOME/.krew/bin:$PATH"
+
 # finally, export the PATH
 export PATH="$PATH"
+
+# k1.12
+alias kubectl=/Users/ahmetb/Downloads/kubectl
+
+# unload stat module (it masks stat(1)).
+zmodload -u zsh/stat
