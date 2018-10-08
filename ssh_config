@@ -6,3 +6,4 @@ Host github.com *.github.com
 	User git
 	IdentityFile ~/.ssh/github_rsa
 	UseKeychain yes
+

@@ -26,11 +26,15 @@ export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
 
+# use system paths (e.g. /etc/paths.d/)
+eval "$(/usr/libexec/path_helper -s)"
+
 export HOMEBREW="$HOME/.homebrew"
 if [ ! -d "$HOMEBREW" ]; then
   # fallback
   export HOMEBREW=/usr/local
 fi
+
 PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
 
 # Add zsh completion scripts installed via Homebrew
@@ -209,15 +213,16 @@ source <(kubectl completion zsh)
 type fzf &>/dev/null && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
-[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+#    > use sed to hijack --watch to watch $@.
+[ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
 # func kubectl(){ echo "$(tput setaf 3)+ kubectl $@ $(tput sgr0)"; command kubectl $@ }
 
 # kube-ps1
 if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
-	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
-	PROMPT="\$(kube_ps1) $PROMPT"
+#	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
+#	PROMPT="\$(kube_ps1) $PROMPT"
 fi
 
 # add dotfiles/bin to PATH
@@ -225,14 +230,12 @@ if [[ -d "/Users/$USER/workspace/dotfiles/bin" ]]; then
 	PATH="/Users/$USER/workspace/dotfiles/bin:${PATH}"
 fi
 
-# kubectl plugins
-PATH="$HOME/.krew/bin:$PATH"
+# krew plugins
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# direnv hook
+eval "$(direnv hook zsh)"
 
 # finally, export the PATH
-export PATH="$PATH"
+export PATH;
 
-# k1.12
-alias kubectl=/Users/ahmetb/Downloads/kubectl
-
-# unload stat module (it masks stat(1)).
-zmodload -u zsh/stat
