@@ -19,7 +19,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git colored-man-pages zsh-completions)
+plugins=(git colored-man-pages zsh-completions zsh-autosuggestions)
 
 # User configuration
 export EDITOR=vim
@@ -221,13 +221,18 @@ type fzf &>/dev/null && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
-#	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
-#	PROMPT="\$(kube_ps1) $PROMPT"
+	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
+	PROMPT="\$(kube_ps1) $PROMPT"
 fi
 
 # add dotfiles/bin to PATH
 if [[ -d "/Users/$USER/workspace/dotfiles/bin" ]]; then
 	PATH="/Users/$USER/workspace/dotfiles/bin:${PATH}"
+fi
+
+# enable zsh syntax highlighting
+if [[ -d "$HOMEBREW/share/zsh-syntax-highlighting" ]]; then
+	source "$HOMEBREW/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
 # krew plugins

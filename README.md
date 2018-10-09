@@ -4,6 +4,11 @@
 
 Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
 
+Install custom zsh plugins:
+
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+
 ## Install symlinks
 
 Run `./install_symlinks.sh` to install the dotfiles. Restart the shell for it to
