@@ -38,6 +38,7 @@ fi
 PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
 
 # Add zsh completion scripts installed via Homebrew
+fpath=("$HOMEBREW/share/zsh-completions" $fpath)
 fpath=("$HOMEBREW/share/zsh/site-functions" $fpath)
 
 # Reload the zsh-completions
@@ -136,6 +137,7 @@ alias glom='_git_dbg pull origin master --tags'
 alias gloh='_git_dbg pull origin HEAD --tags'
 alias grom='_git_dbg rebase origin/master'
 alias gpoh='_git_dbg push origin HEAD'
+alias gbv="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 unalias grv
 # misc shortcuts
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
@@ -192,9 +194,9 @@ if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
 fi
 
 # gcloud completion scripts via brew cask installation
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then # brew cask installation
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+if [ -f '$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then # brew cask installation
+  source '$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # iTerm2 integration
@@ -230,9 +232,12 @@ if [[ -d "/Users/$USER/workspace/dotfiles/bin" ]]; then
 	PATH="/Users/$USER/workspace/dotfiles/bin:${PATH}"
 fi
 
-# enable zsh syntax highlighting
+# load zsh plugins installed via brew
 if [[ -d "$HOMEBREW/share/zsh-syntax-highlighting" ]]; then
 	source "$HOMEBREW/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+if [[ -d "$HOMEBREW/share/zsh-autosuggestions" ]]; then
+	source "$HOMEBREW/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 # krew plugins
@@ -243,4 +248,3 @@ eval "$(direnv hook zsh)"
 
 # finally, export the PATH
 export PATH;
-

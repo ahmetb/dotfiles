@@ -26,6 +26,9 @@ brew 'unrar', args: ['force-bottle']
 cask 'iterm2'
 brew 'bash', args: ['force-bottle']
 brew 'bash-completion', args: ['force-bottle']
+brew 'zsh-syntax-highlighting'
+brew 'zsh-autosuggestions'
+brew 'zsh-completions'
 brew 'ack', args: ['force-bottle']
 brew 'ccat', args: ['force-bottle']
 brew 'diff-so-fancy', args: ['force-bottle']
