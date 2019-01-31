@@ -1,23 +1,5 @@
 # ahmet’s macOS Setup
 
-## Shell
-
-Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
-
-## Package manager
-
-- Install Homebrew &mdash;to `$HOME/.homebrew` instead of /usr/local:
-
-      git clone https://github.com/Homebrew/brew.git $HOME/.homebrew
-
-- Run `which brew` to confirm the one in home directory is picked up.
-- Run `brew analytics off`
-
-## Install symlinks
-
-Run `./install_symlinks.sh` to install the dotfiles. Restart the shell for it to
-take effect.
-
 ## OS Settings
 
 > TODO: find `defaults write` commands for these.
@@ -31,7 +13,6 @@ take effect.
   - Right Click -> Sort by Date Added.
 - Show Path Bar on Finder.
 - Move $HOME folder to Finder sidebar.
-
 
 - Set shortcuts
   - Accessibility: Invert colors: Cmd+Shift+I
@@ -60,8 +41,30 @@ defaults write 'Apple Global Domain' NSAutomaticQuoteSubstitutionEnabled 0
 defaults write 'Apple Global Domain' NSAutomaticPeriodSubstitutionEnabled 0
 ```
 
+## Shell
 
-## Installing software
+Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
+
+## Package manager
+
+- Install Homebrew &mdash;to `$HOME/.homebrew` instead of /usr/local:
+
+      git clone https://github.com/Homebrew/brew.git $HOME/.homebrew
+
+- Run `which brew` to confirm the one in home directory is picked up.
+- Run `brew analytics off`
+
+## Installing software manually
+
+- Download Dropbox
+  - Sign in 
+  - Sync only 1Password
+- Download iPassword 6
+  - Choose .opvault file from Dropbox
+  - Go to Software Licenses &rarr; open the 1Password license file
+  - Accept to use 1Password Mini when prompted
+
+## Installing software via Homebrew
 
 All software installed on the system must be listed in `.Brewfile`. This is
 symlinked at `~/.Brewfile` and used by `brew bundle`.
@@ -70,18 +73,21 @@ To install all the software, add it to `.Brewfile` and run:
 
     brew bundle --global
 
-To remove software not declared in Brewfile:
-
-    brew bundle cleanup --global
+Some stuff will take long, in that case, identify which packages and update
+`.Brewfile` to install them with `args: ['force-bottle']` or do a one-off
+`brew install --force-bottle [pkg]` install.
 
 Some things that require manual installation after Homebrew:
 
-    # if pip requires sudo, something is wrong, b/c homebrew bundle should
-    # install a $USER-writable over system-python
-    pip install virtualenv
-    pip install virtualenvwrapper
+```sh
+# if pip requires sudo, something is wrong, because the
+# Homebrew bundle should install a $USER-writable over system-python.
+    
+pip install virtualenv
+pip install virtualenvwrapper
+```
 
-## Post-installation Configuration
+## Post-Installation Configuration
 
 - **Spectacle**
   - Security->Accessibility: Give access
@@ -97,9 +103,9 @@ Some things that require manual installation after Homebrew:
 
 - **minikube** xhyve driver:
 
-		# minikube uses xhyve, which requires privileged access to the hypervisor
-		sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-		sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+      # minikube uses xhyve, which requires privileged access to the hypervisor
+      sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+      sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
 
 ## Settings Sync
 
