@@ -7,10 +7,11 @@
 - Invert Trackpad Scroll Direction to non-natural.
 - Show battery percentage on menu bar.
 - Show date on menu bar.
+- Keyboard &rarr; Text &rarr; Uncheck autocorrect and such settings.
 - Remove useless items from the Dock.
 - Move Dock to right, make it smaller.
 - Drag `Downloads` folder next to the Trash on the Dock.
-  - Right Click -> Sort by Date Added.
+  - Right Click &rarr; Sort by Date Added.
 - Show Path Bar on Finder.
 - Move $HOME folder to Finder sidebar.
 
