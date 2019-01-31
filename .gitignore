@@ -1,1 +1,2 @@
 .gnupg/.gpg-*-migrated
+.gnupg/**.kbx*

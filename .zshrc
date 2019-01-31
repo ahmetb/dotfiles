@@ -203,13 +203,15 @@ fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # GPG integration: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
-if [ -f "$HOME/.gnupg/gpg_profile" ]; then
+if [ -f "$HOME/.gnupg/gpg_profile" ] && command -v gpg-agent > /dev/null; then
   source "$HOME/.gnupg/gpg_profile"
 fi
 
 
 # kubectl completion (currently sourcing this is not needed because brew pkg brings completion script)
-source <(kubectl completion zsh)
+if command -v kubectl > /dev/null; then
+	source <(kubectl completion zsh)
+fi
 
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
 type fzf &>/dev/null && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -244,7 +246,9 @@ fi
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # direnv hook
-eval "$(direnv hook zsh)"
+if command -v direnv > /dev/null; then
+	eval "$(direnv hook zsh)"
+fi
 
 # finally, export the PATH
 export PATH;
