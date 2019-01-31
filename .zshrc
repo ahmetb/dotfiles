@@ -148,6 +148,8 @@ alias kpl='kubectl plugin'
 alias c.='code .'
 alias code.='code .'
 alias fd='fd --no-ignore'
+alias goclone='$HOME/workspace/goclone/goclone'
+alias stat='gstat'
 
 func gcr() {
     [ -n "$1" ] && [[ ! "$1" =~ ^gcr.io ]] && 1="gcr.io/$1"

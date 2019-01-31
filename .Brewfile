@@ -35,7 +35,7 @@ brew 'zsh-completions'
 brew 'ack', args: ['force-bottle']
 brew 'ccat', args: ['force-bottle']
 brew 'diff-so-fancy', args: ['force-bottle']
-brew 'git', args: ['force-bottle']
+brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
 brew 'gti', args: ['force-bottle']
 brew 'go', args: ['force-bottle']
 brew 'fzf', args: ['force-bottle']
@@ -44,7 +44,7 @@ brew 'hub', args: ['force-bottle']
 brew 'jq', args: ['force-bottle']
 brew 'node', args: ['force-bottle']
 brew 'rust', args: ['force-bottle']
-brew 'perl', args: ['force-bottle']
+brew 'perl' # no force-bottle: it looks for /usr/local at runtime otherwise
 brew 'ruby', args: ['force-bottle']
 brew 'python2', args: ['force-bottle']
 brew 'python3', args: ['force-bottle']
@@ -68,7 +68,7 @@ brew 'hugo', args: ['force-bottle']
 brew 'shellcheck', args: ['force-bottle']
 brew 'telnet', args: ['force-bottle']
 brew 'mitmproxy', args: ['force-bottle']
-brew 'vim'
+brew 'vim' # no force-bottle, otherwise it looks for /usr/local
 
 # Commit signing
 brew 'pinentry-mac', args: ['force-bottle']
