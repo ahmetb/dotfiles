@@ -85,6 +85,7 @@ brew 'docker-machine-driver-xhyve', args: ['force-bottle']
 brew 'skaffold', args: ['force-bottle']
 brew 'kustomize', args: ['force-bottle']
 brew 'cfssl', args: ['force-bottle']
+cask 'docker' # docker for desktop
 
 # Fun tools
 brew 'asciinema', args: ['force-bottle']
