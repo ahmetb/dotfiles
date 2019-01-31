@@ -150,3 +150,10 @@ Save this to ~/.ssh/config:
 Test connection:
 
     ssh -T git@github.com -i ~/.ssh/github_rsa
+
+
+## Hardware
+
+- Evoluent ergo mouse driver: https://evoluent.com/support/download/
+- Das Keyboard
+  - Settings &rarr; Keyboard &rarr; Modifier Keys: flip the Option/Command keys for "daskeyboard" profile.
