@@ -4,11 +4,6 @@
 
 Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
 
-## Install symlinks
-
-Run `./install_symlinks.sh` to install the dotfiles. Restart the shell for it to
-take effect.
-
 ## Package manager
 
 - Install Homebrew &mdash;to `$HOME/.homebrew` instead of /usr/local:
@@ -17,6 +12,11 @@ take effect.
 
 - Run `which brew` to confirm the one in home directory is picked up.
 - Run `brew analytics off`
+
+## Install symlinks
+
+Run `./install_symlinks.sh` to install the dotfiles. Restart the shell for it to
+take effect.
 
 ## OS Settings
 
@@ -36,9 +36,10 @@ take effect.
 - Set shortcuts
   - Accessibility: Invert colors: Cmd+Shift+I
   - Screenshots: Save selected area to file: Cmd+Shift+4
-  - Screenshost: Save selected area to clipboard: Cmd+Shift+3
+  - Screenshots: Save selected area to clipboard: Cmd+Shift+3
+  - Screenshots: Uncheck others
 - Hot Corners:
-  - Top-right: Put Display to Sleep
+  - Top-left: Put Display to Sleep
   - Clear other corners
 
 Tweaks:
