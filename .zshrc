@@ -176,7 +176,7 @@ PATH="$HOMEBREW/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/grep/libexec/gnubin:$PATH"
-PATH="$HOMEBREW/opt/ncurses/bin:$PATH"
+# PATH="$HOMEBREW/opt/ncurses/bin:$PATH" # disabled as tput doesn't work with xterm-256color
 PATH="$HOMEBREW/opt/gettext/bin:$PATH"
 PATH="$HOMEBREW/opt/openssl/bin:$PATH"
 
@@ -210,9 +210,13 @@ if [ -f "$HOME/.gnupg/gpg_profile" ] && command -v gpg-agent > /dev/null; then
 fi
 
 
-# kubectl completion (currently sourcing this is not needed because brew pkg brings completion script)
+# kubectl completion (w/ refresh cache every 24 hours)
 if command -v kubectl > /dev/null; then
-	source <(kubectl completion zsh)
+	kcomp="$HOME/.kube/.zsh_completion"
+	if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(stat -c "%Y" "$kcomp") ))" -gt "86400" ]; then
+		kubectl completion zsh > "$kcomp"
+	fi
+	source "$kcomp"
 fi
 
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
@@ -221,7 +225,6 @@ type fzf &>/dev/null && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
 #    > use sed to hijack --watch to watch $@.
 [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
-# func kubectl(){ echo "$(tput setaf 3)+ kubectl $@ $(tput sgr0)"; command kubectl $@ }
 
 # kube-ps1
 if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
