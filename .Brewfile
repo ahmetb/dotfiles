@@ -44,7 +44,6 @@ brew 'hub', args: ['force-bottle']
 brew 'jq', args: ['force-bottle']
 brew 'node', args: ['force-bottle']
 brew 'rust', args: ['force-bottle']
-brew 'perl' # no force-bottle: it looks for /usr/local at runtime otherwise
 brew 'ruby', args: ['force-bottle']
 brew 'python2', args: ['force-bottle']
 brew 'python3', args: ['force-bottle']
@@ -68,7 +67,6 @@ brew 'hugo', args: ['force-bottle']
 brew 'shellcheck', args: ['force-bottle']
 brew 'telnet', args: ['force-bottle']
 brew 'mitmproxy', args: ['force-bottle']
-brew 'vim' # no force-bottle, otherwise it looks for /usr/local
 
 # Commit signing
 brew 'pinentry-mac', args: ['force-bottle']
