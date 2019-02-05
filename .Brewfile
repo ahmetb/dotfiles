@@ -67,6 +67,7 @@ brew 'hugo', args: ['force-bottle']
 brew 'shellcheck', args: ['force-bottle']
 brew 'telnet', args: ['force-bottle']
 brew 'mitmproxy', args: ['force-bottle']
+brew 'fortio', args: ['force-bottle']
 
 # Commit signing
 brew 'pinentry-mac', args: ['force-bottle']
@@ -98,6 +99,7 @@ cask 'clipy'
 cask 'recordit'
 cask 'zoomus'
 cask 'flux'
+cask 'slack'
 cask 'spectacle'
 cask 'spotify'
 cask '1password'
@@ -105,4 +107,3 @@ cask 'dropbox'
 cask 'google-chrome'
 cask 'coconutbattery'
 cask 'firefox'
-cask 'intel-power-gadget'

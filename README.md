@@ -27,6 +27,7 @@
 Tweaks:
 
 ```
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always" # show scrollbar always
 defaults write com.apple.finder AppleShowAllFiles true   # Show hidden files
 defaults write com.apple.finder ShowStatusBar -bool true # Show Finder statusbar
 
