@@ -61,6 +61,10 @@ goto() {
   cd $(dirname $(readlink -f $(which "$@")))
 }
 
+log() {
+  echo >&2 "$(tput setaf 245)$*$(tput sgr0)"
+}
+
 portkill() {
   ps="$(lsof -t -i:$1)"
   if [[ -z "$ps" ]]; then
@@ -193,6 +197,8 @@ PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
   export WORKON_HOME=$HOME/workspace/.virtualenvs
   source "$HOMEBREW/bin/virtualenvwrapper.sh"
+else
+  log "WARNING: skipping loading virtualenvwrapper"
 fi
 
 # gcloud completion scripts via brew cask installation
@@ -202,11 +208,17 @@ if [ -f '$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.in
 fi
 
 # iTerm2 integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
+  source "${HOME}/.iterm2_shell_integration.zsh"
+else
+  log "WARNING: skipping loading iterm2 shell integration"
+fi
 
 # GPG integration: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
 if [ -f "$HOME/.gnupg/gpg_profile" ] && command -v gpg-agent > /dev/null; then
   source "$HOME/.gnupg/gpg_profile"
+else
+  log "WARNING: skipping loading gpg-agent"
 fi
 
 
@@ -215,6 +227,7 @@ if command -v kubectl > /dev/null; then
 	kcomp="$HOME/.kube/.zsh_completion"
 	if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(stat -c "%Y" "$kcomp") ))" -gt "86400" ]; then
 		kubectl completion zsh > "$kcomp"
+		log "refreshing kubectl zsh completion to $kcomp"
 	fi
 	source "$kcomp"
 fi
