@@ -40,5 +40,7 @@ if [[ -f "$SSH_CONFIG" ]]; then
 fi
 ln -s "$SCRIPT_DIR/ssh_config" "$SSH_CONFIG"
 
+git config --global core.editor "vim"
+
 # use vscode as the editor
-git config --global core.editor "code --wait"
+# git config --global core.editor "code --wait"
