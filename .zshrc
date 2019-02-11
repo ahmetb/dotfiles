@@ -1,3 +1,6 @@
+# internal functions
+log() { echo >&2 "[~/.zshrc] $(tput setaf 245)$*$(tput sgr0)" }
+
 export ZSH=/Users/$USER/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
@@ -31,8 +34,9 @@ eval "$(/usr/libexec/path_helper -s)"
 
 export HOMEBREW="$HOME/.homebrew"
 if [ ! -d "$HOMEBREW" ]; then
-  # fallback
-  export HOMEBREW=/usr/local
+	# fallback
+	echo >&2 "[~/.zshrc] WARNING: brew path $HOMEBREW not found, defaulting to /usr/local"
+	export HOMEBREW=/usr/local
 fi
 
 PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
@@ -59,10 +63,6 @@ mcd() {
 
 goto() {
   cd $(dirname $(readlink -f $(which "$@")))
-}
-
-log() {
-  echo >&2 "$(tput setaf 245)$*$(tput sgr0)"
 }
 
 portkill() {
@@ -195,16 +195,18 @@ PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 
 # virtualenvwrapper
 if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
-  export WORKON_HOME=$HOME/workspace/.virtualenvs
-  source "$HOMEBREW/bin/virtualenvwrapper.sh"
+	export WORKON_HOME=$HOME/workspace/.virtualenvs
+	source "$HOMEBREW/bin/virtualenvwrapper.sh"
 else
-  log "WARNING: skipping loading virtualenvwrapper"
+	log "WARNING: skipping loading virtualenvwrapper"
 fi
 
 # gcloud completion scripts via brew cask installation
-if [ -f '$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then # brew cask installation
-  source '$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+if [ -f "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then # brew cask installation
+	source "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+	source "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+else
+	log "WARNING: skipping loading gcloud completion"
 fi
 
 # iTerm2 integration
@@ -233,7 +235,11 @@ if command -v kubectl > /dev/null; then
 fi
 
 # fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
-type fzf &>/dev/null && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if type fzf &>/dev/null && [ -f ~/.fzf.zsh ]; then
+	source ~/.fzf.zsh
+else
+	log "WARNING: skipping loading fzf.zsh"
+fi
 
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
 #    > use sed to hijack --watch to watch $@.
@@ -269,4 +275,5 @@ if command -v direnv > /dev/null; then
 fi
 
 # finally, export the PATH
-export PATH;
+export PATH
+unset -f log
