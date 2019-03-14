@@ -1,6 +1,7 @@
 # Editors #
 ###########
 .vscode
+default.profraw
 
 # Compiled source #
 ###################
