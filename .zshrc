@@ -1,10 +1,10 @@
 # ZSH settings
 	export ZSH=/Users/$USER/.oh-my-zsh
-	ZSH_THEME="robbyrussell"
+	ZSH_THEME=geoffgarside
 
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-	plugins=(git colored-man-pages zsh-completions zsh-autosuggestions)
+	plugins=(git colored-man-pages zsh-completions)
 	source "$ZSH/oh-my-zsh.sh"
 
 	export UPDATE_ZSH_DAYS=14
@@ -132,7 +132,7 @@ if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
 	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
-	PROMPT="\$(kube_ps1) $PROMPT"
+	PROMPT="\$(kube_ps1)$PROMPT"
 fi
 
 # add dotfiles/bin to PATH
