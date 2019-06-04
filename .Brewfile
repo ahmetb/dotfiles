@@ -34,6 +34,7 @@ brew 'zsh-autosuggestions'
 brew 'zsh-completions'
 brew 'ack', args: ['force-bottle']
 brew 'ccat', args: ['force-bottle']
+brew 'icdiff'
 brew 'diff-so-fancy', args: ['force-bottle']
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
 brew 'gti', args: ['force-bottle']

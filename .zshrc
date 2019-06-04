@@ -7,6 +7,9 @@
 	plugins=(git colored-man-pages zsh-completions)
 	source "$ZSH/oh-my-zsh.sh"
 
+	# customize prompt
+	PROMPT='[%*]%(?..%{$fg[red]%}%{$FX[bold]%}[error:%?]%{$reset_color%}) %{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
+
 	export UPDATE_ZSH_DAYS=14
 	export DISABLE_UPDATE_PROMPT=true # accept updates by default
 

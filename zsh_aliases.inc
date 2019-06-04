@@ -40,6 +40,9 @@ alias gke='gcloud container clusters'
 alias gkedel='gcloud container clusters delete -q --async'
 alias gce='gcloud compute instances'
 alias gcssh='gcloud compute ssh'
+alias run='gcloud beta run deploy --allow-unauthenticated --image'
+alias runlist='gcloud beta run services list'
+alias rundel='gcloud beta run services delete -q'
 
 # git aliases
 alias gc='_git_dbg commit -S -v -s'
