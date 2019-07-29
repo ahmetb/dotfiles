@@ -2,6 +2,7 @@
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+tap 'ldez/tap'
 
 # System tools
 brew 'gettext', args: ['force-bottle']
@@ -38,6 +39,7 @@ brew 'icdiff'
 brew 'diff-so-fancy', args: ['force-bottle']
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
 brew 'gti', args: ['force-bottle']
+brew 'prm'
 brew 'go', args: ['force-bottle']
 brew 'fzf', args: ['force-bottle']
 brew 'grv', args: ['force-bottle']
@@ -81,7 +83,7 @@ brew 'kubernetes-helm'
 brew 'kubectx', args: ['force-bottle']
 brew 'kube-ps1', args: ['force-bottle']
 cask 'minikube'
-brew 'docker-machine-driver-xhyve', args: ['force-bottle']
+brew 'docker-machine-driver-hyperkit', args: ['force-bottle']
 brew 'skaffold', args: ['force-bottle']
 brew 'kustomize', args: ['force-bottle']
 brew 'cfssl', args: ['force-bottle']

@@ -152,7 +152,10 @@ if [[ -d "$HOMEBREW/share/zsh-autosuggestions" ]]; then
 fi
 
 # krew plugins
-PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:${PATH}"
+
+# global ~/go/bin
+PATH="${HOME}/go/bin:${PATH}"
 
 # direnv hook
 if command -v direnv > /dev/null; then

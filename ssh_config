@@ -6,3 +6,10 @@ Host github.com *.github.com
 	User git
 	IdentityFile ~/.ssh/github_rsa
 	UseKeychain yes
+
+
+Host gitlab.com *.gitlab.com
+	HostName gitlab.com
+	User git
+	IdentityFile ~/.ssh/gitlab_rsa
+	UseKeychain yes

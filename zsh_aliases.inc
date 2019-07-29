@@ -1,4 +1,9 @@
-# sourced from .zshrc
+# This script is sourced from .zshrc.
+
+# Add GNU tools not linked by Homebrew.
+alias find='gfind'
+alias xargs='gxargs'
+alias stat='gstat'
 
 # convenience aliases
 alias cd..='cd ..'
@@ -30,7 +35,6 @@ alias ccat='ccat --bg=dark'
 alias c.='code .'
 alias code.='code .'
 alias fd='fd --no-ignore'
-alias stat='gstat'
 
 # cloud stuff
 alias d='docker'
@@ -40,7 +44,7 @@ alias gke='gcloud container clusters'
 alias gkedel='gcloud container clusters delete -q --async'
 alias gce='gcloud compute instances'
 alias gcssh='gcloud compute ssh'
-alias run='gcloud beta run deploy --allow-unauthenticated --image'
+alias run='gcloud beta run deploy --region us-central1 --platform=managed --allow-unauthenticated --image'
 alias runlist='gcloud beta run services list'
 alias rundel='gcloud beta run services delete -q'
 
