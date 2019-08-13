@@ -65,6 +65,7 @@ PATH="$HOMEBREW/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/grep/libexec/gnubin:$PATH"
+PATH="$HOMEBREW/opt/gnu-time/libexec/gnubin:$PATH"
 # PATH="$HOMEBREW/opt/ncurses/bin:$PATH" # disabled as tput doesn't work with xterm-256color
 PATH="$HOMEBREW/opt/gettext/bin:$PATH"
 PATH="$HOMEBREW/opt/openssl/bin:$PATH"
@@ -161,6 +162,11 @@ PATH="${HOME}/go/bin:${PATH}"
 if command -v direnv > /dev/null; then
 	eval "$(direnv hook zsh)"
 fi
+
+# nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # finally, export the PATH
 export PATH
