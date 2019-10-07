@@ -25,6 +25,7 @@ brew 'screen', args: ['force-bottle']
 brew 'ncurses', args: ['force-bottle']
 brew 'pv', args: ['force-bottle']
 brew 'unrar', args: ['force-bottle']
+brew 'shfmt'
 
 # Development & Power Tools
 cask 'iterm2'
@@ -111,3 +112,4 @@ cask 'dropbox'
 cask 'google-chrome'
 cask 'coconutbattery'
 cask 'firefox'
+cask 'open-in-code'
