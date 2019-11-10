@@ -42,13 +42,16 @@ alias d='docker'
 alias dr='docker run --rm -i -t'
 alias dx='docker exec -i -t'
 alias db='docker build -t'
+
+# google cloud platform
+alias gcurl='curl -k --header "Authorization: Bearer $(gcloud auth print-access-token -q)"'
 alias gke='gcloud container clusters'
 alias gkedel='gcloud container clusters delete -q --async'
 alias gce='gcloud compute instances'
 alias gcssh='gcloud compute ssh'
 alias run='gcloud beta run deploy --region us-central1 --platform=managed --allow-unauthenticated --image'
-alias runlist='gcloud beta run services list'
-alias rundel='gcloud beta run services delete -q'
+alias runlist='gcloud beta run services list --platform=managed'
+alias rundel='gcloud beta run services delete -q --platform=managed'
 
 # git aliases
 alias gc='_git_dbg commit -S -v -s'

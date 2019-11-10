@@ -53,7 +53,7 @@ gcr() {
 }
 
 kr() {
-    set -ux
+    set -x;
     image="$1"
     shift
     kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t \
