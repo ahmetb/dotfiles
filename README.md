@@ -148,7 +148,9 @@ Add key to the keychain:
     ssh-add $HOME/.ssh/github_rsa          # company-installed
     /usr/bin/ssh-add $HOME/.ssh/github_rsa # system
 
-Upload the key to GitHub. https://github.com/settings/keys
+Upload the key to GitHub. https://github.com/settings/keys :
+
+    cat ~/.ssh/github_rsa.pub| pbcopy
 
 Save this to ~/.ssh/config:
 
