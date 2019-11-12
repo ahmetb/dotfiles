@@ -1,5 +1,9 @@
 # ahmet’s macOS Setup
 
+## Download Xcode
+
+For google, go/xcode. This will take a lot of time, so start with this.
+
 ## OS Settings
 
 > TODO: find `defaults write` commands for these.
