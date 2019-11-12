@@ -45,9 +45,12 @@ eval "$(/usr/libexec/path_helper -s)"
 	export HOMEBREW="$HOME/.homebrew"
 	if [ ! -d "$HOMEBREW" ]; then
 		# fallback
-		echo >&2 "[~/.zshrc] WARNING: brew path $HOMEBREW not found, defaulting to /usr/local"
 		export HOMEBREW=/usr/local
 	fi
+
+	export HOMEBREW_NO_ANALYTICS=1
+	export HOMEBREW_NO_INSECURE_REDIRECT=1
+
 	PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
 
 	# Add zsh completion scripts installed via Homebrew
@@ -55,7 +58,7 @@ eval "$(/usr/libexec/path_helper -s)"
 	fpath=("$HOMEBREW/share/zsh/site-functions" $fpath)
 
 # Reload the zsh-completions
-autoload -U compinit && compinit
+autoload -U compinit && compinit -i
 
 # PATH MANIPULATIONS
 # coreutils
@@ -115,6 +118,7 @@ fi
 if command -v kubectl > /dev/null; then
 	kcomp="$HOME/.kube/.zsh_completion"
 	if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(stat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
+		mkdir -p "$(dirname "$kcomp")"
 		kubectl completion zsh > "$kcomp"
 		log "refreshing kubectl zsh completion to $kcomp"
 	fi

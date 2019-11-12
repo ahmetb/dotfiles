@@ -1,103 +1,103 @@
 # vim: syntax=ruby filetype=ruby
-tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'ldez/tap'
 
 # System tools
-brew 'gettext', args: ['force-bottle']
-brew 'proctools', args: ['force-bottle']
-brew 'pstree', args: ['force-bottle']
-brew 'coreutils', args: ['force-bottle']
-brew 'findutils', args: ['force-bottle']
-brew 'htop', args: ['force-bottle']
-brew 'gnu-tar', args: ['force-bottle']
-brew 'gnu-time', args: ['force-bottle']
-brew 'gnu-which', args: ['force-bottle']
-brew 'gnu-sed', args: ['force-bottle']
-brew 'gnu-indent', args: ['force-bottle']
-brew 'grep', args: ['force-bottle']
-brew 'gawk', args: ['force-bottle']
-brew 'gnutls', args: ['force-bottle']
-brew 'gnu-getopt', args: ['force-bottle']
-brew 'parallel', args: ['force-bottle']
-brew 'screen', args: ['force-bottle']
-brew 'ncurses', args: ['force-bottle']
-brew 'pv', args: ['force-bottle']
-brew 'unrar', args: ['force-bottle']
+brew 'gettext'
+brew 'proctools'
+brew 'pstree'
+brew 'coreutils'
+brew 'findutils'
+brew 'htop'
+brew 'gnu-tar'
+brew 'gnu-time'
+brew 'gnu-which'
+brew 'gnu-sed'
+brew 'gnu-indent'
+brew 'grep'
+brew 'gawk'
+brew 'gnutls'
+brew 'gnu-getopt'
+brew 'parallel'
+brew 'screen'
+brew 'ncurses'
+brew 'pv'
+brew 'unrar'
 brew 'shfmt'
 
 # Development & Power Tools
 cask 'iterm2'
 cask 'visual-studio-code'
-brew 'bash', args: ['force-bottle']
-brew 'bash-completion', args: ['force-bottle']
+cask 'goland'
+brew 'bash'
+brew 'bash-completion'
 brew 'zsh-syntax-highlighting'
 brew 'zsh-autosuggestions'
 brew 'zsh-completions'
-brew 'ack', args: ['force-bottle']
-brew 'ccat', args: ['force-bottle']
+brew 'ack'
+brew 'ccat'
 brew 'icdiff'
-brew 'diff-so-fancy', args: ['force-bottle']
+brew 'diff-so-fancy'
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
-brew 'gti', args: ['force-bottle']
+brew 'gti'
 brew 'prm'
-brew 'go', args: ['force-bottle']
-brew 'fzf', args: ['force-bottle']
-brew 'grv', args: ['force-bottle']
-brew 'hub', args: ['force-bottle']
-brew 'jq', args: ['force-bottle']
-brew 'node', args: ['force-bottle']
-brew 'rust', args: ['force-bottle']
-brew 'ruby', args: ['force-bottle']
-brew 'python2', args: ['force-bottle']
-brew 'python3', args: ['force-bottle']
-brew 'openssl', args: ['force-bottle']
-brew 'openssh', args: ['force-bottle']
-brew 'protobuf', args: ['force-bottle']
-brew 'prototool', args: ['force-bottle']
-brew 'the_silver_searcher', args: ['force-bottle']
-brew 'ripgrep', args: ['force-bottle']
-brew 'tree', args: ['force-bottle']
-brew 'wget', args: ['force-bottle']
+brew 'go'
+brew 'fzf'
+brew 'grv'
+brew 'hub'
+brew 'jq'
+brew 'node'
+brew 'rust'
+brew 'ruby'
+brew 'python2'
+brew 'python3'
+brew 'openssl'
+brew 'openssh'
+brew 'protobuf'
+brew 'prototool'
+brew 'the_silver_searcher'
+brew 'ripgrep'
+brew 'tree'
+brew 'wget'
 cask 'google-cloud-sdk'
-brew 'watch', args: ['force-bottle']
-brew 'fd', args: ['force-bottle']
-brew 'ncdu', args: ['force-bottle']
-brew 'wdiff', args: ['force-bottle']
-brew 'entr', args: ['force-bottle']
-brew 'bats', args: ['force-bottle']
-brew 'tldr', args: ['force-bottle']
-brew 'hugo', args: ['force-bottle']
-brew 'shellcheck', args: ['force-bottle']
-brew 'telnet', args: ['force-bottle']
-brew 'mitmproxy', args: ['force-bottle']
-brew 'fortio', args: ['force-bottle']
+brew 'watch'
+brew 'fd'
+brew 'ncdu'
+brew 'wdiff'
+brew 'entr'
+brew 'bats'
+brew 'tldr'
+brew 'hugo'
+brew 'shellcheck'
+brew 'telnet'
+brew 'mitmproxy'
+brew 'fortio'
 
 # Commit signing
-brew 'pinentry-mac', args: ['force-bottle']
-brew 'gnupg', args: ['force-bottle']
+brew 'pinentry-mac'
+brew 'gnupg'
 cask 'keybase'
 
 # Containers
 brew 'kubernetes-cli'
 brew 'kubernetes-helm'
-brew 'kubectx', args: ['force-bottle']
-brew 'kube-ps1', args: ['force-bottle']
+brew 'kubectx'
+brew 'kube-ps1'
 cask 'minikube'
-brew 'docker-machine-driver-hyperkit', args: ['force-bottle']
-brew 'skaffold', args: ['force-bottle']
-brew 'kustomize', args: ['force-bottle']
-brew 'cfssl', args: ['force-bottle']
+brew 'docker-machine-driver-hyperkit'
+brew 'skaffold'
+brew 'kustomize'
+brew 'cfssl'
 cask 'docker' # docker for desktop
 
 # Fun tools
-brew 'asciinema', args: ['force-bottle']
-brew 'lolcat', args: ['force-bottle']
+brew 'asciinema'
+brew 'lolcat'
 
 # kubernetes dev
-brew 'hg', args: ['force-bottle']
-brew 'etcd', args: ['force-bottle']
+brew 'hg'
+brew 'etcd'
 
 # Desktop Software
 cask 'clipy'

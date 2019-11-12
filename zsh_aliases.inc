@@ -36,6 +36,7 @@ alias ccat='ccat --bg=dark'
 alias c.='code .'
 alias code.='code .'
 alias fd='fd --no-ignore'
+alias ag='ag --hidden'
 
 # cloud stuff
 alias d='docker'
