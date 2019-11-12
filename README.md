@@ -21,10 +21,10 @@ For google, go/xcode. This will take a lot of time, so start with this.
 
 - Set shortcuts
   - Accessibility: Invert colors: Cmd+Shift+I
-  - 
-  shots: Save selected area to file: Cmd+Shift+4
-  - Screenshots: Save selected area to clipboard: Cmd+Shift+2
-  - Screenshots: Uncheck others
+  - Screenshots:
+    - Uncheck all
+    - Save selected area to file: Cmd+Shift+4
+    - Save selected area to clipboard: Cmd+Shift+2
 - Hot Corners:
   - Top-left: Put Display to Sleep
   - Clear other corners
