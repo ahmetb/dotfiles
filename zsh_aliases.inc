@@ -50,9 +50,9 @@ alias gke='gcloud container clusters'
 alias gkedel='gcloud container clusters delete -q --async'
 alias gce='gcloud compute instances'
 alias gcssh='gcloud compute ssh'
-alias run='gcloud beta run deploy --region us-central1 --platform=managed --allow-unauthenticated --image'
-alias runlist='gcloud beta run services list --platform=managed'
-alias rundel='gcloud beta run services delete -q --platform=managed'
+alias run='gcloud run deploy --region us-central1 --platform=managed --allow-unauthenticated --image'
+alias runlist='gcloud run services list --platform=managed'
+alias rundel='gcloud run services delete -q --platform=managed'
 
 # git aliases
 alias gc='_git_dbg commit -S -v -s'

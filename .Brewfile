@@ -2,6 +2,7 @@
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'ldez/tap'
+tap 'buildpack/tap'
 
 # System tools
 brew 'gettext'
@@ -90,6 +91,7 @@ brew 'skaffold'
 brew 'kustomize'
 brew 'cfssl'
 cask 'docker' # docker for desktop
+brew 'pack'
 
 # Fun tools
 brew 'asciinema'

@@ -11,6 +11,9 @@
 	# customize prompt with exitcode
 	# PROMPT='[%*]%(?..%{$fg[red]%}%{$FX[bold]%}[error:%?]%{$reset_color%}) %{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
 
+	# demo prompt
+	# PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
+
 	export UPDATE_ZSH_DAYS=14
 	export DISABLE_UPDATE_PROMPT=true # accept updates by default
 
@@ -64,7 +67,7 @@ autoload -U compinit && compinit -i
 # coreutils
 MANPATH="$HOMEBREW/opt/coreutils/libexec/gnuman:$MANPATH"
 PATH="$HOMEBREW/opt/coreutils/libexec/gnubin:$PATH"
-PATH="$HOMEBREW/opt/gnu-getopt/libexec/gnubin:$PATH"
+PATH="$HOMEBREW/opt/gnu-getopt/bin:$PATH"
 PATH="$HOMEBREW/opt/gnu-indent/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-tar/libexec/gnubin:$PATH"
 PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -154,7 +157,7 @@ if [[ -d "$HOMEBREW/share/zsh-syntax-highlighting" ]]; then
 	source "$HOMEBREW/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 if [[ -d "$HOMEBREW/share/zsh-autosuggestions" ]]; then
-	source "$HOMEBREW/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+	# source "$HOMEBREW/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 # krew plugins

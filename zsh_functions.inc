@@ -2,6 +2,12 @@ log() {
   echo >&2 "[~/.zshrc] $(tput setaf 245)$*$(tput sgr0)"
 }
 
+brew() {
+  sudo chown -R "$(whoami)" /usr/local/bin /usr/local/etc /usr/local/sbin /usr/local/share /usr/local/share/doc
+  chmod u+w /usr/local/bin /usr/local/etc /usr/local/sbin /usr/local/share /usr/local/share/doc
+  command "brew" $@
+}
+
 retry() {
   while true; do $@; sleep 1; done
 }
@@ -16,6 +22,16 @@ mcd() {
 
 goto() {
   cd "$(dirname "$(readlink -f "$(command -v "$@")")")" || false
+}
+
+togcr() {
+  docker pull "$1"
+  local proj img
+  proj="$(gcloud config get-value core/project -q)"
+  img="gcr.io/$proj/$(basename "$1")"
+  docker tag "$1" "$img"
+  docker push "$img"
+  echo >&2 "Pushed $(tput setaf 1)$img$(tput sgr0)"
 }
 
 portkill() {
