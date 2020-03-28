@@ -68,6 +68,22 @@ gcr() {
     else gcloud container images list; fi
 }
 
+dbp() {
+    proj="$(gcloud config get-value core/project -q)"
+    if [[ -z $proj ]]; then
+        echo "can't get project";
+        return
+    fi
+    img="gcr.io/${proj}/$(basename $PWD)"
+    echo >&2 "$(tput setaf 2)build+push $img $(tput sgr0)"
+    (
+    set -x
+    docker build --tag "$img" ${1:-.} 1>/dev/null && \
+        docker push "$img" 1>/dev/null
+    )
+    echo "$img"
+}
+
 kr() {
     set -x;
     image="$1"
@@ -75,3 +91,4 @@ kr() {
     kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t \
     	--image="${image}" tmp-"${RANDOM}" $@
 }
+

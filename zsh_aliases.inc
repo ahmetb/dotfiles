@@ -52,7 +52,7 @@ alias gce='gcloud compute instances'
 alias gcssh='gcloud compute ssh'
 alias run='gcloud run deploy --region us-central1 --platform=managed --allow-unauthenticated --image'
 alias runlist='gcloud run services list --platform=managed'
-alias rundel='gcloud run services delete -q --platform=managed'
+alias rundel='gcloud run services delete -q --platform=managed --region us-central1'
 
 # git aliases
 alias gc='_git_dbg commit -S -v -s'
@@ -76,6 +76,7 @@ alias pkr='pbpaste | kubectl delete -f-'
 alias pkd='pbpaste | kubectl describe -f-'
 alias kpl='kubectl plugin'
 alias krew_install_clipboard='kubectl krew install --manifest <(pbpaste)'
+alias kk='kubectl krew'
 
 
 # misc shortcuts

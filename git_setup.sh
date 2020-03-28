@@ -33,6 +33,9 @@ git config --global color.diff.old "red bold"
 git config --global color.diff.new "green bold"
 git config --global color.diff.whitespace "red reverse"
 
+# rebase helper
+git config --global sequence.editor interactive-rebase-tool
+
 # install symlink for ssh config
 SSH_CONFIG="$HOME/.ssh/config"
 if [[ -f "$SSH_CONFIG" ]]; then

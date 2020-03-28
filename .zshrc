@@ -1,12 +1,15 @@
 # ZSH settings
 	export ZSH=/Users/$USER/.oh-my-zsh
-	ZSH_THEME=af-magic
+	# ZSH_THEME=af-magic
 	ZSH_THEME=geoffgarside
 
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 	plugins=(git colored-man-pages zsh-completions)
 	source "$ZSH/oh-my-zsh.sh"
+
+    # basic prompt
+    PROMPT='%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %{$fg[yellow]%}%(!.#.$)%{$reset_color%} '
 
 	# customize prompt with exitcode
 	# PROMPT='[%*]%(?..%{$fg[red]%}%{$FX[bold]%}[error:%?]%{$reset_color%}) %{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
@@ -37,6 +40,8 @@ else
 	echo >&2 "WARNING: can't load shell aliases"
 fi
 
+# Key bindings
+bindkey '^[x' .undo # using alt+x for recordings
 
 # User configuration
 export EDITOR=vim
