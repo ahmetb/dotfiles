@@ -37,11 +37,11 @@ git config --global color.diff.whitespace "red reverse"
 git config --global sequence.editor interactive-rebase-tool
 
 # install symlink for ssh config
-SSH_CONFIG="$HOME/.ssh/config"
-if [[ -f "$SSH_CONFIG" ]]; then
-	rm "$SSH_CONFIG"
-fi
-ln -s "$SCRIPT_DIR/ssh_config" "$SSH_CONFIG"
+# SSH_CONFIG="$HOME/.ssh/config"
+# if [[ -f "$SSH_CONFIG" ]]; then
+#   rm "$SSH_CONFIG"
+# fi
+# ln -s "$SCRIPT_DIR/ssh_config" "$SSH_CONFIG"
 
 git config --global core.editor "vim"
 git config --global core.excludesfile ~/.gitignore_global

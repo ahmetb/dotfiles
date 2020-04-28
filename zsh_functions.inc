@@ -79,9 +79,8 @@ dbp() {
     (
     set -x
     docker build --tag "$img" ${1:-.} 1>/dev/null && \
-        docker push "$img" 1>/dev/null
+        docker push "$img" 1>/dev/null && echo "$img"
     )
-    echo "$img"
 }
 
 kr() {

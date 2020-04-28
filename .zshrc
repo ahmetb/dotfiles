@@ -140,6 +140,11 @@ else
 	log "WARNING: skipping loading fzf.zsh"
 fi
 
+# z completion
+if [ -f /usr/local/etc/profile.d/z.sh ]; then
+    . /usr/local/etc/profile.d/z.sh
+fi
+
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
 #    > use sed to hijack --watch to watch $@.
 [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
@@ -183,3 +188,4 @@ fi
 
 # finally, export the PATH
 export PATH
+

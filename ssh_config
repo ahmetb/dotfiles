@@ -1,15 +1,15 @@
 # UseKeychain is not recognized by openssh, but recognized by system ssh on Mac
 IgnoreUnknown UseKeychain
 
-Host github.com *.github.com
-	HostName github.com
-	User git
-	IdentityFile ~/.ssh/github_rsa
-	UseKeychain yes
-
-
-Host gitlab.com *.gitlab.com
-	HostName gitlab.com
-	User git
-	IdentityFile ~/.ssh/gitlab_rsa
-	UseKeychain yes
+# Host github.com *.github.com
+# 	HostName github.com
+# 	User git
+# 	IdentityFile ~/.ssh/github_rsa
+# 	UseKeychain yes
+# 
+# 
+# Host gitlab.com *.gitlab.com
+# 	HostName gitlab.com
+# 	User git
+# 	IdentityFile ~/.ssh/gitlab_rsa
+# 	UseKeychain yes
