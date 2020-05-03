@@ -15,6 +15,7 @@ git config --global user.email "${EMAIL_1}@${EMAIL_2}"
 git config --global credential.helper osxkeychain
 git config --global url.git\@github\.com\:.pushInsteadOf https://github.com/
 git config --global gpg.program "gpg"
+git config --global commit.gpgsign true  # if you want to sign every commit
 
 # use ssh in hub (commented out since pushInsteadOf)
 # git config --global hub.protocol ssh # https://github.com/github/hub/issues/1614
