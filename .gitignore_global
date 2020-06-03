@@ -2,6 +2,8 @@
 ###########
 .vscode
 .idea
+*.swp
+*~
 *.profraw
 
 # Compiled source #

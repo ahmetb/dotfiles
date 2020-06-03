@@ -68,6 +68,20 @@ gcr() {
     else gcloud container images list; fi
 }
 
+run() {
+    img="$1"
+    shift 1
+    name="$1"
+    if [[ -n "$name" ]]; then
+        shift 1
+    else
+        name="$(basename "$img")"
+    fi
+    set -x
+    gcloud run deploy --region us-central1 --platform=managed \
+        --allow-unauthenticated --image="$img" "$name" "$@"
+}
+
 dbp() {
     proj="$(gcloud config get-value core/project -q)"
     if [[ -z $proj ]]; then
@@ -81,6 +95,13 @@ dbp() {
     docker build --tag "$img" ${1:-.} 1>/dev/null && \
         docker push "$img" 1>/dev/null && echo "$img"
     )
+}
+
+dbpr() {
+    local img
+    img="$(dbp)"
+    echo >&2 "$(tput setaf 2)deploy $img to cloud run...$(tput sgr0)"
+    run "$img" "$(basename "$img")" "$@"
 }
 
 kr() {
