@@ -11,6 +11,9 @@ set -x
 git config --global user.name "Ahmet Alp Balkan"
 git config --global user.email "${EMAIL_1}@${EMAIL_2}"
 
+# pull strategy
+git config --global pull.ff only
+
 # use https remotes and osxkeychain for creds
 git config --global credential.helper osxkeychain
 git config --global url.git\@github\.com\:.pushInsteadOf https://github.com/

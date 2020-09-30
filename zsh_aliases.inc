@@ -81,6 +81,6 @@ alias kk='kubectl krew'
 # misc shortcuts
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
-# alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
-# alias youtube-dl='docker run --rm -i -t -v $PWD:/data vimagick/youtube-dl'
+alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
+alias youtube-dl='docker run --rm -i -t -v $PWD:/data vimagick/youtube-dl'
 alias goclone='$HOME/workspace/goclone/goclone'

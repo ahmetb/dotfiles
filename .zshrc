@@ -92,12 +92,14 @@ export GIT_SSH=/usr/bin/ssh
 PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 
 # virtualenvwrapper
-if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
-	export WORKON_HOME=$HOME/workspace/.virtualenvs
-	source "$HOMEBREW/bin/virtualenvwrapper.sh"
-else
-	log "WARNING: skipping loading virtualenvwrapper"
-fi
+#   2020-09-29: I'm so sick of this one, it keeps breaking every python
+#   release or so. How is python ecosystem in such a disarray...
+#if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
+#	export WORKON_HOME=$HOME/workspace/.virtualenvs
+#	source "$HOMEBREW/bin/virtualenvwrapper.sh"
+#else
+#	log "WARNING: skipping loading virtualenvwrapper"
+#fi
 
 # gcloud completion scripts via brew cask installation
 if [ -f "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then # brew cask installation
