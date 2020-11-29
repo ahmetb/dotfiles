@@ -44,3 +44,8 @@ dist/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Terraform files #
+###################
+.terraform
+*.tfstate.backup

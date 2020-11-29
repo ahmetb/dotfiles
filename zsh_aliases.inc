@@ -46,6 +46,7 @@ alias db='docker build -t'
 
 # google cloud platform
 alias gcurl='curl -k --header "Authorization: Bearer $(gcloud auth print-access-token -q)"'
+alias runcurl='curl -k --header "Authorization: Bearer $(gcloud auth print-identity-token -q)"'
 alias gke='gcloud container clusters'
 alias gkedel='gcloud container clusters delete -q --async'
 alias gce='gcloud compute instances'

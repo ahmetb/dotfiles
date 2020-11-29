@@ -26,6 +26,8 @@ brew 'ncurses'
 brew 'pv'
 brew 'unrar'
 brew 'shfmt'
+brew 'dust'
+brew 'dog'
 
 # Development & Power Tools
 cask 'iterm2'
@@ -39,6 +41,7 @@ brew 'zsh-completions'
 brew 'ack'
 brew 'ccat'
 brew 'icdiff'
+brew 'colordiff'
 brew 'diff-so-fancy'
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
 brew 'interactive-rebase-tool'
