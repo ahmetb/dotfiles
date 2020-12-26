@@ -5017,8 +5017,6 @@
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
-			<key>Background Image Location</key>
-			<string></string>
 			<key>Badge Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -5033,7 +5031,7 @@
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.18312926873182639</real>
+			<real>0.16127073936855668</real>
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
@@ -5626,6 +5624,8 @@
 					<integer>0</integer>
 					<key>font</key>
 					<string>.AppleSystemUIFont 12</string>
+					<key>remove empty components</key>
+					<false/>
 				</dict>
 				<key>components</key>
 				<array>
@@ -5666,6 +5666,8 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
@@ -5700,6 +5702,8 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
@@ -5734,6 +5738,33 @@
 								<integer>0</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
+								<key>remove empty components</key>
+								<false/>
+							</dict>
+						</dict>
+					</dict>
+					<dict>
+						<key>class</key>
+						<string>iTermStatusBarFunctionCallComponent</string>
+						<key>configuration</key>
+						<dict>
+							<key>knobs</key>
+							<dict>
+								<key>base: compression resistance</key>
+								<integer>1</integer>
+								<key>base: priority</key>
+								<real>5</real>
+								<key>timeout</key>
+								<integer>5</integer>
+							</dict>
+							<key>layout advanced configuration dictionary value</key>
+							<dict>
+								<key>algorithm</key>
+								<integer>0</integer>
+								<key>auto-rainbow style</key>
+								<integer>0</integer>
+								<key>remove empty components</key>
+								<false/>
 							</dict>
 						</dict>
 					</dict>
@@ -5834,6 +5865,8 @@
 	<integer>8</integer>
 	<key>RightOption</key>
 	<integer>3</integer>
+	<key>RunJobsInServers</key>
+	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>
@@ -5872,7 +5905,7 @@
 	<integer>10</integer>
 	<key>ToolbeltTools</key>
 	<array>
-		<string>Jobs</string>
+		<string>Actions</string>
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>

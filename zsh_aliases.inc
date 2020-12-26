@@ -41,6 +41,8 @@ alias ag='ag --hidden'
 # cloud stuff
 alias d='docker'
 alias dr='docker run --rm -i -t'
+alias drb='docker run --rm -i -t --entrypoint sh'
+alias drr='docker run --rm -i -t -p 8080:8080 -e PORT=8080'
 alias dx='docker exec -i -t'
 alias db='docker build -t'
 

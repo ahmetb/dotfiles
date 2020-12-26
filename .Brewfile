@@ -44,6 +44,7 @@ brew 'icdiff'
 brew 'colordiff'
 brew 'diff-so-fancy'
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
+brew 'hg'
 brew 'interactive-rebase-tool'
 brew 'gti'
 brew 'prm'
@@ -101,9 +102,6 @@ brew 'pack'
 brew 'asciinema'
 brew 'lolcat'
 
-# kubernetes dev
-brew 'hg'
-brew 'etcd'
 
 # Desktop Software
 cask 'clipy'
@@ -120,3 +118,8 @@ cask 'coconutbattery'
 cask 'firefox'
 cask 'open-in-code'
 cask 'vip-access'
+
+# Streaming software
+cask 'obs'
+cask 'obs-virtualcam'
+cask 'loopback'
