@@ -49,3 +49,7 @@ Thumbs.db
 ###################
 .terraform
 *.tfstate.backup
+
+# envrc files (contains secrets) #
+##################################
+.envrc

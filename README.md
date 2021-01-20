@@ -96,7 +96,7 @@ pip install virtualenvwrapper
 
 ## Post-Installation Configuration
 
-- **Spectacle**
+- **Rectangle**
   - Security->Accessibility: Give access
   - Launch at Login
 - **Clipy**
