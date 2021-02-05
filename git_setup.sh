@@ -50,5 +50,7 @@ git config --global sequence.editor interactive-rebase-tool
 git config --global core.editor "vim"
 git config --global core.excludesfile ~/.gitignore_global
 
+git config --global init.defaultBranch "main"
+
 # use vscode as the editor
 # git config --global core.editor "code --wait"

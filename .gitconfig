@@ -1,0 +1,49 @@
+[user]
+	name = Ahmet Alp Balkan
+	email = ahmetb@google.com
+	signingkey = 441833503E604E2C
+
+[gpg]
+	program = gpg
+
+[core]
+	pager = delta
+	editor = vim
+	excludesfile = /Users/ahmetb/.gitignore_global
+
+[interactive]
+	diffFilter = delta --color-only --width 100
+[diff]
+	colorMoved = default
+
+[delta]
+	features = line-numbers decorations
+	whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+	syntax-theme = Dracula
+	plus-style = syntax "#003800"
+	minus-style = syntax "#3f0001"
+
+
+[commit]
+	gpgsign = true
+
+[sequence]
+	editor = interactive-rebase-tool
+
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh
+
+[credential]
+	helper = osxkeychain
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/

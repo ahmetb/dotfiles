@@ -98,6 +98,7 @@ brew 'kustomize'
 brew 'cfssl'
 cask 'docker' # docker for desktop
 brew 'pack'
+brew 'ko'
 
 # Fun tools
 brew 'asciinema'

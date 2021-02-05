@@ -10,7 +10,7 @@ for f in .zshrc \
 	.Brewfile \
 	.vimrc \
 	.editorconfig \
-	.github_username \
+	.gitconfig \
 	.gitignore_global \
 	.kubectl_aliases \
 	.tmux.conf; do
