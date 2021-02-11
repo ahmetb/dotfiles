@@ -28,6 +28,7 @@ brew 'unrar'
 brew 'shfmt'
 brew 'dust'
 brew 'dog'
+brew 'z'
 
 # Development & Power Tools
 cask 'iterm2'
