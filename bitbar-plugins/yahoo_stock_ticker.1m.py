@@ -20,7 +20,7 @@ import subprocess
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Enter your stock symbols here in the format: ["symbol1", "symbol2", ...]
-symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME", "BTC"]
+symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD"]
 
 # Enter the order how you want to sort the stock list:
 # 'name'                     : Sort alphabetically by name from A to Z
@@ -36,6 +36,7 @@ sort_by = 'market_change_winners'
 # Variables
 indices_dict = {
     '^GSPC': '🇺🇸 S&P 500',
+    'GOOG': 'GOOG'
 #    '^DJI': '🇺🇸 DOW 30',
 #    '^IXIC': '🇺🇸 NASDAQ',
 #    '^GDAXI': '🇩🇪 DAX',
@@ -43,8 +44,8 @@ indices_dict = {
 #    '^FCHI': '🇫🇷 CAC 40',
 #    '^STOXX50E': '🇪🇺 EURO STOXX 50',
 }
-GREEN = '\033[32m'
-RED = '\033[33m'
+GREEN = '\033[42m'
+RED = '\033[41m\033[37m'
 RESET = '\033[0m'
 FONT = "| font='Menlo'"
 # ---------------------------------------------------------------------------------------------------------------------
@@ -252,8 +253,10 @@ def print_stock(s):
     two_hundred_day_change = '(' + '{:.2f}'.format(s['twoHundredDayAverageChangePercent'] * 100) + '%)'
 
     # Print the stock info seen in the dropdown menu
-    stock_info = '{:<5} {:>10} {:<10}' + FONT
-    print(stock_info.format(symbol, s['regularMarketPrice'], colored_change))
+    max_ticker = max(len(s) for s in symbols)
+    stock_info = '{:<'+str(max_ticker)+'} {:>8} {:<5}' + FONT
+    price_fmt = "{:.2f}".format(s['regularMarketPrice'])
+    print(stock_info.format(symbol, price_fmt, colored_change))
     # Print additional stock info in the submenu
     stock_submenu = '{:<17} {:<17}' + FONT
     print('--' + s['shortName'] + FONT)
@@ -262,8 +265,8 @@ def print_stock(s):
     print('-----')
     print(stock_submenu.format('--Previous Close:', s['regularMarketPreviousClose']))
     print(stock_submenu.format('--Open:', s['regularMarketOpen']))
-    print(stock_submenu.format('--Bid:', s['bid']))
-    print(stock_submenu.format('--Ask:', s['ask']))
+    if 'bid' in s: print(stock_submenu.format('--Bid:', s['bid']))
+    if 'ask' in s: print(stock_submenu.format('--Ask:', s['ask']))
     print(stock_submenu.format("--Day's Range:", s['regularMarketDayRange']))
     print(stock_submenu.format('--52 Week Range:', s['fiftyTwoWeekRange']))
     print(stock_submenu.format('--50 MA:', fifty_day + ' ' + fifty_day_change))
