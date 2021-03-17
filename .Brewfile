@@ -123,6 +123,9 @@ cask 'firefox'
 cask 'open-in-code'
 cask 'vip-access'
 
+# Hardware support
+cask 'karabiner-elements'
+
 # Streaming software
 cask 'obs'
 cask 'obs-virtualcam'
