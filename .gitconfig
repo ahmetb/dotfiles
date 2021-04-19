@@ -33,7 +33,7 @@
 	gpgsign = true
 
 [sequence]
-	# editor = interactive-rebase-tool
+	editor = interactive-rebase-tool
 
 [pull]
 	ff = only

@@ -4,7 +4,7 @@ set -xeou pipefail
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # suppress shell login message
-[[ ! -f ~/.hushlogin ]] && touch ~/.hushlogin
+[[ ! -e ~/.hushlogin ]] && touch ~/.hushlogin
 
 for f in .zshrc \
 	.Brewfile \
@@ -30,6 +30,11 @@ else
 	# make symlink available only to current user
 	chmod 700 "$HOME/.gnupg"
 fi
+
+# karabiner configs
+kc="$HOME/.config/karabiner/karabiner.json"
+if [[ -e "$kc" ]]; then rm -rf -- "$kc"; fi
+mkdir -p $(dirname "$kc") && ln -s "$SCRIPT_DIR/karabiner.json" "$kc"
 
 # install zsh-completions
 ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
