@@ -15,7 +15,7 @@ for f in .zshrc \
 	.gitignore_global \
 	.kubectl_aliases \
 	.tmux.conf; do
-	if [ -f "$HOME/$f" ]; then rm "$HOME/$f"; fi
+	if [ -e "$HOME/$f" ]; then rm "$HOME/$f"; fi
 	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
@@ -46,3 +46,7 @@ ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
 #   see:  https://github.com/caskroom/homebrew-cask/issues/39439
 curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
 
+# karabiner
+kj=~/.config/karabiner/karabiner.json
+if [ -e "$kj" ]; then rm -- "$kj"; fi
+ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
