@@ -137,14 +137,64 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Play banzai",
+                                "description": "Play izmir marsi",
                                 "from": {
                                     "key_code": "7",
                                     "modifiers": {"mandatory":["left_control"]}
                                 },
-                                "to": [
-                                    {"shell_command": "afplay /Users/ahmetb/.audio/izmir.mp3"}
-                                ],
+                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/izmir.mp3"}],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Play izmir marsi",
+                                "from": {
+                                    "key_code": "7",
+                                    "modifiers": {"mandatory":["left_control"]}
+                                },
+                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/izmir.mp3"}],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Play banzai",
+                                "from": {
+                                    "key_code": "8",
+                                    "modifiers": {"mandatory":["left_control"]}
+                                },
+                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/banzai.mp3"}],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Play savas",
+                                "from": {
+                                    "key_code": "9",
+                                    "modifiers": {"mandatory":["left_control"]}
+                                },
+                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/savas.mp3"}],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Play plevne",
+                                "from": {
+                                    "key_code": "0",
+                                    "modifiers": {"mandatory":["left_control"]}
+                                },
+                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/plevne.mp3"}],
                                 "type": "basic"
                             }
                         ]
