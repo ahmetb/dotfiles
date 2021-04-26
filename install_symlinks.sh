@@ -32,11 +32,6 @@ else
 	chmod 700 "$HOME/.gnupg"
 fi
 
-# karabiner configs
-kc="$HOME/.config/karabiner/karabiner.json"
-if [[ -e "$kc" ]]; then rm -rf -- "$kc"; fi
-mkdir -p $(dirname "$kc") && ln -s "$SCRIPT_DIR/karabiner.json" "$kc"
-
 # install zsh-completions
 ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
 [[ -d "$ZSH_COMPLETIONS" ]] || git clone \
@@ -49,4 +44,5 @@ curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
 # karabiner
 kj=~/.config/karabiner/karabiner.json
 if [ -e "$kj" ]; then rm -- "$kj"; fi
+mkdir -p "$(dirname "$kj")"
 ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
