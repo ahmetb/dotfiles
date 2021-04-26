@@ -21,5 +21,9 @@ rm savas.in.webm
 
 
 youtube-dl -f 251 'https://www.youtube.com/watch?v=NuT0Vd0d3qk' -o- > banzai.webm
-ffmpeg -i banzai.webm -ss 01:03 -to 01:12 -f mp3 banzai.mp3
+ffmpeg -i banzai.webm -ss 01:03 -to 01:13 -f mp3 banzai.mp3
 rm banzai.webm
+
+youtube-dl -f 251 https://www.youtube.com/watch\?v\=j6jL95BaSeM -o- > recep.m4a
+ffmpeg -i recep.m4a -ss 1:19 -to 1:31.50 -f mp3 recep.mp3
+rm recep.m4a
