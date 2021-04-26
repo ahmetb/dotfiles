@@ -9,7 +9,7 @@
             "complex_modifications": {
                 "parameters": {
                     "basic.simultaneous_threshold_milliseconds": 50,
-                    "basic.to_delayed_action_delay_milliseconds": 500,
+                    "basic.to_delayed_action_delay_milliseconds": 200,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
                     "basic.to_if_held_down_threshold_milliseconds": 500,
                     "mouse_motion_to_scroll.speed": 100
@@ -23,7 +23,6 @@
                                     "key_code": "1",
                                     "modifiers": {"mandatory":["left_control"]}
                                 },
-
                                 "to": [
                                     {"key_code": "spacebar", "modifiers": ["left_command"]},
                                     {"key_code": "c"},
@@ -32,14 +31,17 @@
                                     {"key_code": "return_or_enter"}
                                 ],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
                             {
                                 "description": "Go to Chat",
                                 "from": {
                                     "key_code": "2",
                                     "modifiers": {"mandatory":["left_control"]}
                                 },
-
                                 "to": [
                                     {"key_code": "spacebar", "modifiers": ["left_command"]},
                                     {"key_code": "c"},
@@ -49,14 +51,37 @@
                                     {"key_code": "return_or_enter"}
                                 ],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Go to iTerm",
+                                "from": {
+                                    "key_code": "3",
+                                    "modifiers": {"mandatory":["left_control"]}
+                                },
+                                "to": [
+                                    {"key_code": "spacebar", "modifiers": ["left_command"]},
+                                    {"key_code": "i"},
+                                    {"key_code": "t"},
+                                    {"key_code": "e"},
+                                    {"key_code": "r"},
+                                    {"key_code": "return_or_enter"}
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
                             {
                                 "description": "Go to Discord",
                                 "from": {
-                                    "key_code": "1",
+                                    "key_code": "4",
                                     "modifiers": {"mandatory":["left_control"]}
                                 },
-
                                 "to": [
                                     {"key_code": "spacebar", "modifiers": ["left_command"]},
                                     {"key_code": "d"},
@@ -67,21 +92,42 @@
                                     {"key_code": "return_or_enter"}
                                 ],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
                             {
                                 "description": "Go to OBS",
                                 "from": {
-                                    "key_code": "1",
+                                    "key_code": "5",
                                     "modifiers": {"mandatory":["left_control"]}
                                 },
-
                                 "to": [
                                     {"key_code": "spacebar", "modifiers": ["left_command"]},
                                     {"key_code": "o"},
                                     {"key_code": "b"},
                                     {"key_code": "s"},
+                                    {"key_code": "return_or_enter"}
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Go to VSCode",
+                                "from": {
+                                    "key_code": "6",
+                                    "modifiers": {"mandatory":["left_control"]}
+                                },
+                                "to": [
+                                    {"key_code": "spacebar", "modifiers": ["left_command"]},
                                     {"key_code": "c"},
                                     {"key_code": "o"},
+                                    {"key_code": "d"},
+                                    {"key_code": "e"},
                                     {"key_code": "return_or_enter"}
                                 ],
                                 "type": "basic"

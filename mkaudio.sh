@@ -7,7 +7,7 @@ rm -rf -- "${SCRIPT_DIR}/.audio"
 mkdir -p -- "${SCRIPT_DIR}/.audio"
 cd -- "${SCRIPT_DIR}/.audio"
 
-youtube-dl -f 251 'https://www.youtube.com/watch?v=NuT0Vd0d3qk' -o- > izmir.in.opus
+youtube-dl -f 251 'https://www.youtube.com/watch?v=Up81uR5z88w' -o- > izmir.in.opus
 ffmpeg -i izmir.in.opus -ss 2:07 -to 2:22 izmir.out.opus
 rm izmir.in.opus
 
