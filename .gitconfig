@@ -1,7 +1,7 @@
 [user]
 	name = Ahmet Alp Balkan
 	email = ahmetb@google.com
-	signingkey = 441833503E604E2C
+	signingkey = CB45E0CF3987ADA1
 
 [gpg]
 	program = gpg
