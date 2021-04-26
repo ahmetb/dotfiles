@@ -133,6 +133,21 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Play banzai",
+                                "from": {
+                                    "key_code": "7",
+                                    "modifiers": {"mandatory":["left_control"]}
+                                },
+                                "to": [
+                                    {"shell_command": "afplay /Users/ahmetb/.audio/izmir.mp3"}
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
