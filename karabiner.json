@@ -137,12 +137,25 @@
                     {
                         "manipulators": [
                             {
+                                "description": "Play plevne",
+                                "from": {
+                                    "key_code": "6",
+                                    "modifiers": {"mandatory":["left_control", "left_shift"]}
+                                },
+                                "to": [{"shell_command": "/bin/sh -c 'killall VLC; /usr/local/bin/vlc --intf dummy --play-and-exit file:///Users/ahmetb/.audio/plevne.mp3'"}],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
                                 "description": "Play izmir marsi",
                                 "from": {
                                     "key_code": "7",
                                     "modifiers": {"mandatory":["left_control", "left_shift"]}
                                 },
-                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/izmir.mp3"}],
+                                "to": [{"shell_command": "/bin/sh -c 'killall VLC; /usr/local/bin/vlc --intf dummy --play-and-exit  /Users/ahmetb/.audio/izmir.mp3'"}],
                                 "type": "basic"
                             }
                         ]
@@ -155,7 +168,7 @@
                                     "key_code": "8",
                                     "modifiers": {"mandatory":["left_control", "left_shift"]}
                                 },
-                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/banzai.mp3"}],
+                                "to": [{"shell_command": "/bin/sh -c 'killall VLC; /usr/local/bin/vlc --intf dummy --play-and-exit /Users/ahmetb/.audio/banzai.mp3'"}],
                                 "type": "basic"
                             }
                         ]
@@ -168,7 +181,7 @@
                                     "key_code": "9",
                                     "modifiers": {"mandatory":["left_control", "left_shift"]}
                                 },
-                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/savas.mp3"}],
+                                "to": [{"shell_command": "/bin/sh -c 'killall VLC; /usr/local/bin/vlc --intf dummy --play-and-exit /Users/ahmetb/.audio/savas.mp3'"}],
                                 "type": "basic"
                             }
                         ]
@@ -176,12 +189,12 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Play plevne",
+                                "description": "Play dombira",
                                 "from": {
                                     "key_code": "0",
                                     "modifiers": {"mandatory":["left_control", "left_shift"]}
                                 },
-                                "to": [{"shell_command": "afplay /Users/ahmetb/.audio/plevne.mp3"}],
+                                "to": [{"shell_command": "/bin/sh -c 'killall VLC; /usr/local/bin/vlc --intf dummy --play-and-exit file:///Users/ahmetb/.audio/recep.mp3'"}],
                                 "type": "basic"
                             }
                         ]
