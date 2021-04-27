@@ -12,7 +12,7 @@ ffmpeg -loglevel fatal -i izmir.in.opus -ss 2:07 -to 2:22 -f mp3 izmir.mp3
 rm izmir.in.opus
 
 youtube-dl -q -f 251 'https://www.youtube.com/watch?v=NtSBJoO-pqg' -o- > plevne.opus
-ffmpeg -loglevel fatal -i plevne.opus -ss 2:06.500 -to 2:26 -f mp3 plevne.mp3
+ffmpeg -loglevel fatal -i plevne.opus -ss 2:06.500 -to 2:15 -f mp3 plevne.mp3
 rm plevne.opus
 
 youtube-dl -q -f 251 'https://www.youtube.com/watch?v=SZCCT2jauF8' -o- >  savas.in.webm
@@ -27,6 +27,6 @@ youtube-dl -q -f 251 https://www.youtube.com/watch\?v\=j6jL95BaSeM -o- > recep.m
 ffmpeg -loglevel fatal -i recep.m4a -ss 1:19 -to 1:31.50 -f mp3 recep.mp3
 rm recep.m4a
 
-youtube-dl -q -f 251 https://www.youtube.com/watch\?v\=ptC96fjkk0k -o- > dansedenkurt.webm
-ffmpeg -loglevel fatal -i dansedenkurt.webm -f mp3 dansedenkurt.mp3
+youtube-dl -q -f 251 https://www.youtube.com/watch\?v\=Q997SPR0BaA -o- > dansedenkurt.webm
+ffmpeg -loglevel fatal -i dansedenkurt.webm -ss 0:15.200 -to 0:23 -f mp3 dansedenkurt.mp3
 rm dansedenkurt.webm
