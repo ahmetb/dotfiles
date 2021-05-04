@@ -112,3 +112,8 @@ kr() {
     	--image="${image}" tmp-"${RANDOM}" $@
 }
 
+demo() {
+    PS1=$(tput setaf 2)\$\ $(tput sgr0)
+    export PS1
+    clear
+}

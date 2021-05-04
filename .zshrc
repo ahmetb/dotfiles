@@ -185,6 +185,9 @@ if command -v direnv > /dev/null; then
 	eval "$(direnv hook zsh)"
 fi
 
+# bat pager for scrolling support
+export BAT_PAGER="less -RF"
+
 # nvm
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
