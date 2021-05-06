@@ -5879,6 +5879,8 @@
 	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
+	<key>Size Changes Affect Profile</key>
+	<true/>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SoundForEsc</key>

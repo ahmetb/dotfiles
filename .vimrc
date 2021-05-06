@@ -1,5 +1,13 @@
 syntax on
-set number
+
+" relative line numbers in navigation mode
+:set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 set ruler
 set colorcolumn=80
 set autoindent
