@@ -20,7 +20,7 @@ import subprocess
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Enter your stock symbols here in the format: ["symbol1", "symbol2", ...]
-symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON"]
+symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON", "UBER"]
 
 # Enter the order how you want to sort the stock list:
 # 'name'                     : Sort alphabetically by name from A to Z
@@ -37,6 +37,7 @@ sort_by = 'market_change_winners'
 indices_dict = {
     '^GSPC': '🇺🇸 S&P 500',
     'BTC-USD': '🪙 BTC',
+    'ETH-USD': '🪙 ETH',
     'GOOG': 'GOOG'
 #    '^DJI': '🇺🇸 DOW 30',
 #    '^IXIC': '🇺🇸 NASDAQ',
@@ -200,6 +201,9 @@ def check_price_limits(symbol_to_be_checked, current_price, price_limit_list, da
 
 # Print the indices information in the menu bar
 def print_index(index, name):
+    if index['quoteType'] == 'CRYPTOCURRENCY':
+        print(name, '{} '.format(index['regularMarketPrice']))
+        return
     market_state = index['marketState']
     change = index['regularMarketChangePercent']
 

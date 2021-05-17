@@ -5457,11 +5457,11 @@
 			<key>Name</key>
 			<string>ahmet-iTerm2</string>
 			<key>Non Ascii Font</key>
-			<string>JetBrainsMono-Regular 12</string>
+			<string>JetBrainsMono-Regular 16</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>JetBrainsMono-Regular 18</string>
+			<string>JetBrainsMono-Regular 22</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>

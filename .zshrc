@@ -81,6 +81,7 @@ PATH="$HOMEBREW/opt/gnu-time/libexec/gnubin:$PATH"
 # PATH="$HOMEBREW/opt/ncurses/bin:$PATH" # disabled as tput doesn't work with xterm-256color
 PATH="$HOMEBREW/opt/gettext/bin:$PATH"
 PATH="$HOMEBREW/opt/openssl/bin:$PATH"
+PATH="$HOMEBREW/opt/openjdk/bin:$PATH"
 
 # go tools
 PATH="$PATH:$HOME/gotools/bin"
