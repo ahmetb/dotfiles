@@ -11,7 +11,6 @@ For google, go/xcode. This will take a lot of time, so start with this.
 - Invert Trackpad Scroll Direction to non-natural.
 - Show battery percentage on menu bar.
 - Show date on menu bar.
-- Keyboard &rarr; Text &rarr; Uncheck autocorrect and such settings.
 - Remove useless items from the Dock.
 - Move Dock to right, make it smaller.
 - Drag `Downloads` folder next to the Trash on the Dock.
@@ -42,10 +41,13 @@ defaults write com.apple.finder NewWindowTarget -string "PfLo" && \
 
 chflags nohidden ~/Library                               # Unhide ~/Library
 
-# disable smart quotes and dashes
+# disable smart quotes and dashes, autocorrect, autoperiod and suggestions
 defaults write 'Apple Global Domain' NSAutomaticDashSubstitutionEnabled 0
 defaults write 'Apple Global Domain' NSAutomaticQuoteSubstitutionEnabled 0
 defaults write 'Apple Global Domain' NSAutomaticPeriodSubstitutionEnabled 0
+defaults write 'Apple Global Domain' NSAutomaticSpellingCorrectionEnabled 0
+defaults write 'Apple Global Domain' NSAutomaticTextCompletionEnabled 0
+defaults write 'Apple Global Domain' WebAutomaticSpellingCorrectionEnabled 0
 ```
 
 ## Shell
@@ -64,7 +66,7 @@ Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
 ## Installing software manually
 
 - Download Dropbox
-  - Sign in 
+  - Sign in
   - Sync only 1Password
 - Download iPassword 6
   - Choose .opvault file from Dropbox
@@ -89,7 +91,7 @@ Some things that require manual installation after Homebrew:
 ```sh
 # if pip requires sudo, something is wrong, because the
 # Homebrew bundle should install a $USER-writable over system-python.
-    
+
 pip install virtualenv
 pip install virtualenvwrapper
 ```
@@ -117,9 +119,10 @@ pip install virtualenvwrapper
 ## Settings Sync
 
 - Clone this repo and run `install_symlinks.sh`
-    - Open a new terminal to take effect.
+  - Open a new terminal to take effect.
 - iTerm2->Preferences->Load Preferences From: com.googlecode.iterm2.plist directory.
-    - Restart iTerm2.
+
+  - Restart iTerm2.
 
 - For GPG instructions, follow [.gnupg/README](.gnupg/README) file.
 
@@ -158,7 +161,6 @@ Save this to ~/.ssh/config:
 Test connection:
 
     ssh -T git@github.com -i ~/.ssh/github_rsa
-
 
 ## Hardware
 
