@@ -11,7 +11,7 @@ ffmpeg -loglevel fatal -i sedat.in.opus -ss 0:00.20 -to 0:07.70 -f mp3 sedat.mp3
 rm sedat.in.opus
 
 youtube-dl -q -f 251 'https://www.youtube.com/watch?v=Up81uR5z88w' -o- > izmir.in.opus
-ffmpeg -loglevel fatal -i izmir.in.opus -ss 2:07 -to 2:22 -f mp3 izmir.mp3
+ffmpeg -loglevel fatal -i izmir.in.opus -ss 2:08 -to 2:22 -f mp3 izmir.mp3
 rm izmir.in.opus
 
 youtube-dl -q -f 251 'https://www.youtube.com/watch?v=NtSBJoO-pqg' -o- > plevne.opus
