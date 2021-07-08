@@ -33,8 +33,6 @@ set ttymouse=xterm2
 set backspace=2 " make backspace work like most other apps
 set backspace=indent,eol,start
 
-set clipboard=unnamedplus
-
 " highlight unwanted spaces like trailing spaces, spaces before tab, tabs
 " that aren't at the start of a line.
 " (adopted from https://vim.fandom.com/wiki/Highlight_unwanted_spaces)

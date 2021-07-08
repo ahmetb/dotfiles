@@ -53,3 +53,6 @@ Thumbs.db
 # envrc files (contains secrets) #
 ##################################
 .envrc
+
+# Redis state file
+dump.rdb
