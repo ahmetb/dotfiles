@@ -207,20 +207,19 @@ def print_index(index, name):
     market_state = index['marketState']
     change = index['regularMarketChangePercent']
 
-    # Setting color and emojis depending on the market state and the market change
-    if market_state != 'REGULAR':
-        # Set change with a moon emoji for closed markets
-        colored_change = '🌛' + '(' + '{:.2f}'.format(change) + '%) '
-    if market_state == 'REGULAR':
-        # Set color for positive and negative values
-        color = ''
-        if change > 0:
-            color = GREEN + '▲'
-        if change < 0:
-            color = RED + '▼'
-        # Format change to decimal with a precision of two and reset ansi color at the end
-        colored_change = color + '(' + '{:.2f}'.format(change) + '%) ' + RESET
+    color = ''
+    if change > 0:
+        color = GREEN + '▲'
+    elif change < 0:
+        color = RED + '▼'
+    colored_change = color + '(' + '{:.2f}'.format(change) + '%) ' + '😴'
+    colored_change += RESET + ' '
+    if change > 4:
+        colored_change += '🚀'
+    elif change < -4:
+        colored_change += '📉'
 
+    # Setting color and emojis depending on the market state and the market change
     # Print the index info only to the menu bar
     print(name, colored_change, '| dropdown=false', sep=' ')
 
@@ -229,23 +228,27 @@ def print_index(index, name):
 def print_stock(s):
     market_state = s['marketState']
     change = s['regularMarketChangePercent']
-
+    color = ''
+    if change > 0:
+        color = GREEN + '▲'
+    elif change < 0:
+        color = RED + '▼'
     # Setting color and emojis depending on the market state and the market change
     if market_state != 'REGULAR':
         market = 'CLOSED'
         # Set change with a moon emoji for closed markets
-        colored_change = '🌛' + '(' + '{:.2f}'.format(change) + '%) '
-    if market_state == 'REGULAR':
+        colored_change = color + '(' + '{:.2f}'.format(change) + '%) ' + '😴'
+    elif market_state == 'REGULAR':
         # Set color for positive and negative values
-        color = ''
         market = 'OPEN'
-        if change > 0:
-            color = GREEN + '▲'
-        if change < 0:
-            color = RED + '▼'
         # Format change to decimal with a precision of two and reset ansi color at the end
         change_in_percent = '(' + '{:.2f}'.format(change) + '%)'
-        colored_change = color + change_in_percent + RESET
+        colored_change = color + change_in_percent
+    colored_change += RESET + ' '
+    if change > 4:
+        colored_change += '🚀'
+    elif change < -4:
+        colored_change += '📉'
 
     # Remove appending stock exchange symbol for foreign exchanges, e.g. Apple stock symbol in Frankfurt: APC.F -> APC
     symbol = s['symbol'].split('.')[0]
