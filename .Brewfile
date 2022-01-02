@@ -102,6 +102,7 @@ brew 'cfssl'
 cask 'docker' # docker for desktop
 brew 'pack'
 brew 'ko'
+brew 'cosign'
 
 # Fun tools
 brew 'asciinema'
@@ -123,6 +124,7 @@ cask 'coconutbattery'
 cask 'firefox'
 cask 'open-in-code'
 cask 'vip-access'
+cask 'xbar'
 
 # Hardware support
 cask 'karabiner-elements'

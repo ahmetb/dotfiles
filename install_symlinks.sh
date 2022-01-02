@@ -27,7 +27,7 @@ else
 	[ -L "$HOME/.gnupg" ] && unlink "$HOME/.gnupg"
 	ln -sf "$SCRIPT_DIR/.gnupg" "$HOME/.gnupg"
 	# make directory unreadable by others
-	chmod -R o-rx "$SCRIPT_DIR/.gnupg"
+	/bin/chmod -R o-rx "${SCRIPT_DIR}/.gnupg"
 	# make symlink available only to current user
 	chmod 700 "$HOME/.gnupg"
 fi
@@ -46,3 +46,11 @@ kj=~/.config/karabiner/karabiner.json
 if [ -e "$kj" ]; then rm -- "$kj"; fi
 mkdir -p "$(dirname "$kj")"
 ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
+
+# bitbar/xbar plugins
+bitbar_path=~/Library/Application\ Support/xbar/plugins
+if [ -d "$bitbar_path" ]; then rm -rf -- "$bitbar_path"; fi
+mkdir -p "$(dirname "$bitbar_path")"
+ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$bitbar_path"
+
+echo "DONE"

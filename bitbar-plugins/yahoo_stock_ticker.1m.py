@@ -11,6 +11,9 @@
 #
 # by longpdo (https://github.com/longpdo)
 
+# Enter your stock symbols here in the format: ["symbol1", "symbol2", ...]
+symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON", "UBER", "CRM", "HOOD", "NET", "TWTR", "LYFT", "RIVN", "DBX", "RBLX", "DOCN"]
+
 from datetime import datetime
 import json
 import os
@@ -19,8 +22,6 @@ import sys
 import subprocess
 
 # ---------------------------------------------------------------------------------------------------------------------
-# Enter your stock symbols here in the format: ["symbol1", "symbol2", ...]
-symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON", "UBER", "CRM", "HOOD", "NET", "TWTR"]
 
 # Enter the order how you want to sort the stock list:
 # 'name'                     : Sort alphabetically by name from A to Z
