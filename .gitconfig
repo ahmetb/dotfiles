@@ -9,7 +9,7 @@
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = vim
-	excludesfile = /Users/ahmetb/.gitignore_global
+	excludesfile = /Users/ahmet/.gitignore_global
 
 [interactive]
 	diffFilter = delta --color-only --width 100
