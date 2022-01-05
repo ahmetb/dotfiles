@@ -48,7 +48,7 @@ mkdir -p "$(dirname "$kj")"
 ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
 
 # bitbar/xbar plugins
-bitbar_path=~/Library/Application\ Support/xbar/plugins
+bitbar_path=~/.bitbar
 if [ -d "$bitbar_path" ]; then rm -rf -- "$bitbar_path"; fi
 mkdir -p "$(dirname "$bitbar_path")"
 ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$bitbar_path"

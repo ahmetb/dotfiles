@@ -39,7 +39,8 @@ indices_dict = {
     '^GSPC': '🇺🇸 S&P 500',
     'BTC-USD': '🪙 BTC',
     'ETH-USD': '🪙 ETH',
-    'GOOG': 'GOOG'
+    'GOOG': 'GOOG',
+    'TWTR': 'TWTR'
 #    '^DJI': '🇺🇸 DOW 30',
 #    '^IXIC': '🇺🇸 NASDAQ',
 #    '^GDAXI': '🇩🇪 DAX',

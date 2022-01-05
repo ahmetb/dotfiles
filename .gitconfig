@@ -24,10 +24,6 @@
 	commit-decoration-style = bold yellow box ul
 	file-style = bold yellow ul
 	file-decoration-style = none
-
-[commit]
-	gpgsign = true
-
 [sequence]
 	editor = interactive-rebase-tool
 
@@ -41,8 +37,8 @@
 
 [credential]
 	helper = osxkeychain
-[url "git@github.com:"]
-	pushInsteadOf = https://github.com/
+# [url "git@github.com:"]
+# 	pushInsteadOf = https://github.com/
 
 [log]
     date = iso-local
