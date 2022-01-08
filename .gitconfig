@@ -2,6 +2,8 @@
 	name = Ahmet Alp Balkan
 	email = ahmetb@google.com
 	signingkey = CB45E0CF3987ADA1
+	name = Ahmet Alp Balkan
+	email = ahmet@twitter.com
 
 [gpg]
 	program = gpg
@@ -15,6 +17,7 @@
 	diffFilter = delta --color-only --width 100
 [diff]
 	colorMoved = default
+	renames = true
 
 [delta]
 	features = line-numbers decorations
@@ -56,3 +59,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[http]
+	postBuffer = 524288000
