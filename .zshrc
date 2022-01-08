@@ -44,7 +44,8 @@ fi
 bindkey '^[x' .undo # using alt+x for recordings
 
 # User configuration
-export EDITOR=vim
+export EDITOR="vim"
+export VISUAL="$VISUAL"
 
 # use system paths (e.g. /etc/paths.d/)
 eval "$(/usr/libexec/path_helper -s)"

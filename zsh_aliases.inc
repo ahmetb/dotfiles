@@ -59,7 +59,6 @@ alias rundel='gcloud run services delete -q --platform=managed --region us-centr
 # git aliases
 alias gc='_git_dbg commit -S -v -s'
 alias gdc='_git_dbg diff --cached'
-alias git='hub'
 alias gpp='_git_dbg push ahmetb HEAD && hub pull-request --browse'
 alias gpah='_git_dbg push ahmetb HEAD'
 alias glah='_git_dbg pull ahmetb HEAD'
