@@ -1,7 +1,7 @@
 [user]
 	name = Ahmet Alp Balkan
 	email = ahmetb@google.com
-	signingkey = CB45E0CF3987ADA1
+	signingkey = D6B55F79FA3E5337008D6EBD07BA366BF4164719
 	name = Ahmet Alp Balkan
 	email = ahmet@twitter.com
 
@@ -35,13 +35,10 @@
 [init]
 	defaultBranch = main
 
-[credential "https://source.developers.google.com"]
-	helper = gcloud.sh
-
-[credential]
-	helper = osxkeychain
-# [url "git@github.com:"]
-# 	pushInsteadOf = https://github.com/
+# [credential]
+# 	helper = osxkeychain
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
 
 [log]
     date = iso-local
