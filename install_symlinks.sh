@@ -38,8 +38,9 @@ ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
 	https://github.com/zsh-users/zsh-completions "$ZSH_COMPLETIONS"
 
 # install iterm2 shell integration (for touchbar support etc)
-#   see:  https://github.com/caskroom/homebrew-cask/issues/39439
-curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
+# (later sourced in .zshrc)
+curl -LfsS https://iterm2.com/shell_integration/zsh \
+    -o ~/.iterm2_shell_integration.zsh
 
 # karabiner
 kj=~/.config/karabiner/karabiner.json
