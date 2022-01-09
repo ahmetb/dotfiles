@@ -128,7 +128,9 @@ cask 'recordit'
 
 # Hardware support
 cask 'karabiner-elements'
+brew 'ykman'
 
 # Streaming software
 cask 'obs'
 cask 'loopback'
+cask 'shureplus-motiv'
