@@ -58,3 +58,6 @@
 	whitespace = red reverse
 [http]
 	postBuffer = 524288000
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/local/bin/gh auth git-credential
