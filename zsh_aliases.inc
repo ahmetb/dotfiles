@@ -57,7 +57,12 @@ alias runlist='gcloud run services list --platform=managed'
 alias rundel='gcloud run services delete -q --platform=managed --region us-central1'
 
 # git aliases
-alias gc='_git_dbg commit -S -v -s'
+if is_corp_machine; then
+    alias gc='_git_dbg commit -v'
+else
+    alias gc='_git_dbg commit -v -s -S'
+fi
+
 alias gdc='_git_dbg diff --cached'
 alias gpp='_git_dbg push ahmetb HEAD && hub pull-request --browse'
 alias gpah='_git_dbg push ahmetb HEAD'

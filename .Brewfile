@@ -3,6 +3,7 @@ tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'ldez/tap'
 tap 'buildpack/tap'
+tap 'tilt-dev/tap'
 
 # System tools
 brew 'gettext'
@@ -101,6 +102,7 @@ cask 'docker' # docker for desktop
 brew 'pack'
 brew 'ko'
 brew 'cosign'
+brew 'tilt'
 
 # Fun tools
 brew 'asciinema'
