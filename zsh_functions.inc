@@ -2,12 +2,13 @@ log() {
   echo >&2 "[~/.zshrc] $(tput setaf 245)$*$(tput sgr0)"
 }
 
-# If brew requires sudo
-# brew() {
-#   sudo chown -R "$(whoami)" /usr/local/bin /usr/local/etc /usr/local/sbin /usr/local/share /usr/local/share/doc
-#   chmod u+w /usr/local/bin /usr/local/etc /usr/local/sbin /usr/local/share /usr/local/share/doc
-#   command "brew" $@
-# }
+is_twitter_repo() {
+    test -n "$(git remote -v | grep -Eo 'git\.twitter')"
+}
+
+is_corp_machine() {
+    test -n "$(cat /etc/resolv.conf | grep -Eo 'twitter')"
+}
 
 retry() {
   while true; do $@; sleep 1; done
@@ -48,7 +49,7 @@ measure() {
   local ts=$(date +%s%N)
   $@
   local tt=$((($(date +%s%N) - $ts)/1000000))
-  echo "time took: $tt ms." >&2
+  echo "$(tput setaf 245)\"${1}\" took $tt ms.$(tput sgr0)" >&2
 }
 
 _git_dbg() {

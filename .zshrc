@@ -8,15 +8,6 @@
 	plugins=(git colored-man-pages zsh-completions)
 	source "$ZSH/oh-my-zsh.sh"
 
-    # basic prompt
-    PROMPT='%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %{$fg[yellow]%}%(!.#.$)%{$reset_color%} '
-
-	# customize prompt with exitcode
-	# PROMPT='[%*]%(?..%{$fg[red]%}%{$FX[bold]%}[error:%?]%{$reset_color%}) %{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
-
-	# demo prompt
-	# PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
-
 	export UPDATE_ZSH_DAYS=14
 	export DISABLE_UPDATE_PROMPT=true # accept updates by default
 
@@ -32,6 +23,18 @@ if [[ -f "$HOME/workspace/dotfiles/zsh_functions.inc" ]]; then
 else
 	echo >&2 "WARNING: can't load shell functions"
 fi
+
+# default prompt
+if ! is_corp_machine; then
+    PROMPT='%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %{$fg[yellow]%}%(!.#.$)%{$reset_color%} '
+fi
+
+	# customize prompt with exitcode
+	# PROMPT='[%*]%(?..%{$fg[red]%}%{$FX[bold]%}[error:%?]%{$reset_color%}) %{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
+
+	# demo prompt
+	# PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
+
 
 # Load custom aliases
 if [[ -f "$HOME/workspace/dotfiles/zsh_aliases.inc" ]]; then
@@ -160,7 +163,9 @@ if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
 	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
-	PROMPT="\$(kube_ps1)$PROMPT"
+    if ! is_corp_machine; then
+        PROMPT="\$(kube_ps1)$PROMPT"
+    fi
 fi
 
 # add dotfiles/bin to PATH
