@@ -119,3 +119,7 @@ demo() {
     export PS1
     clear
 }
+
+sum() {
+   awk '{ sum += $1; } END { print sum; }'
+}

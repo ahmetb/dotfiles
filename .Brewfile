@@ -101,6 +101,8 @@ brew 'cfssl'
 cask 'docker' # docker for desktop
 brew 'pack'
 brew 'ko'
+brew 'dive'
+brew 'crane'
 brew 'cosign'
 brew 'tilt'
 
@@ -131,6 +133,7 @@ cask 'recordit'
 # Hardware support
 cask 'karabiner-elements'
 brew 'ykman'
+brew 'zsa-wally'
 
 # Streaming software
 cask 'obs'

@@ -8,6 +8,8 @@
 	<false/>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>AlwaysAcceptFirstMouse</key>
+	<false/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AutoHideTmuxClientSession</key>
@@ -5459,15 +5461,15 @@
 			<key>Minimum Contrast</key>
 			<real>0.0</real>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>ahmet-iTerm2</string>
 			<key>Non Ascii Font</key>
-			<string>JetBrainsMono-Regular 12</string>
+			<string>JetBrainsMono-Regular 10</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>JetBrainsMono-Regular 18</string>
+			<string>JetBrainsMono-Regular 15</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -5881,12 +5883,14 @@
 	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
+	<key>SensitiveScrollWheel</key>
+	<false/>
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowNewOutputIndicator</key>
 	<true/>
 	<key>ShowPaneTitles</key>

@@ -96,24 +96,11 @@ export GIT_SSH=/usr/bin/ssh
 # python: replace system python
 PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 
-# virtualenvwrapper
-#   2020-09-29: I'm so sick of this one, it keeps breaking every python
-#   release or so. How is python ecosystem in such a disarray...
-#if [ -f "$HOMEBREW/bin/virtualenvwrapper.sh" ]; then
-#	export WORKON_HOME=$HOME/workspace/.virtualenvs
-#	source "$HOMEBREW/bin/virtualenvwrapper.sh"
-#else
-#	log "WARNING: skipping loading virtualenvwrapper"
-#fi
-
 # gcloud completion scripts via brew cask installation
-
 if [ -f "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then # brew cask installation
 	export CLOUDSDK_PYTHON="/$HOMEBREW/opt/python@3.8/libexec/bin/python"
 	source "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 	source "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-else
-	log "WARNING: skipping loading gcloud completion"
 fi
 
 # iTerm2 integration
@@ -163,9 +150,9 @@ if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='}'
 	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
-    if ! is_corp_machine; then
-        PROMPT="\$(kube_ps1)$PROMPT"
-    fi
+    # if ! is_corp_machine; then
+        PROMPT="\$(kube_ps1) $PROMPT"
+    # fi
 fi
 
 # add dotfiles/bin to PATH
