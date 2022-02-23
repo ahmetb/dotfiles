@@ -57,7 +57,10 @@ eval "$(/usr/libexec/path_helper -s)"
 	export HOMEBREW="$HOME/.homebrew"
 	if [ ! -d "$HOMEBREW" ]; then
 		# fallback
-		export HOMEBREW=/usr/local
+        export HOMEBREW=/opt/homebrew # newer
+        if [ ! -d "$HOMEBREW" ]; then
+            export HOMEBREW=/usr/local
+        fi
 	fi
 
 	export HOMEBREW_NO_ANALYTICS=1
