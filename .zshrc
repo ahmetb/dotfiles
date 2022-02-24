@@ -140,8 +140,8 @@ else
 fi
 
 # z completion
-if [ -f /usr/local/etc/profile.d/z.sh ]; then
-    . /usr/local/etc/profile.d/z.sh
+if [ -f "$HOMEBREW/etc/profile.d/z.sh" ]; then
+    . "$HOMEBREW/etc/profile.d/z.sh"
 fi
 
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
