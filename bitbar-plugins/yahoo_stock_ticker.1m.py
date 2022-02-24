@@ -1,4 +1,4 @@
-#!/usr/bin/env LC_ALL=en_US.UTF-8 /usr/local/bin/python3
+#!/usr/bin/env LC_ALL=en_US.UTF-8 python3
 #
 # <bitbar.title>Yahoo Stock Ticker</bitbar.title>
 # <bitbar.version>v1.1</bitbar.version>
@@ -12,7 +12,7 @@
 # by longpdo (https://github.com/longpdo)
 
 # Enter your stock symbols here in the format: ["symbol1", "symbol2", ...]
-symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON", "UBER", "CRM", "HOOD", "NET", "TWTR", "LYFT", "RIVN", "DBX", "RBLX", "DOCN"]
+symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON", "UBER", "CRM", "HOOD", "NET", "TWTR", "LYFT", "RIVN", "DBX", "RBLX", "DOCN","DIS","RIVN"]
 
 from datetime import datetime
 import json
