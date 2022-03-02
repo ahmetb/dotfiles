@@ -53,5 +53,9 @@ bitbar_path=~/.bitbar
 if [ -d "$bitbar_path" ]; then rm -rf -- "$bitbar_path"; fi
 mkdir -p "$(dirname "$bitbar_path")"
 ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$bitbar_path"
+xbar_path=$HOME/Library/Application\ Support/xbar/plugins
+if [ -d "$xbar_path" ]; then rm -rf -- "$xbar_path"; fi
+mkdir -p "$(dirname "$xbar_path")"
+ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$xbar_path"
 
 echo "DONE"

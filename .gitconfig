@@ -1,7 +1,7 @@
 [user]
 	name = Ahmet Alp Balkan
 	email = ahmetb@google.com
-	signingkey = D6B55F79FA3E5337008D6EBD07BA366BF4164719
+	# signingkey = D6B55F79FA3E5337008D6EBD07BA366BF4164719
 	name = Ahmet Alp Balkan
 	email = ahmet@twitter.com
 

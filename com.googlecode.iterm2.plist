@@ -5465,11 +5465,11 @@
 			<key>Name</key>
 			<string>ahmet-iTerm2</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>Menlo-Regular 20</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>Menlo-Regular 20</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
