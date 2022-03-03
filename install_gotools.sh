@@ -44,7 +44,7 @@ GOPKGS=(
 	github.com/Masterminds/glide \
 	github.com/golang/dep/cmd/dep \
 	github.com/golang/protobuf/protoc-gen-go \
-	github.com/spf13/cobra/cobra \
+	github.com/spf13/cobra-cli \
 	github.com/ahmetb/govvv \
 
 	# misc
