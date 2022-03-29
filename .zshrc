@@ -176,6 +176,8 @@ PATH="${KREW_ROOT:-$HOME/.krew}/bin:${PATH}"
 
 # global ~/go/bin
 PATH="${HOME}/go/bin:${PATH}"
+# global ~/.cargo/bin
+PATH="${HOME}/.cargo/bin:${PATH}"
 
 # direnv hook
 if command -v direnv > /dev/null; then

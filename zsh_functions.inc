@@ -123,3 +123,22 @@ demo() {
 sum() {
    awk '{ sum += $1; } END { print sum; }'
 }
+
+
+lmlm() {
+  local dir op
+  dir=/Users/ahmet/workspace/junk/lmdirect
+  op=$1
+  cd $dir || exit 1
+  case $op in
+    on)
+      echo 1 on | timeout 8 python ./test.py
+      ;;
+    off)
+      echo 1 off | timeout 8 python ./test.py
+      ;;
+    *)
+      echo >&2 'usage: [on|off]'
+      ;;
+  esac
+}

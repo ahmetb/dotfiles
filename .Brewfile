@@ -46,6 +46,7 @@ brew 'bat'
 brew 'icdiff'
 brew 'colordiff'
 brew 'diff-so-fancy'
+brew 'git-delta'
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
 brew 'gh'
 brew 'hg'
