@@ -12,7 +12,7 @@
 # by longpdo (https://github.com/longpdo)
 
 # Enter your stock symbols here in the format: ["symbol1", "symbol2", ...]
-symbols = ["GOOG", "AMZN", "MSFT", "FB", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON", "UBER", "CRM", "HOOD", "NET", "TWTR", "LYFT", "RIVN", "DBX", "RBLX", "DOCN","DIS","QQQJ"]
+symbols = ["GOOG", "AMZN", "MSFT", "META", "NVDA", "TSLA", "QQQ","SPY", "GLD", "TAN", "DIA", "NFLX", "AAPL", "ICLN", "ARKK", "GME","TRY=X","ABNB","SQ", "BTC-USD","ETH-USD", "COIN", "PTON", "UBER", "CRM", "HOOD", "NET", "TWTR", "LYFT", "RIVN", "DBX", "RBLX", "DOCN","DIS","QQQJ"]
 
 from datetime import datetime
 import json

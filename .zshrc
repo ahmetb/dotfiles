@@ -151,10 +151,10 @@ fi
 # kube-ps1
 if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
-	export KUBE_PS1_SUFFIX='}'
+	export KUBE_PS1_SUFFIX='} '
 	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
     # if ! is_corp_machine; then
-        PROMPT="\$(kube_ps1) $PROMPT"
+        PROMPT="\$(kube_ps1)$PROMPT"
     # fi
 fi
 
