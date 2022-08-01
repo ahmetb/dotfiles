@@ -37,17 +37,18 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Go to Chat",
+                                "description": "Go to Slack",
                                 "from": {
                                     "key_code": "2",
                                     "modifiers": {"mandatory":["left_control"]}
                                 },
                                 "to": [
                                     {"key_code": "spacebar", "modifiers": ["left_command"]},
-                                    {"key_code": "c"},
-                                    {"key_code": "h"},
+                                    {"key_code": "s"},
+                                    {"key_code": "l"},
                                     {"key_code": "a"},
-                                    {"key_code": "t"},
+                                    {"key_code": "c"},
+                                    {"key_code": "k"},
                                     {"key_code": "return_or_enter"}
                                 ],
                                 "type": "basic"
