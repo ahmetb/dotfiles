@@ -25,13 +25,13 @@
 	<key>Control</key>
 	<integer>1</integer>
 	<key>ConvertDosNewlines</key>
-	<true/>
+	<false/>
 	<key>CopyLastNewline</key>
 	<false/>
 	<key>CopySelection</key>
 	<true/>
 	<key>CopyWithStylesByDefault</key>
-	<true/>
+	<false/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>AlienBlood</key>
@@ -5503,11 +5503,11 @@
 			<key>Name</key>
 			<string>ahmet-iTerm2</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 13</string>
+			<string>Menlo-Regular 14</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 13</string>
+			<string>Menlo-Regular 14</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -5667,7 +5667,7 @@
 					<key>algorithm</key>
 					<integer>0</integer>
 					<key>auto-rainbow style</key>
-					<integer>0</integer>
+					<integer>3</integer>
 					<key>font</key>
 					<string>.AppleSystemUIFont 12</string>
 					<key>remove empty components</key>
@@ -5695,13 +5695,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.25</real>
+									<real>0.63</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.25</real>
+									<real>0.63</real>
 									<key>Red Component</key>
-									<real>0.5</real>
+									<real>0.90000000000000002</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -5709,7 +5709,7 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
 								<key>remove empty components</key>
@@ -5731,13 +5731,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.43250000476837158</real>
+									<real>0.63</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.5</real>
+									<real>0.90000000000000002</real>
 									<key>Red Component</key>
-									<real>0.25</real>
+									<real>0.67859999999999998</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -5745,7 +5745,7 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
 								<key>remove empty components</key>
@@ -5767,13 +5767,13 @@
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.38499999046325684</real>
+									<real>0.90000000000000002</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.25</real>
+									<real>0.72719999999999996</real>
 									<key>Red Component</key>
-									<real>0.5</real>
+									<real>0.63</real>
 								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
@@ -5781,7 +5781,7 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
 								<key>font</key>
 								<string>.AppleSystemUIFont 12</string>
 								<key>remove empty components</key>
@@ -5800,6 +5800,19 @@
 								<integer>1</integer>
 								<key>base: priority</key>
 								<real>5</real>
+								<key>shared text color</key>
+								<dict>
+									<key>Alpha Component</key>
+									<real>1</real>
+									<key>Blue Component</key>
+									<real>0.77580000000000005</real>
+									<key>Color Space</key>
+									<string>sRGB</string>
+									<key>Green Component</key>
+									<real>0.63</real>
+									<key>Red Component</key>
+									<real>0.90000000000000002</real>
+								</dict>
 								<key>timeout</key>
 								<integer>5</integer>
 							</dict>
@@ -5808,7 +5821,9 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>0</integer>
+								<integer>3</integer>
+								<key>font</key>
+								<string>.AppleSystemUIFont 12</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -5911,6 +5926,8 @@
 	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
+	<key>QuickPasteDelayBetweenCalls</key>
+	<real>0.0</real>
 	<key>QuitWhenAllWindowsClosed</key>
 	<false/>
 	<key>RightCommand</key>
@@ -5928,13 +5945,15 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowNewOutputIndicator</key>
 	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>Size Changes Affect Profile</key>
 	<true/>
+	<key>SlowPasteDelayBetweenCalls</key>
+	<real>0.0</real>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SoundForEsc</key>
