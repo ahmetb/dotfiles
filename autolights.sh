@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # from https://github.com/akburg/elgatokeylight/
-IP=192.168.1.246
+IP=192.168.4.37
 BRIGHTNESS=40
 TEMPERATURE=160
 log stream --predicate 'subsystem == "com.apple.UVCExtension" and composedMessage contains "Post PowerLog"' | while read line; do
