@@ -1,9 +1,16 @@
 #!/bin/bash
 
-# from https://github.com/akburg/elgatokeylight/
+if [[ "$1" != "daemon" ]]; then
+    nohup "$0" daemon > /dev/null &
+    disown
+    exit 0
+fi
+
+# adopted from https://github.com/akburg/elgatokeylight/
 IP=192.168.4.37
 BRIGHTNESS=40
 TEMPERATURE=160
+
 log stream --predicate 'subsystem == "com.apple.UVCExtension" and composedMessage contains "Post PowerLog"' | while read line; do
   # The camera start event has been caught and is set to 'On', turn the light on
   if echo "$line" | grep -q "= On"; then
