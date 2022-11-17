@@ -59,10 +59,4 @@ if [ -d "$xbar_path" ]; then rm -rf -- "$xbar_path"; fi
 mkdir -p "$(dirname "$xbar_path")"
 ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$xbar_path"
 
-# corp ssh config
-if [[ -f /etc/ssh/ssh_config ]]; then
-    [[ -f "$HOME/.ssh/config" ]] && unlink "$HOME/.ssh/config"
-    ln -s /etc/ssh/ssh_config "$HOME/.ssh/config"
-fi
-
 echo "DONE"

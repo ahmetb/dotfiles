@@ -2,14 +2,6 @@ log() {
   echo >&2 "[~/.zshrc] $(tput setaf 245)$*$(tput sgr0)"
 }
 
-is_twitter_repo() {
-    test -n "$(git remote -v | grep -Eo 'git\.twitter')"
-}
-
-is_corp_machine() {
-    test -n "$(cat /etc/resolv.conf | grep -Eo 'twitter')"
-}
-
 retry() {
   while true; do $@; sleep 1; done
 }
