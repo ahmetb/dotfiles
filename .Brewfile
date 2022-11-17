@@ -4,6 +4,7 @@ tap 'homebrew/core'
 tap 'ldez/tap'
 tap 'buildpack/tap'
 tap 'tilt-dev/tap'
+tap 'sigstore/tap'
 
 # System tools
 brew 'gettext'
@@ -48,6 +49,7 @@ brew 'colordiff'
 brew 'diff-so-fancy'
 brew 'git-delta'
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
+brew 'gitsign'
 brew 'gh'
 brew 'hg'
 brew 'interactive-rebase-tool'
