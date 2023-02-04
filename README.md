@@ -106,7 +106,7 @@ pip install virtualenvwrapper
   - Set paste key to <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>
 - **fzf** completion scripts:
 
-      "$HOMEBREW"/opt/fzf/install
+      "$HOMEBREW_PREFIX"/opt/fzf/install
 
 - **minikube** xhyve driver:
 

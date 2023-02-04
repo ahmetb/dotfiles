@@ -46,41 +46,21 @@ export VISUAL="$VISUAL"
 [[ -f "/usr/libexec/path_helper" ]] && eval "$(/usr/libexec/path_helper -s)"
 
 # Homebrew install path customization
-	export HOMEBREW="$HOME/.homebrew"
-	if [ ! -d "$HOMEBREW" ]; then
-		# fallback
-        export HOMEBREW=/opt/homebrew # newer
-        if [ ! -d "$HOMEBREW" ]; then
-            export HOMEBREW="$(brew --repo)"
-        fi
-	fi
+if ! command -v brew &>/dev/null; then
+    echo >&2 "Skipping homebrew initialization in shell."
+else
+    # brew shellenv exports HOMEBREW_PREFIX, PATH etc.
+    eval $(brew shellenv)
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_INSECURE_REDIRECT=1
+fi
 
-	export HOMEBREW_NO_ANALYTICS=1
-	export HOMEBREW_NO_INSECURE_REDIRECT=1
-
-	PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"
-
-	# Add zsh completion scripts installed via Homebrew
-	fpath=("$HOMEBREW/share/zsh-completions" $fpath)
-	fpath=("$HOMEBREW/share/zsh/site-functions" $fpath)
+# Add zsh completion scripts installed via Homebrew
+fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
+fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
 # Reload the zsh-completions
 autoload -U compinit && compinit -i
-
-# PATH MANIPULATIONS
-# coreutils
-MANPATH="$HOMEBREW/opt/coreutils/libexec/gnuman:$MANPATH"
-PATH="$HOMEBREW/opt/coreutils/libexec/gnubin:$PATH"
-PATH="$HOMEBREW/opt/gnu-getopt/bin:$PATH"
-PATH="$HOMEBREW/opt/gnu-indent/libexec/gnubin:$PATH"
-PATH="$HOMEBREW/opt/gnu-tar/libexec/gnubin:$PATH"
-PATH="$HOMEBREW/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="$HOMEBREW/opt/grep/libexec/gnubin:$PATH"
-PATH="$HOMEBREW/opt/gnu-time/libexec/gnubin:$PATH"
-# PATH="$HOMEBREW/opt/ncurses/bin:$PATH" # disabled as tput doesn't work with xterm-256color
-PATH="$HOMEBREW/opt/gettext/bin:$PATH"
-PATH="$HOMEBREW/opt/openssl/bin:$PATH"
-PATH="$HOMEBREW/opt/openjdk/bin:$PATH"
 
 # go tools
 PATH="$PATH:$HOME/gotools/bin"
@@ -89,10 +69,10 @@ PATH="$PATH:$HOME/gotools/bin"
 export GIT_SSH=/usr/bin/ssh
 
 # python: replace system python
-PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 
 # gcloud completion scripts
-GCLOUD_PATH="$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
+GCLOUD_PATH="$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
 if [[ ! -d "$GCLOUD_PATH" ]]; then
     GCLOUD_PATH="$HOME/google-cloud-sdk"
 fi
@@ -127,7 +107,7 @@ if command -v kubectl > /dev/null; then
 	source "$kcomp"
 fi
 
-# fzf completion. run $HOMEBREW/opt/fzf/install to create the ~/.fzf.* script
+# fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
 if type fzf &>/dev/null && [ -f ~/.fzf.zsh ]; then
 	source ~/.fzf.zsh
 else
@@ -135,8 +115,8 @@ else
 fi
 
 # z completion
-if [ -f "$HOMEBREW/etc/profile.d/z.sh" ]; then
-    . "$HOMEBREW/etc/profile.d/z.sh"
+if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then
+    . "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
 fi
 
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
@@ -144,10 +124,10 @@ fi
 [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
 
 # kube-ps1
-if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
+if [[ -f "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 	export KUBE_PS1_PREFIX='{'
 	export KUBE_PS1_SUFFIX='} '
-	source "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh"
+	source "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh"
     # if ! is_corp_machine; then
         PROMPT="\$(kube_ps1)$PROMPT"
     # fi
@@ -159,11 +139,11 @@ if [[ -d "$HOME/workspace/dotfiles/bin" ]]; then
 fi
 
 # load zsh plugins installed via brew
-if [[ -d "$HOMEBREW/share/zsh-syntax-highlighting" ]]; then
-	source "$HOMEBREW/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [[ -d "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting" ]]; then
+	source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
-if [[ -d "$HOMEBREW/share/zsh-autosuggestions" ]]; then
-	# source "$HOMEBREW/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+if [[ -d "$HOMEBREW_PREFIX/share/zsh-autosuggestions" ]]; then
+	# source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 # krew plugins

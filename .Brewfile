@@ -2,8 +2,6 @@
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'ldez/tap'
-tap 'buildpack/tap'
-tap 'tilt-dev/tap'
 tap 'sigstore/tap'
 
 # System tools
@@ -103,12 +101,10 @@ brew 'skaffold'
 brew 'kustomize'
 brew 'cfssl'
 cask 'docker' # docker for desktop
-brew 'pack'
 brew 'ko'
 brew 'dive'
 brew 'crane'
 brew 'cosign'
-brew 'tilt'
 
 # Fun tools
 brew 'asciinema'
