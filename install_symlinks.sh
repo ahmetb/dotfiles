@@ -38,25 +38,27 @@ ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
 [[ -d "$ZSH_COMPLETIONS" ]] || git clone \
 	https://github.com/zsh-users/zsh-completions "$ZSH_COMPLETIONS"
 
-# install iterm2 shell integration (for touchbar support etc)
-# (later sourced in .zshrc)
-curl -LfsS https://iterm2.com/shell_integration/zsh \
-    -o ~/.iterm2_shell_integration.zsh
+if [[ $(uname) == Darwin ]]; then
+    # install iterm2 shell integration (for touchbar support etc)
+    # (later sourced in .zshrc)
+    curl -LfsS https://iterm2.com/shell_integration/zsh \
+        -o ~/.iterm2_shell_integration.zsh
 
-# karabiner
-kj=~/.config/karabiner/karabiner.json
-if [ -e "$kj" ]; then rm -- "$kj"; fi
-mkdir -p "$(dirname "$kj")"
-ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
+    # karabiner
+    kj=~/.config/karabiner/karabiner.json
+    if [ -e "$kj" ]; then rm -- "$kj"; fi
+    mkdir -p "$(dirname "$kj")"
+    ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
 
-# bitbar/xbar plugins
-bitbar_path=~/.bitbar
-if [ -d "$bitbar_path" ]; then rm -rf -- "$bitbar_path"; fi
-mkdir -p "$(dirname "$bitbar_path")"
-ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$bitbar_path"
-xbar_path=$HOME/Library/Application\ Support/xbar/plugins
-if [ -d "$xbar_path" ]; then rm -rf -- "$xbar_path"; fi
-mkdir -p "$(dirname "$xbar_path")"
-ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$xbar_path"
+    # bitbar/xbar plugins
+    bitbar_path=~/.bitbar
+    if [ -d "$bitbar_path" ]; then rm -rf -- "$bitbar_path"; fi
+    mkdir -p "$(dirname "$bitbar_path")"
+    ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$bitbar_path"
+    xbar_path=$HOME/Library/Application\ Support/xbar/plugins
+    if [ -d "$xbar_path" ]; then rm -rf -- "$xbar_path"; fi
+    mkdir -p "$(dirname "$xbar_path")"
+    ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$xbar_path"
+fi
 
 echo "DONE"

@@ -1,17 +1,16 @@
 [user]
-	name = Ahmet Alp Balkan
-	email = ahmetb@google.com
 	# signingkey = D6B55F79FA3E5337008D6EBD07BA366BF4164719
 	name = Ahmet Alp Balkan
 	email = ahmetalpbalkan@gmail.com
 
 [gpg]
 	program = gpg
+	format = x509
 
 [core]
-	pager = delta
+	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = vim
-	excludesfile = /Users/ahmet/.gitignore_global
+	excludesfile = /home/ahmetb/.gitignore_global
 
 [interactive]
 	diffFilter = delta --color-only --width 100
@@ -37,8 +36,8 @@
 
 # [credential]
 # 	helper = osxkeychain
-[url "git@github.com:"]
-	pushInsteadOf = https://github.com/
+#[url "git@github.com:"]
+#	pushInsteadOf = https://github.com/
 
 [log]
     date = iso-local
@@ -59,6 +58,12 @@
 [http]
 	postBuffer = 524288000
 [credential "https://github.com"]
-	helper = !/usr/local/bin/gh auth git-credential
+	helper = !gh auth git-credential
+[credential "ssh://github.com"]
+	helper = !gh auth git-credential
 [commit]
-	# template = /Users/ahmet/.arc-commit-template.txt
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg "x509"]
+	program = gitsign

@@ -1,5 +1,5 @@
 # ZSH settings
-	export ZSH=/Users/$USER/.oh-my-zsh
+	export ZSH=$HOME/.oh-my-zsh
 	# ZSH_THEME=af-magic
 	ZSH_THEME=geoffgarside
 
@@ -34,12 +34,6 @@ PROMPT='%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %{$fg[yellow]%}%(!.#.
 	# PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
 
 
-# Load custom aliases
-if [[ -f "$HOME/workspace/dotfiles/zsh_aliases.inc" ]]; then
-	source "$HOME/workspace/dotfiles/zsh_aliases.inc"
-else
-	echo >&2 "WARNING: can't load shell aliases"
-fi
 
 # Key bindings
 bindkey '^[x' .undo # using alt+x for recordings
@@ -49,7 +43,7 @@ export EDITOR="vim"
 export VISUAL="$VISUAL"
 
 # use system paths (e.g. /etc/paths.d/)
-eval "$(/usr/libexec/path_helper -s)"
+[[ -f "/usr/libexec/path_helper" ]] && eval "$(/usr/libexec/path_helper -s)"
 
 # Homebrew install path customization
 	export HOMEBREW="$HOME/.homebrew"
@@ -57,7 +51,7 @@ eval "$(/usr/libexec/path_helper -s)"
 		# fallback
         export HOMEBREW=/opt/homebrew # newer
         if [ ! -d "$HOMEBREW" ]; then
-            export HOMEBREW=/usr/local
+            export HOMEBREW="$(brew --repo)"
         fi
 	fi
 
@@ -97,11 +91,14 @@ export GIT_SSH=/usr/bin/ssh
 # python: replace system python
 PATH="$HOMEBREW/opt/python/libexec/bin:$PATH"
 
-# gcloud completion scripts via brew cask installation
-if [ -f "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then # brew cask installation
-	export CLOUDSDK_PYTHON="/$HOMEBREW/opt/python@3.8/libexec/bin/python"
-	source "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-	source "$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# gcloud completion scripts
+GCLOUD_PATH="$HOMEBREW/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
+if [[ ! -d "$GCLOUD_PATH" ]]; then
+    GCLOUD_PATH="$HOME/google-cloud-sdk"
+fi
+if [[ -d "$GCLOUD_PATH" ]]; then
+	source "$GCLOUD_PATH/path.zsh.inc"
+	source "$GCLOUD_PATH/completion.zsh.inc"
 fi
 
 # iTerm2 integration
@@ -157,8 +154,8 @@ if [[ -f "$HOMEBREW/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 fi
 
 # add dotfiles/bin to PATH
-if [[ -d "/Users/$USER/workspace/dotfiles/bin" ]]; then
-	PATH="/Users/$USER/workspace/dotfiles/bin:${PATH}"
+if [[ -d "$HOME/workspace/dotfiles/bin" ]]; then
+	PATH="$HOME/workspace/dotfiles/bin:${PATH}"
 fi
 
 # load zsh plugins installed via brew
@@ -189,6 +186,14 @@ export BAT_PAGER="less -RF"
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Load custom aliases
+if [[ -f "$HOME/workspace/dotfiles/zsh_aliases.inc" ]]; then
+	source "$HOME/workspace/dotfiles/zsh_aliases.inc"
+else
+	echo >&2 "WARNING: can't load shell aliases"
+fi
 
 # finally, export the PATH
 export PATH
