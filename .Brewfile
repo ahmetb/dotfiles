@@ -3,6 +3,7 @@ tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'ldez/tap'
 tap 'sigstore/tap'
+tap 'homeport/tap' # dyff
 
 # System tools
 brew 'gettext'
@@ -46,6 +47,7 @@ brew 'icdiff'
 brew 'colordiff'
 brew 'diff-so-fancy'
 brew 'git-delta'
+brew 'dyff'
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
 brew 'gitsign'
 brew 'gh'
