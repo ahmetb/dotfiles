@@ -96,16 +96,6 @@ fi
 # fi
 
 
-# kubectl completion (w/ refresh cache every 48-hours)
-if command -v kubectl > /dev/null; then
-	kcomp="$HOME/.kube/.zsh_completion"
-	if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(stat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
-		mkdir -p "$(dirname "$kcomp")"
-		kubectl completion zsh > "$kcomp"
-		log "refreshing kubectl zsh completion to $kcomp"
-	fi
-	source "$kcomp"
-fi
 
 # fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
 if type fzf &>/dev/null && [ -f ~/.fzf.zsh ]; then
@@ -175,6 +165,26 @@ else
 	echo >&2 "WARNING: can't load shell aliases"
 fi
 
+# LunarVim
+export PATH=${PATH}:$HOME/.local/bin
+
+# Work priority
+PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
+
+
+# kubectl completion (w/ refresh cache every 48-hours)
+# TODO(2022-04-19): moved here to actually reflect the version of kubectl that's going to be used
+# in the shell is the one we generate completion script from.
+if command -v kubectl > /dev/null; then
+	kcomp="$HOME/.kube/.zsh_completion"
+	if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(gstat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
+		mkdir -p "$(dirname "$kcomp")"
+		kubectl completion zsh > "$kcomp"
+    log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
+	fi
+	. "$kcomp"
+fi
+
+
 # finally, export the PATH
 export PATH
-

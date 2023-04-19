@@ -1,7 +1,7 @@
 [user]
 	# signingkey = D6B55F79FA3E5337008D6EBD07BA366BF4164719
 	name = Ahmet Alp Balkan
-	email = ahmetalpbalkan@gmail.com
+	email = ahmet@linkedin.com
 
 [gpg]
 	program = gpg
@@ -62,8 +62,8 @@
 [credential "ssh://github.com"]
 	helper = !gh auth git-credential
 [commit]
-	gpgsign = true
+	# gpgsign = true
 [tag]
-	gpgsign = true
+	# gpgsign = true
 [gpg "x509"]
 	program = gitsign
