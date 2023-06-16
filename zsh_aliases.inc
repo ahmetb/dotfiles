@@ -39,6 +39,7 @@ alias idea.='idea .'
 alias code.='code .'
 alias fd='fd --no-ignore'
 alias ag='ag --hidden'
+alias code=code-insiders
 
 # cloud stuff
 alias d='docker'

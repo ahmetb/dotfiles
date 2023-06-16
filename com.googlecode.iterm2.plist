@@ -4913,7 +4913,7 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.89581298828125</real>
+				<real>0.89411764705882357</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
@@ -5507,11 +5507,11 @@
 			<key>Name</key>
 			<string>ahmet-iTerm2</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>Menlo-Regular 11</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>BerkeleyMono-Regular 14</string>
+			<string>BerkeleyMono-Regular 11</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -5864,7 +5864,7 @@
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<real>0.96999999999999997</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -5951,7 +5951,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>ShowNewOutputIndicator</key>
 	<true/>
 	<key>ShowPaneTitles</key>

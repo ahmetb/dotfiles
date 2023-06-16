@@ -10,6 +10,10 @@ til() {
   while true; do $@; if [ $? -eq 0 ]; then break; fi; sleep 1; done
 }
 
+tilfails() {
+  while $@; do; sleep 1; done
+}
+
 mcd() {
   mkdir -p "${1:?Need to specify an argument}" && cd "$1"
 }
@@ -133,4 +137,9 @@ lmlm() {
       echo >&2 'usage: [on|off]'
       ;;
   esac
+}
+
+mkgoenvrc() {
+  echo 'source <(golnkd-core shell-env)' > .envrc && \
+    direnv allow
 }

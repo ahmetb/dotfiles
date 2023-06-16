@@ -9,7 +9,7 @@
 
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	editor = vim
+	editor = code-insiders --wait
 	excludesfile = ~/.gitignore_global
 
 [interactive]
@@ -49,7 +49,7 @@
 	newNormal = green bold
 	newHighlight = green bold 22
 [color "diff"]
-	meta = 227
+	meta = blue black bold
 	frag = magenta bold
 	commit = 227 bold
 	old = red bold

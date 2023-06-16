@@ -5,7 +5,7 @@
 
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-	plugins=(git colored-man-pages zsh-completions)
+  plugins=(git colored-man-pages zsh-completions)
 	source "$ZSH/oh-my-zsh.sh"
 
 	export UPDATE_ZSH_DAYS=14
@@ -72,13 +72,9 @@ export GIT_SSH=/usr/bin/ssh
 PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 
 # gcloud completion scripts
-GCLOUD_PATH="$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
-if [[ ! -d "$GCLOUD_PATH" ]]; then
-    GCLOUD_PATH="$HOME/google-cloud-sdk"
-fi
-if [[ -d "$GCLOUD_PATH" ]]; then
-	source "$GCLOUD_PATH/path.zsh.inc"
-	source "$GCLOUD_PATH/completion.zsh.inc"
+if type gcloud &>/dev/null; then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 fi
 
 # iTerm2 integration
@@ -103,6 +99,7 @@ if type fzf &>/dev/null && [ -f ~/.fzf.zsh ]; then
 else
 	log "WARNING: skipping loading fzf.zsh"
 fi
+
 
 # z completion
 if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then
