@@ -162,6 +162,13 @@ else
 	echo >&2 "WARNING: can't load shell aliases"
 fi
 
+# Load copilot CLI aliases
+if [[ -f "$HOME/workspace/dotfiles/github-copilot-cli-aliases.inc" ]]; then
+	source "$HOME/workspace/dotfiles/github-copilot-cli-aliases.inc"
+else
+	echo >&2 "WARNING: can't load copilot aliases"
+fi
+
 # LunarVim
 export PATH=${PATH}:$HOME/.local/bin
 
