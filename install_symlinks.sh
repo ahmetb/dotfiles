@@ -15,6 +15,7 @@ for f in .zshrc \
 	.gitconfig \
 	.gitignore_global \
 	.kubectl_aliases \
+	.oh-my-posh.omp.yaml \
 	.tmux.conf; do
 	if [ -e "$HOME/$f" ]; then rm "$HOME/$f"; fi
 	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
@@ -49,16 +50,6 @@ if [[ $(uname) == Darwin ]]; then
     if [ -e "$kj" ]; then rm -- "$kj"; fi
     mkdir -p "$(dirname "$kj")"
     ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
-
-    # bitbar/xbar plugins
-    bitbar_path=~/.bitbar
-    if [ -d "$bitbar_path" ]; then rm -rf -- "$bitbar_path"; fi
-    mkdir -p "$(dirname "$bitbar_path")"
-    ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$bitbar_path"
-    xbar_path=$HOME/Library/Application\ Support/xbar/plugins
-    if [ -d "$xbar_path" ]; then rm -rf -- "$xbar_path"; fi
-    mkdir -p "$(dirname "$xbar_path")"
-    ln -sf "${SCRIPT_DIR}/bitbar-plugins" "$xbar_path"
 fi
 
 echo "DONE"

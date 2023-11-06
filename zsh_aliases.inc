@@ -5,6 +5,9 @@ alias find='gfind'
 alias xargs='gxargs'
 alias stat='gstat'
 
+# Tool overrides
+alias watch='viddy'
+
 # convenience aliases
 alias cd..='cd ..'
 alias cd...='cd ../..'
@@ -16,7 +19,7 @@ alias ll='ls -l'
 alias ls-l='ls -l'
 alias j='jobs'
 alias time='gtime --format "$(tput setab 255)$(tput setaf 160)took %es.$(tput sgr0)"'
-alias vi='lvim'
+# alias vi='lvim'
 alias grep='grep -E --color'
 alias ping='ping -c 3'
 alias pstree='pstree -w'
@@ -39,7 +42,8 @@ alias idea.='idea .'
 alias code.='code .'
 alias fd='fd --no-ignore'
 alias ag='ag --hidden'
-alias code=code-insiders
+alias yl='jless --yaml'
+alias yless='jless --yaml'
 
 # cloud stuff
 alias d='docker'
@@ -70,6 +74,7 @@ alias glom='_git_dbg pull origin master --tags'
 alias gloh='_git_dbg pull origin HEAD --tags'
 alias grom='_git_dbg rebase origin/master'
 alias gpoh='_git_dbg push origin HEAD'
+alias gcae='_git_dbg commit --amend --edit'
 alias gbv="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 unalias grv
 
@@ -82,11 +87,15 @@ alias kpl='kubectl plugin'
 alias krew_install_clipboard='kubectl krew install --manifest <(pbpaste)'
 alias kk='kubectl krew'
 
+# github aliases
+alias prc='gh pr create --web'
+alias prw='gh pr view --web'
+alias prco='gh pr checkout'
+alias prl='gh pr list -s all'
 
 # misc shortcuts
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
 alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 -D 8080 mine; networksetup -setsocksfirewallproxystate Wi-Fi off; echo Tunnel is turned off.'
 # alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 # alias youtube-dl='docker run --rm -i -t -v $PWD:/data vimagick/youtube-dl'
-alias goclone='$HOME/workspace/goclone/goclone'
 alias decodecert='openssl x509 -in /dev/stdin -text -noout'

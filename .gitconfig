@@ -8,8 +8,8 @@
 	format = x509
 
 [core]
+	editor = code --wait
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	editor = code-insiders --wait
 	excludesfile = ~/.gitignore_global
 
 [interactive]
@@ -67,3 +67,5 @@
 	# gpgsign = true
 [gpg "x509"]
 	program = gitsign
+[advice]
+	skippedCherryPicks = false

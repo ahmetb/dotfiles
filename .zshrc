@@ -26,13 +26,9 @@ fi
 
 # default prompt
 PROMPT='%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %{$fg[yellow]%}%(!.#.$)%{$reset_color%} '
-
-	# customize prompt with exitcode
-	# PROMPT='[%*]%(?..%{$fg[red]%}%{$FX[bold]%}[error:%?]%{$reset_color%}) %{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
-
-	# demo prompt
-	# PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
-
+eval "$(oh-my-posh init zsh --config ~/.oh-my-posh.omp.yaml)"
+# demo prompt
+# PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
 
 
 # Key bindings
@@ -192,3 +188,7 @@ fi
 
 # finally, export the PATH
 export PATH
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+#export PROMPT=$(tput setaf 2)\$\ $(tput sgr0)
+

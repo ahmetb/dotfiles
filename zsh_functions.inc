@@ -143,3 +143,15 @@ mkgoenvrc() {
   echo 'source <(golnkd-core shell-env)' > .envrc && \
     direnv allow
 }
+
+mkgoenvrcathens() {
+  echo 'source <(USE_ATHENS_GO_PROXY=true golnkd-core shell-env)' > .envrc && \
+    direnv allow
+}
+
+isolatectx() {
+  tmp="$(mktemp)"
+  KUBECONFIG=$HOME/.kube/config kubectl config view --minify --flatten --context="$1" > "$tmp"
+  echo "$(tput setab 3; tput setaf 1)Starting new shell only with context \"$1\"...$(tput sgr0)"
+  env KUBECONFIG="$tmp" $SHELL
+}

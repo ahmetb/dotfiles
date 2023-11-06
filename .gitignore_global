@@ -1,3 +1,5 @@
+nlm
+
 # Editors #
 ###########
 .vscode
@@ -56,3 +58,5 @@ Thumbs.db
 
 # Redis state file
 dump.rdb
+
+.git-blame-ignore-revs
