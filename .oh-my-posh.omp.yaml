@@ -18,11 +18,15 @@ blocks:
       - type: kubectl
         style: powerline
         powerline_symbol: "⎈ "
-        template: "{{.Context}}{{with .Namespace}}:{{abbrev 12 .}}{{end}}"
-        foreground: "#000000"
-        background: "#FFA000"
+        template: "<b>{{.Context}}</b>{{with .Namespace}}:{{abbrev 14 .}}{{end}}"
+        foreground: "#C6FF00"
+        background: "#33691E"
         background_templates:
-        - '{{ if or (contains . "prod") (contains . "grid")}}red{{end}}'
+        - '{{if or (contains "prod" .Context) (contains "grid" .Context) }}#B71C1C{{end}}'
+        - '{{if hasPrefix "ei" .Context }}#F57F17{{end}}'
+        foreground_templates:
+        - '{{if or (contains "prod" .Context) (contains "grid" .Context) }}#FFCDD2{{end}}'
+        - '{{if hasPrefix "ei" .Context }}#FFFFFF{{end}}'
 
       - type: git
         style: powerline
