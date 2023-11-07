@@ -26,7 +26,11 @@ fi
 
 # default prompt
 PROMPT='%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %{$fg[yellow]%}%(!.#.$)%{$reset_color%} '
+
+# oh-my-posh-prompt
+export ITERM2_SQUELCH_MARK=1
 eval "$(oh-my-posh init zsh --config ~/.oh-my-posh.omp.yaml)"
+
 # demo prompt
 # PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
 
