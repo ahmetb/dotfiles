@@ -1,3 +1,5 @@
+SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # ZSH settings
 	export ZSH=$HOME/.oh-my-zsh
 	# ZSH_THEME=af-magic
@@ -18,8 +20,8 @@
 	#COMPLETION_WAITING_DOTS="true"
 
 # Load custom functions
-if [[ -f "$HOME/workspace/dotfiles/zsh_functions.inc" ]]; then
-	source "$HOME/workspace/dotfiles/zsh_functions.inc"
+if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
+	source "${SELF_DIR}/zsh_functions.inc"
 else
 	echo >&2 "WARNING: can't load shell functions"
 fi
@@ -116,8 +118,8 @@ if [[ -f "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh" ]]; then
 fi
 
 # add dotfiles/bin to PATH
-if [[ -d "$HOME/workspace/dotfiles/bin" ]]; then
-	PATH="$HOME/workspace/dotfiles/bin:${PATH}"
+if [[ -d "${SELF_DIR}/bin" ]]; then
+	PATH="${SELF_DIR}/bin:${PATH}"
 fi
 
 # load zsh plugins installed via brew
@@ -145,15 +147,15 @@ fi
 export BAT_PAGER="less -RF"
 
 # Load custom aliases
-if [[ -f "$HOME/workspace/dotfiles/zsh_aliases.inc" ]]; then
-	source "$HOME/workspace/dotfiles/zsh_aliases.inc"
+if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
+	source "${SELF_DIR}/zsh_aliases.inc"
 else
 	echo >&2 "WARNING: can't load shell aliases"
 fi
 
 # Load copilot CLI aliases
-if [[ -f "$HOME/workspace/dotfiles/github-copilot-cli-aliases.inc" ]]; then
-	source "$HOME/workspace/dotfiles/github-copilot-cli-aliases.inc"
+if [[ -f "${SELF_DIR}/github-copilot-cli-aliases.inc" ]]; then
+	source "${SELF_DIR}/github-copilot-cli-aliases.inc"
 else
 	echo >&2 "WARNING: can't load copilot aliases"
 fi
