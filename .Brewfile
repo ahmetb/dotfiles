@@ -138,7 +138,6 @@ cask 'discord'
 cask 'recordit'
 
 # Hardware support
-cask 'karabiner-elements'
 brew 'ykman'
 brew 'zsa-wally'
 

@@ -3,10 +3,6 @@
 	name = Ahmet Alp Balkan
 	email = ahmet@linkedin.com
 
-[gpg]
-	program = gpg
-	format = x509
-
 [core]
 	editor = code --wait
 	pager = diff-so-fancy | less --tabs=4 -RFX
@@ -62,12 +58,6 @@
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "ssh://github.com"]
 	helper = !gh auth git-credential
-[commit]
-	# gpgsign = true
-[tag]
-	# gpgsign = true
-[gpg "x509"]
-	program = gitsign
 [advice]
 	skippedCherryPicks = false
 [credential "https://gist.github.com"]

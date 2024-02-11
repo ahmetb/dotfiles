@@ -89,22 +89,12 @@ else
   log "WARNING: skipping loading iterm2 shell integration"
 fi
 
-# GPG integration: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
-# if [ -f "$HOME/.gnupg/gpg_profile" ] && command -v gpg-agent > /dev/null; then
-#   source "$HOME/.gnupg/gpg_profile"
-# else
-#   log "WARNING: skipping loading gpg-agent"
-# fi
-
-
-
 # fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
 if type fzf &>/dev/null && [ -f ~/.fzf.zsh ]; then
 	source ~/.fzf.zsh
 else
 	log "WARNING: skipping loading fzf.zsh"
 fi
-
 
 # z completion
 if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then

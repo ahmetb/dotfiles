@@ -121,8 +121,6 @@ pip install virtualenvwrapper
 - iTerm2->Preferences->Load Preferences From: com.googlecode.iterm2.plist directory.
     - Restart iTerm2.
 
-- For GPG instructions, follow [.gnupg/README](.gnupg/README) file.
-
 - VSCode:
   - Install "Settings Sync" extension and reload.
   - Run '> Sync: Download Settings'
@@ -131,34 +129,6 @@ pip install virtualenvwrapper
   - Run '> Sync: Update/Upload Settings'
   - Create a token with 'gist' permissions and save it to the prompt
   - Wait for the Sync Summary.
-
-## Git Setup
-
-Run:
-
-    ./git_setup.sh
-
-Generate key with a password:
-
-    ssh-keygen -f $HOME/.ssh/github_rsa
-
-(You may want to redact hostname from the public key.)
-
-Add key to the keychain:
-
-    ssh-add $HOME/.ssh/github_rsa          # company-installed
-    /usr/bin/ssh-add $HOME/.ssh/github_rsa # system
-
-Upload the key to GitHub. https://github.com/settings/keys :
-
-    cat ~/.ssh/github_rsa.pub| pbcopy
-
-Save this to ~/.ssh/config:
-
-Test connection:
-
-    ssh -T git@github.com -i ~/.ssh/github_rsa
-
 
 ## Hardware
 

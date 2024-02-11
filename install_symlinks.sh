@@ -20,19 +20,6 @@ for f in .zshrc \
 	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
-# gnupg
-if [ -f "$HOME/.gnupg" ] && [ ! -L "$HOME/.gnupg" ];then
-	echo "$HOME/.gnupg is not a symlink. Delete it manually."
-	exit 1
-else
-	[ -L "$HOME/.gnupg" ] && unlink "$HOME/.gnupg"
-	ln -sf "$SCRIPT_DIR/.gnupg" "$HOME/.gnupg"
-	# make directory unreadable by others
-	/bin/chmod -R o-rx "${SCRIPT_DIR}/.gnupg"
-	# make symlink available only to current user
-	chmod 700 "$HOME/.gnupg"
-fi
-
 # install zsh-completions
 ZSH_COMPLETIONS=~/.oh-my-zsh/custom/plugins/zsh-completions
 [[ -d "$ZSH_COMPLETIONS" ]] || git clone \
@@ -43,12 +30,6 @@ if [[ $(uname) == Darwin ]]; then
     # (later sourced in .zshrc)
     curl -LfsS https://iterm2.com/shell_integration/zsh \
         -o ~/.iterm2_shell_integration.zsh
-
-    # karabiner
-    kj=~/.config/karabiner/karabiner.json
-    if [ -e "$kj" ]; then rm -- "$kj"; fi
-    mkdir -p "$(dirname "$kj")"
-    ln -sf "${SCRIPT_DIR}/karabiner.json" ~/.config/karabiner/karabiner.json
 fi
 
 echo "DONE"
