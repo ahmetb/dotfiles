@@ -63,11 +63,11 @@ fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
 # Load the zsh-completions and cache compinit
 # https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
-autoload -Uz compinit
+autoload -U compinit
 for dump in ~/.zcompdump(N.mh+24); do
-	compinit
+	compinit -i
 done
-compinit -C
+compinit -iC
 
 # go tools
 PATH="$PATH:$HOME/gotools/bin"
