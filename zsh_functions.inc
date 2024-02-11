@@ -140,11 +140,6 @@ lmlm() {
 }
 
 mkgoenvrc() {
-  echo 'source <(golnkd-core shell-env)' > .envrc && \
-    direnv allow
-}
-
-mkgoenvrcathens() {
   echo 'source <(USE_ATHENS_GO_PROXY=true golnkd-core shell-env)' > .envrc && \
     direnv allow
 }

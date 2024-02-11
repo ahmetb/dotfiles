@@ -5,7 +5,7 @@
 
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-  plugins=(git colored-man-pages zsh-completions)
+	plugins=(git colored-man-pages zsh-completions)
 	source "$ZSH/oh-my-zsh.sh"
 
 	export UPDATE_ZSH_DAYS=14
@@ -59,8 +59,13 @@ fi
 fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
 fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
-# Reload the zsh-completions
-autoload -U compinit && compinit -i
+# Load the zsh-completions and cache compinit
+# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+	compinit
+done
+compinit -C
 
 # go tools
 PATH="$PATH:$HOME/gotools/bin"
@@ -195,4 +200,3 @@ export PATH
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 #export PROMPT=$(tput setaf 2)\$\ $(tput sgr0)
-

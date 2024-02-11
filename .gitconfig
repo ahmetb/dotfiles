@@ -58,7 +58,8 @@
 [http]
 	postBuffer = 524288000
 [credential "https://github.com"]
-	helper = !gh auth git-credential
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "ssh://github.com"]
 	helper = !gh auth git-credential
 [commit]
@@ -69,3 +70,6 @@
 	program = gitsign
 [advice]
 	skippedCherryPicks = false
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

@@ -10,7 +10,6 @@ for f in .zshrc \
 	.Brewfile \
 	.vimrc \
 	.ideavimrc \
-    .audio \
 	.editorconfig \
 	.gitconfig \
 	.gitignore_global \

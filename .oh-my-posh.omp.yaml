@@ -32,14 +32,14 @@ blocks:
         style: powerline
         background: "#fffb38"
         background_templates:
-        - "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}"
+        - "{{ if or (.Working.Changed) (.Staging.Changed) }}#bdc810{{ end }}"
         - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}"
         - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
         - "{{ if gt .Behind 0 }}#B388FF{{ end }}"
         foreground: "#193549"
         powerline_symbol: ""
         properties:
-          branch_max_length: 25
+          branch_max_length: 35
           fetch_stash_count: true
           fetch_status: true
           fetch_upstream_icon: true
@@ -75,4 +75,4 @@ blocks:
         powerline_symbol: ""
         background_templates:
           - "{{ if .Error }}#e91e63{{ end }}"
-        template: " \uea87 "
+        template: "{{ if and (.Error) (and (ne .Code 130) (ne .Code 0))}} \uea87 {{.Code}}{{ end }}"

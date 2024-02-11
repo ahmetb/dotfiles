@@ -7,6 +7,7 @@ alias stat='gstat'
 
 # Tool overrides
 alias watch='viddy'
+alias ssh='ssh -o StrictHostKeyChecking=no'
 
 # convenience aliases
 alias cd..='cd ..'
@@ -77,8 +78,11 @@ alias gpoh='_git_dbg push origin HEAD'
 alias gcae='_git_dbg commit --amend --edit'
 alias gbv="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 unalias grv
+alias gitroot='cd $(git rev-parse --show-toplevel)'
 
 # kubectl
+alias kcx='kubectx'
+alias kns='kubens'
 alias kx='kubectl explain'
 alias pka='pbpaste | kubectl apply -f-'
 alias pkr='pbpaste | kubectl delete -f-'
@@ -92,6 +96,7 @@ alias prc='gh pr create --web'
 alias prw='gh pr view --web'
 alias prco='gh pr checkout'
 alias prl='gh pr list -s all'
+alias prme='prl --author @me'
 
 # misc shortcuts
 alias tunneloff='networksetup -setsocksfirewallproxystate Wi-Fi off && echo Tunnel is turned off.'
