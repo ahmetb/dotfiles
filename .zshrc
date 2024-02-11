@@ -1,5 +1,20 @@
 SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+
+# Homebrew install path customization
+if ! command -v brew &>/dev/null; then
+    echo >&2 "Skipping homebrew initialization in shell."
+else
+    # brew shellenv exports HOMEBREW_PREFIX, PATH etc.
+    eval $(brew shellenv)
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_INSECURE_REDIRECT=1
+fi
+
+# Add zsh completion scripts installed via Homebrew
+fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
+fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+
 # ZSH settings
 	export ZSH=$HOME/.oh-my-zsh
 	# ZSH_THEME=af-magic
@@ -36,7 +51,6 @@ eval "$(oh-my-posh init zsh --config ~/.oh-my-posh.omp.yaml)"
 # demo prompt
 # PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
 
-
 # Key bindings
 bindkey '^[x' .undo # using alt+x for recordings
 
@@ -46,28 +60,6 @@ export VISUAL="$VISUAL"
 
 # use system paths (e.g. /etc/paths.d/)
 [[ -f "/usr/libexec/path_helper" ]] && eval "$(/usr/libexec/path_helper -s)"
-
-# Homebrew install path customization
-if ! command -v brew &>/dev/null; then
-    echo >&2 "Skipping homebrew initialization in shell."
-else
-    # brew shellenv exports HOMEBREW_PREFIX, PATH etc.
-    eval $(brew shellenv)
-    export HOMEBREW_NO_ANALYTICS=1
-    export HOMEBREW_NO_INSECURE_REDIRECT=1
-fi
-
-# Add zsh completion scripts installed via Homebrew
-fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
-fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
-
-# Load the zsh-completions and cache compinit
-# https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
-autoload -U compinit
-for dump in ~/.zcompdump(N.mh+24); do
-	compinit -i
-done
-compinit -iC
 
 # go tools
 PATH="$PATH:$HOME/gotools/bin"
