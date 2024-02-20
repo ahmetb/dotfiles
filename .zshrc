@@ -1,5 +1,4 @@
-SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
+SELF_DIR="$(dirname $(realpath ~/.zshrc))"
 
 # Homebrew install path customization
 if ! command -v brew &>/dev/null; then
