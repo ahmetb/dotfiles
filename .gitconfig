@@ -30,6 +30,10 @@
 [init]
 	defaultBranch = main
 
+[commit]
+	template = ~/.git-commit-template
+    verbose = true
+
 # [credential]
 # 	helper = osxkeychain
 #[url "git@github.com:"]
@@ -54,12 +58,12 @@
 [http]
 	postBuffer = 524288000
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !gh auth git-credential
 [credential "ssh://github.com"]
 	helper = !gh auth git-credential
 [advice]
 	skippedCherryPicks = false
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential

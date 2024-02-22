@@ -12,6 +12,7 @@ for f in .zshrc \
 	.ideavimrc \
 	.editorconfig \
 	.gitconfig \
+	.git-commit-template \
 	.gitignore_global \
 	.kubectl_aliases \
 	.oh-my-posh.omp.yaml \
