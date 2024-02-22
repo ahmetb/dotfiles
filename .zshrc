@@ -1,4 +1,4 @@
-SELF_DIR="$(dirname $(realpath ~/.zshrc))"
+SELF_DIR="$HOME/workspace/dotfiles"
 
 # Homebrew install path customization
 if ! command -v brew &>/dev/null; then
@@ -21,7 +21,7 @@ fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-	plugins=(git colored-man-pages zsh-completions)
+	plugins=(git colored-man-pages)
 	source "$ZSH/oh-my-zsh.sh"
 
 	export UPDATE_ZSH_DAYS=14
@@ -32,6 +32,14 @@ fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
 	# Uncomment the following line to display red dots whilst waiting for completion.
 	#COMPLETION_WAITING_DOTS="true"
+
+# Load zsh plugins that aren't installed in the oh-my-zsh plugins directory
+# source "${HOMEBREW_PREFIX}/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+source $HOMEBREW_PREFIX/share/zsh-you-should-use/you-should-use.plugin.zsh
+
+# Configure zsh-you-should-use
+export YSU_MESSAGE_FORMAT="$(tput sitm)$(tput setaf 3)💡 Tip: use %alias_type $(tput setaf 2)%alias$(tput setaf 3) for $(tput setaf 1)%command$(tput setaf 3).$(tput sgr0)"
+
 
 # Load custom functions
 if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
@@ -68,12 +76,6 @@ export GIT_SSH=/usr/bin/ssh
 
 # python: replace system python
 PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
-
-# gcloud completion scripts
-if type gcloud &>/dev/null; then
-  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-fi
 
 # iTerm2 integration
 if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
@@ -145,11 +147,11 @@ else
 fi
 
 # Load copilot CLI aliases
-if [[ -f "${SELF_DIR}/github-copilot-cli-aliases.inc" ]]; then
-	source "${SELF_DIR}/github-copilot-cli-aliases.inc"
-else
-	echo >&2 "WARNING: can't load copilot aliases"
-fi
+# if [[ -f "${SELF_DIR}/github-copilot-cli-aliases.inc" ]]; then
+# 	source "${SELF_DIR}/github-copilot-cli-aliases.inc"
+# else
+# 	echo >&2 "WARNING: can't load copilot aliases"
+# fi
 
 # LunarVim
 export PATH=${PATH}:$HOME/.local/bin

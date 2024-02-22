@@ -20,19 +20,6 @@ for f in .zshrc \
 	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
-ZSH_PLUGINS=~/.oh-my-zsh/custom/plugins
-mkdir -p "$ZSH_PLUGINS"
-
-# install zsh-completions plugin
-ZSH_COMPLETIONS="$ZSH_PLUGINS/zsh-completions"
-[[ -d "$ZSH_COMPLETIONS" ]] || git clone \
-	https://github.com/zsh-users/zsh-completions "$ZSH_COMPLETIONS"
-
-# install evalcache plugin
-ZSH_EVALCACHE="$ZSH_PLUGINS/evalcache"
-[[ -d "$ZSH_EVALCACHE" ]] || git clone \
-	https://github.com/mroth/evalcache "$ZSH_EVALCACHE"
-
 if [[ $(uname) == Darwin ]]; then
     # install iterm2 shell integration (for touchbar support etc)
     # (later sourced in .zshrc)
