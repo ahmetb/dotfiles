@@ -4,7 +4,8 @@
 	email = ahmet@linkedin.com
 
 [core]
-	editor = code --wait
+	# editor = code --wait
+	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfile = ~/.gitignore_global
 
@@ -67,3 +68,5 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[alias]
+	stack = !python ~/.local/share/gitstack.py

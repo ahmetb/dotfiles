@@ -46,4 +46,3 @@ autocmd BufWinLeave * call clearmatches()
 
 " for git commit editor, show an extra ruler for the first line
 autocmd FileType gitcommit set colorcolumn+=51
-

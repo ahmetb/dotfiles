@@ -34,11 +34,12 @@ fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 	#COMPLETION_WAITING_DOTS="true"
 
 # Load zsh plugins that aren't installed in the oh-my-zsh plugins directory
-# source "${HOMEBREW_PREFIX}/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-source $HOMEBREW_PREFIX/share/zsh-you-should-use/you-should-use.plugin.zsh
+zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search" "bindkey '^[[B' down-line-or-beginning-search") # https://github.com/jeffreytse/zsh-vi-mode/issues/148#issuecomment-1566863380
+source "${HOMEBREW_PREFIX}/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
+# source $HOMEBREW_PREFIX/share/zsh-you-should-use/you-should-use.plugin.zsh
 # Configure zsh-you-should-use
-export YSU_MESSAGE_FORMAT="$(tput sitm)$(tput setaf 3)💡 Tip: use %alias_type $(tput setaf 2)%alias$(tput setaf 3) for $(tput setaf 1)%command$(tput setaf 3).$(tput sgr0)"
+# export YSU_MESSAGE_FORMAT="$(tput sitm)$(tput setaf 3)💡 Tip: use %alias_type $(tput setaf 2)%alias$(tput setaf 3) for $(tput setaf 1)%command$(tput setaf 3).$(tput sgr0)"
 
 
 # Load custom functions
@@ -84,13 +85,6 @@ else
   log "WARNING: skipping loading iterm2 shell integration"
 fi
 
-# fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
-if type fzf &>/dev/null && [ -f ~/.fzf.zsh ]; then
-	source ~/.fzf.zsh
-else
-	log "WARNING: skipping loading fzf.zsh"
-fi
-
 # z completion
 if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then
     . "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
@@ -101,14 +95,14 @@ fi
 [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
 
 # kube-ps1
-if [[ -f "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh" ]]; then
-	export KUBE_PS1_PREFIX='{'
-	export KUBE_PS1_SUFFIX='} '
-	source "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh"
-    # if ! is_corp_machine; then
-        PROMPT="\$(kube_ps1)$PROMPT"
-    # fi
-fi
+# if [[ -f "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh" ]]; then
+# 	export KUBE_PS1_PREFIX='{'
+# 	export KUBE_PS1_SUFFIX='} '
+# 	source "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh"
+#     # if ! is_corp_machine; then
+#         PROMPT="\$(kube_ps1)$PROMPT"
+#     # fi
+# fi
 
 # add dotfiles/bin to PATH
 if [[ -d "${SELF_DIR}/bin" ]]; then
@@ -153,12 +147,8 @@ fi
 # 	echo >&2 "WARNING: can't load copilot aliases"
 # fi
 
-# LunarVim
-export PATH=${PATH}:$HOME/.local/bin
-
 # Work priority
 PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
-
 
 # kubectl completion (w/ refresh cache every 48-hours)
 # TODO(2022-04-19): moved here to actually reflect the version of kubectl that's going to be used
@@ -173,6 +163,12 @@ if command -v kubectl > /dev/null; then
 	. "$kcomp"
 fi
 
+# fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
+if type fzf &>/dev/null; then
+	eval "$(fzf --zsh)"
+else
+	log "WARNING: skipped loading fzf shell integration"
+fi
 
 # finally, export the PATH
 export PATH
