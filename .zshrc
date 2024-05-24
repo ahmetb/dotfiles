@@ -1,4 +1,5 @@
 SELF_DIR="$HOME/workspace/dotfiles"
+zmodload zsh/zprof
 
 # Homebrew install path customization
 if ! command -v brew &>/dev/null; then
@@ -16,31 +17,41 @@ fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
 # ZSH settings
 	export ZSH=$HOME/.oh-my-zsh
-	# ZSH_THEME=af-magic
+	export UPDATE_ZSH_DAYS=14
+	export DISABLE_UPDATE_PROMPT=true # accept updates by default
 	ZSH_THEME=geoffgarside
+	FZF_BASE="$HOMEBREW_PREFIX/opt/fzf"
 
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-	plugins=(git colored-man-pages)
+	plugins=(
+		fzf
+		git
+		colored-man-pages
+	)
 	source "$ZSH/oh-my-zsh.sh"
 
-	export UPDATE_ZSH_DAYS=14
-	export DISABLE_UPDATE_PROMPT=true # accept updates by default
-
-	# Uncomment the following line to enable command auto-correction.
-	# ENABLE_CORRECTION="true"
-
-	# Uncomment the following line to display red dots whilst waiting for completion.
-	#COMPLETION_WAITING_DOTS="true"
-
 # Load zsh plugins that aren't installed in the oh-my-zsh plugins directory
-zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search" "bindkey '^[[B' down-line-or-beginning-search") # https://github.com/jeffreytse/zsh-vi-mode/issues/148#issuecomment-1566863380
+zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search" "bindkey \
+	'^[[B' down-line-or-beginning-search") # https://github.com/jeffreytse/zsh-vi-mode/issues/148#issuecomment-1566863380
 source "${HOMEBREW_PREFIX}/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+
+# load zsh plugins installed via brew
+if [[ -d "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting" ]]; then
+	source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+else
+	log "WARNING: skipped loading zsh-syntax-highlighting"
+fi
+
+if [[ -d "$HOMEBREW_PREFIX/share/zsh-autosuggestions" ]]; then
+	source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+else
+	log "WARNING: skipped loading zsh-autosuggestions"
+fi
 
 # source $HOMEBREW_PREFIX/share/zsh-you-should-use/you-should-use.plugin.zsh
 # Configure zsh-you-should-use
 # export YSU_MESSAGE_FORMAT="$(tput sitm)$(tput setaf 3)💡 Tip: use %alias_type $(tput setaf 2)%alias$(tput setaf 3) for $(tput setaf 1)%command$(tput setaf 3).$(tput sgr0)"
-
 
 # Load custom functions
 if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
@@ -90,32 +101,22 @@ if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then
     . "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
 fi
 
+# fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
+# if type fzf &>/dev/null; then
+# 	eval "$(fzf --zsh)"
+# else
+# 	log "WARNING: skipped loading fzf shell integration"
+# fi
+
 # kubectl aliases from https://github.com/ahmetb/kubectl-alias
 #    > use sed to hijack --watch to watch $@.
 [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
-
-# kube-ps1
-# if [[ -f "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh" ]]; then
-# 	export KUBE_PS1_PREFIX='{'
-# 	export KUBE_PS1_SUFFIX='} '
-# 	source "$HOMEBREW_PREFIX/opt/kube-ps1/share/kube-ps1.sh"
-#     # if ! is_corp_machine; then
-#         PROMPT="\$(kube_ps1)$PROMPT"
-#     # fi
-# fi
 
 # add dotfiles/bin to PATH
 if [[ -d "${SELF_DIR}/bin" ]]; then
 	PATH="${SELF_DIR}/bin:${PATH}"
 fi
 
-# load zsh plugins installed via brew
-if [[ -d "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting" ]]; then
-	source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
-if [[ -d "$HOMEBREW_PREFIX/share/zsh-autosuggestions" ]]; then
-	# source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
 
 # krew plugins
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:${PATH}"
@@ -128,6 +129,8 @@ PATH="${HOME}/.cargo/bin:${PATH}"
 # direnv hook
 if command -v direnv > /dev/null; then
 	eval "$(direnv hook zsh)"
+else
+	log "WARNING: skipped loading direnv hook"
 fi
 
 # bat pager for scrolling support
@@ -139,13 +142,6 @@ if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
 else
 	echo >&2 "WARNING: can't load shell aliases"
 fi
-
-# Load copilot CLI aliases
-# if [[ -f "${SELF_DIR}/github-copilot-cli-aliases.inc" ]]; then
-# 	source "${SELF_DIR}/github-copilot-cli-aliases.inc"
-# else
-# 	echo >&2 "WARNING: can't load copilot aliases"
-# fi
 
 # Work priority
 PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
@@ -161,13 +157,6 @@ if command -v kubectl > /dev/null; then
     log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
 	fi
 	. "$kcomp"
-fi
-
-# fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
-if type fzf &>/dev/null; then
-	eval "$(fzf --zsh)"
-else
-	log "WARNING: skipped loading fzf shell integration"
 fi
 
 # finally, export the PATH
