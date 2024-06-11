@@ -81,7 +81,7 @@ export VISUAL="$VISUAL"
 [[ -f "/usr/libexec/path_helper" ]] && eval "$(/usr/libexec/path_helper -s)"
 
 # go tools
-PATH="$PATH:$HOME/gotools/bin"
+PATH="$HOME/gotools/bin:$PATH"
 
 # git: use system ssh for git, otherwise UseKeychain option doesn't work
 export GIT_SSH=/usr/bin/ssh
@@ -146,6 +146,9 @@ fi
 # Work priority
 PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
 
+# Prioritize homebrew bins
+PATH="$HOMEBREW_PREFIX/bin:$PATH"
+
 # kubectl completion (w/ refresh cache every 48-hours)
 # TODO(2022-04-19): moved here to actually reflect the version of kubectl that's going to be used
 # in the shell is the one we generate completion script from.
@@ -157,6 +160,12 @@ if command -v kubectl > /dev/null; then
     log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
 	fi
 	. "$kcomp"
+fi
+
+if command -v kubectl > /dev/null; then
+	eval "$(atuin init zsh)"
+else
+	log "WARNING: skipped loading atuin"
 fi
 
 # finally, export the PATH

@@ -21,6 +21,15 @@ for f in .zshrc \
 	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
+# Ghostty config file
+ghostty_config="$HOME/.config/ghostty/config"
+if [[ -e "$ghostty_config" ]]; then
+    unlink "$ghostty_config"
+fi
+mkdir -p "$(dirname "$ghostty_config")"
+ln -sf -- "$SCRIPT_DIR/ghostty_config" "$ghostty_config"
+
+
 if [[ $(uname) == Darwin ]]; then
     # install iterm2 shell integration (for touchbar support etc)
     # (later sourced in .zshrc)
