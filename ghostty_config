@@ -1,9 +1,12 @@
 font-family = Berkeley Mono
 font-thicken = true
-copy-on-select = clipboard
-unfocused-split-opacity = 0.5
+
 theme = iTerm2 Dark Background
-scrollback-limit = 100000000
+unfocused-split-opacity = 0.4
+unfocused-split-fill = "#444444"
 
 window-width = 100
 window-height = 25
+
+scrollback-limit = 100000000
+copy-on-select = clipboard

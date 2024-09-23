@@ -119,10 +119,10 @@ brew 'lolcat'
 
 
 # Desktop Software
-cask 'clipy'
+cask 'maccy'
+cask 'jordanbaird-ice'
 cask 'vimac'
 cask 'zoomus'
-cask 'flux'
 cask 'slack'
 cask 'rectangle'
 cask 'monitorcontrol'
@@ -130,12 +130,8 @@ cask 'spotify'
 cask '1password'
 cask 'dropbox'
 cask 'google-chrome'
-cask 'coconutbattery'
 cask 'firefox'
-cask 'open-in-code'
-cask 'bitbar'
 cask 'discord'
-cask 'recordit'
 
 # Hardware support
 brew 'ykman'
@@ -144,6 +140,5 @@ brew 'zsa-wally'
 # Streaming software
 cask 'obs'
 cask 'loopback'
-cask 'shureplus-motiv'
 cask 'gopro-webcam'
 cask 'vlc'

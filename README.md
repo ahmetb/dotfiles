@@ -42,6 +42,9 @@ defaults write com.apple.finder NewWindowTarget -string "PfLo" && \
 
 chflags nohidden ~/Library                               # Unhide ~/Library
 
+# default screenshot path
+defaults write com.apple.screencapture location ~/Downloads
+
 # disable smart quotes and dashes
 defaults write 'Apple Global Domain' NSAutomaticDashSubstitutionEnabled 0
 defaults write 'Apple Global Domain' NSAutomaticQuoteSubstitutionEnabled 0

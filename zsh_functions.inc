@@ -150,3 +150,7 @@ isolatectx() {
   echo "$(tput setab 3; tput setaf 1)Starting new shell only with context \"$1\"...$(tput sgr0)"
   env KUBECONFIG="$tmp" $SHELL
 }
+
+function record {
+  ( echo $@; echo; eval $@ ) | tee /dev/stderr |pasteit
+}

@@ -1,5 +1,4 @@
 SELF_DIR="$HOME/workspace/dotfiles"
-zmodload zsh/zprof
 
 # Homebrew install path customization
 if ! command -v brew &>/dev/null; then
@@ -20,20 +19,20 @@ fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 	export UPDATE_ZSH_DAYS=14
 	export DISABLE_UPDATE_PROMPT=true # accept updates by default
 	ZSH_THEME=geoffgarside
-	FZF_BASE="$HOMEBREW_PREFIX/opt/fzf"
 
 	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 	plugins=(
-		fzf
 		git
 		colored-man-pages
 	)
 	source "$ZSH/oh-my-zsh.sh"
 
 # Load zsh plugins that aren't installed in the oh-my-zsh plugins directory
-zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search" "bindkey \
-	'^[[B' down-line-or-beginning-search") # https://github.com/jeffreytse/zsh-vi-mode/issues/148#issuecomment-1566863380
+zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search"
+    "bindkey '^[[B' down-line-or-beginning-search" # https://github.com/jeffreytse/zsh-vi-mode/issues/148#issuecomment-1566863380
+    'eval "$(fzf --zsh)"'
+    )
 source "${HOMEBREW_PREFIX}/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 # load zsh plugins installed via brew
@@ -102,6 +101,7 @@ if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then
 fi
 
 # fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
+# MOVED TO zvm_after_init
 # if type fzf &>/dev/null; then
 # 	eval "$(fzf --zsh)"
 # else
@@ -162,10 +162,16 @@ if command -v kubectl > /dev/null; then
 	. "$kcomp"
 fi
 
-if command -v kubectl > /dev/null; then
-	eval "$(atuin init zsh)"
-else
-	log "WARNING: skipped loading atuin"
+# if command -v kubectl > /dev/null; then
+# 	eval "$(atuin init zsh)"
+# else
+# 	log "WARNING: skipped loading atuin"
+# fi
+
+# kubecolor
+if command -v kubecolor > /dev/null; then
+    alias kubectl=kubecolor
+    compdef kubecolor=kubectl
 fi
 
 # finally, export the PATH
