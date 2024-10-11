@@ -32,6 +32,11 @@ fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search"
     "bindkey '^[[B' down-line-or-beginning-search" # https://github.com/jeffreytse/zsh-vi-mode/issues/148#issuecomment-1566863380
     'eval "$(fzf --zsh)"'
+    # Key bindings
+    # edit command in $EDITOR
+    "autoload -U edit-command-line"
+    "zle -N edit-command-line"
+    "bindkey '^X' edit-command-line"
     )
 source "${HOMEBREW_PREFIX}/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
@@ -69,8 +74,6 @@ eval "$(oh-my-posh init zsh --config ~/.oh-my-posh.omp.yaml)"
 # demo prompt
 # PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
 
-# Key bindings
-bindkey '^[x' .undo # using alt+x for recordings
 
 # User configuration
 export EDITOR="vim"
