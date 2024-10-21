@@ -2,3 +2,4 @@
 .gnupg/**.kbx*
 *.swp
 .audio/
+ghostty-shader/

@@ -19,8 +19,8 @@ blocks:
         properties:
           cache_timeout: 0
         style: powerline
-        powerline_symbol: "⎈ "
-        template: "<b>{{.Context}}</b>{{with .Namespace}}:{{abbrev 25 .}}{{end}}"
+        # powerline_symbol: "⎈ "
+        template: "<b>{{.Context}}</b>{{with .Namespace}}{{if not (eq . \"default\")}}:{{abbrev 25 .}}{{end}}{{end}}"
         foreground: "#C6FF00"
         background: "#33691E"
         background_templates:
