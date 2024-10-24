@@ -32,13 +32,6 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-# Initialize completion system
-# use caching for some speedup https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
 
 # Load plugins with zinit
 zinit ice wait lucid
@@ -57,9 +50,36 @@ zinit load zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit load zsh-users/zsh-syntax-highlighting
 
-# Load theme
-zinit ice pick"themes/geoffgarside.zsh-theme"
-zinit load ohmyzsh/ohmyzsh
+zinit ice wait lucid
+zinit load zsh-users/zsh-syntax-highlighting
+
+zinit ice wait lucid
+zinit snippet OMZP::z
+
+zinit ice wait lucid
+zinit snippet OMZP::kubectl
+
+if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
+  zinit ice wait lucid
+  zinit snippet "${SELF_DIR}/zsh_functions.inc"
+fi
+
+# Load custom aliases
+if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
+    zinit ice wait lucid
+    zinit snippet "${SELF_DIR}/zsh_aliases.inc"
+else
+    echo >&2 "WARNING: can't load shell aliases"
+fi
+
+# Initialize completion system
+# use caching for some speedup https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
+autoload -Uz compinit
+compinit
+zi cdreplay -q # <- execute compdefs provided by rest of plugins
+# zi cdlist # look at gathered compdefs
+
+zinit snippet OMZP::direnv
 
 # Key bindings and FZF setup
 zvm_after_init_commands+=( #"bindkey '^[[A' up-line-or-beginning-search"
@@ -69,13 +89,6 @@ zvm_after_init_commands+=( #"bindkey '^[[A' up-line-or-beginning-search"
     "zle -N edit-command-line"
     "bindkey '^X' edit-command-line"
 )
-
-# Load custom functions
-if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
-    source "${SELF_DIR}/zsh_functions.inc"
-else
-    echo >&2 "WARNING: can't load shell functions"
-fi
 
 # oh-my-posh-prompt
 export ITERM2_SQUELCH_MARK=1
@@ -92,7 +105,7 @@ export VISUAL="$VISUAL"
 PATH="$HOME/gotools/bin:$PATH"
 
 # git: use system ssh for git, otherwise UseKeychain option doesn't work
-export GIT_SSH=/usr/bin/ssh
+# export GIT_SSH=/usr/bin/ssh
 
 # python: replace system python
 PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
@@ -104,11 +117,6 @@ PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 #   log "WARNING: skipping loading iterm2 shell integration"
 # fi
 
-# z completion
-if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then
-    . "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
-fi
-
 # kubectl aliases
 [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
 
@@ -118,22 +126,8 @@ PATH="${KREW_ROOT:-$HOME/.krew}/bin:${PATH}"
 PATH="${HOME}/go/bin:${PATH}"
 PATH="${HOME}/.cargo/bin:${PATH}"
 
-# direnv hook
-if command -v direnv > /dev/null; then
-    eval "$(direnv hook zsh)"
-else
-    log "WARNING: skipped loading direnv hook"
-fi
-
 # bat pager for scrolling support
 export BAT_PAGER="less -RF"
-
-# Load custom aliases
-if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
-    source "${SELF_DIR}/zsh_aliases.inc"
-else
-    echo >&2 "WARNING: can't load shell aliases"
-fi
 
 # Work priority
 PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
@@ -141,16 +135,16 @@ PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
 # Prioritize homebrew bins
 PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
-# kubectl completion
-if command -v kubectl > /dev/null; then
-    kcomp="$HOME/.kube/.zsh_completion"
-    if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(gstat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
-        mkdir -p "$(dirname "$kcomp")"
-        kubectl completion zsh > "$kcomp"
-        log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
-    fi
-    . "$kcomp"
-fi
+# kubectl completion (disabled in favor of OMZP::kubectl)
+# if command -v kubectl > /dev/null; then
+#     kcomp="$HOME/.kube/.zsh_completion"
+#     if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(gstat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
+#         mkdir -p "$(dirname "$kcomp")"
+#         kubectl completion zsh > "$kcomp"
+#         log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
+#     fi
+#     . "$kcomp"
+# fi
 
 # kubecolor
 if command -v kubecolor > /dev/null; then
