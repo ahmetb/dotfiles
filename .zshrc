@@ -94,11 +94,11 @@ export GIT_SSH=/usr/bin/ssh
 PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 
 # iTerm2 integration
-if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
-  source "${HOME}/.iterm2_shell_integration.zsh"
-else
-  log "WARNING: skipping loading iterm2 shell integration"
-fi
+# if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]; then
+#   source "${HOME}/.iterm2_shell_integration.zsh"
+# else
+#   log "WARNING: skipping loading iterm2 shell integration"
+# fi
 
 # z completion
 if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then

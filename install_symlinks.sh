@@ -30,11 +30,11 @@ mkdir -p "$(dirname "$ghostty_config")"
 ln -sf -- "$SCRIPT_DIR/ghostty_config" "$ghostty_config"
 
 
-if [[ $(uname) == Darwin ]]; then
-    # install iterm2 shell integration (for touchbar support etc)
-    # (later sourced in .zshrc)
-    curl -LfsS https://iterm2.com/shell_integration/zsh \
-        -o ~/.iterm2_shell_integration.zsh
-fi
+# if [[ $(uname) == Darwin ]]; then
+#    # install iterm2 shell integration (for touchbar support etc)
+#     # (later sourced in .zshrc)
+#     curl -LfsS https://iterm2.com/shell_integration/zsh \
+#         -o ~/.iterm2_shell_integration.zsh
+# fi
 
 echo "DONE"

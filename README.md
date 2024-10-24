@@ -122,8 +122,6 @@ pip install virtualenvwrapper
 
 - Clone this repo and run `install_symlinks.sh`
     - Open a new terminal to take effect.
-- iTerm2->Preferences->Load Preferences From: com.googlecode.iterm2.plist directory.
-    - Restart iTerm2.
 
 - VSCode:
   - Install "Settings Sync" extension and reload.
