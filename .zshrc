@@ -14,66 +14,68 @@ fi
 fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
 fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
-# ZSH settings
-	export ZSH=$HOME/.oh-my-zsh
-	export UPDATE_ZSH_DAYS=14
-	export DISABLE_UPDATE_PROMPT=true # accept updates by default
-	ZSH_THEME=geoffgarside
+# Load Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing Zinit...%f"
+    command mkdir -p "$(dirname $ZINIT_HOME)"
+    command git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
+fi
+source "${ZINIT_HOME}/zinit.zsh"
 
-	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-	plugins=(
-		git
-		colored-man-pages
-	)
-	source "$ZSH/oh-my-zsh.sh"
+# Load zinit annexes
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
-# Load zsh plugins that aren't installed in the oh-my-zsh plugins directory
+# Initialize completion system
+autoload -Uz compinit
+compinit
+
+# Load plugins with zinit
+zinit ice wait lucid
+zinit snippet OMZP::git
+
+zinit ice wait lucid
+zinit snippet OMZP::colored-man-pages
+
+zinit ice wait lucid
+zinit load jeffreytse/zsh-vi-mode
+
+# Syntax highlighting and autosuggestions
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
+zinit load zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
+zinit load zsh-users/zsh-syntax-highlighting
+
+# Load theme
+zinit ice pick"themes/geoffgarside.zsh-theme"
+zinit load ohmyzsh/ohmyzsh
+
+# Key bindings and FZF setup
 zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search"
-    "bindkey '^[[B' down-line-or-beginning-search" # https://github.com/jeffreytse/zsh-vi-mode/issues/148#issuecomment-1566863380
+    "bindkey '^[[B' down-line-or-beginning-search"
     'eval "$(fzf --zsh)"'
-    # Key bindings
-    # edit command in $EDITOR
     "autoload -U edit-command-line"
     "zle -N edit-command-line"
     "bindkey '^X' edit-command-line"
-    )
-source "${HOMEBREW_PREFIX}/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-
-# load zsh plugins installed via brew
-if [[ -d "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting" ]]; then
-	source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-else
-	log "WARNING: skipped loading zsh-syntax-highlighting"
-fi
-
-if [[ -d "$HOMEBREW_PREFIX/share/zsh-autosuggestions" ]]; then
-	source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-else
-	log "WARNING: skipped loading zsh-autosuggestions"
-fi
-
-# source $HOMEBREW_PREFIX/share/zsh-you-should-use/you-should-use.plugin.zsh
-# Configure zsh-you-should-use
-# export YSU_MESSAGE_FORMAT="$(tput sitm)$(tput setaf 3)💡 Tip: use %alias_type $(tput setaf 2)%alias$(tput setaf 3) for $(tput setaf 1)%command$(tput setaf 3).$(tput sgr0)"
+)
 
 # Load custom functions
 if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
-	source "${SELF_DIR}/zsh_functions.inc"
+    source "${SELF_DIR}/zsh_functions.inc"
 else
-	echo >&2 "WARNING: can't load shell functions"
+    echo >&2 "WARNING: can't load shell functions"
 fi
-
-# default prompt
-PROMPT='%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %{$fg[yellow]%}%(!.#.$)%{$reset_color%} '
 
 # oh-my-posh-prompt
 export ITERM2_SQUELCH_MARK=1
 eval "$(oh-my-posh init zsh --config ~/.oh-my-posh.omp.yaml)"
-
-# demo prompt
-# PROMPT="$(tput setaf 6)\$ $(tput sgr0)"
-
 
 # User configuration
 export EDITOR="vim"
@@ -103,37 +105,20 @@ if [ -f "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]; then
     . "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
 fi
 
-# fzf completion. run $HOMEBREW_PREFIX/opt/fzf/install to create the ~/.fzf.* script
-# MOVED TO zvm_after_init
-# if type fzf &>/dev/null; then
-# 	eval "$(fzf --zsh)"
-# else
-# 	log "WARNING: skipped loading fzf shell integration"
-# fi
-
-# kubectl aliases from https://github.com/ahmetb/kubectl-alias
-#    > use sed to hijack --watch to watch $@.
+# kubectl aliases
 [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
 
-# add dotfiles/bin to PATH
-if [[ -d "${SELF_DIR}/bin" ]]; then
-	PATH="${SELF_DIR}/bin:${PATH}"
-fi
-
-
-# krew plugins
+# Add various paths
+PATH="${SELF_DIR}/bin:${PATH}"
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:${PATH}"
-
-# global ~/go/bin
 PATH="${HOME}/go/bin:${PATH}"
-# global ~/.cargo/bin
 PATH="${HOME}/.cargo/bin:${PATH}"
 
 # direnv hook
 if command -v direnv > /dev/null; then
-	eval "$(direnv hook zsh)"
+    eval "$(direnv hook zsh)"
 else
-	log "WARNING: skipped loading direnv hook"
+    log "WARNING: skipped loading direnv hook"
 fi
 
 # bat pager for scrolling support
@@ -141,9 +126,9 @@ export BAT_PAGER="less -RF"
 
 # Load custom aliases
 if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
-	source "${SELF_DIR}/zsh_aliases.inc"
+    source "${SELF_DIR}/zsh_aliases.inc"
 else
-	echo >&2 "WARNING: can't load shell aliases"
+    echo >&2 "WARNING: can't load shell aliases"
 fi
 
 # Work priority
@@ -152,24 +137,16 @@ PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
 # Prioritize homebrew bins
 PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
-# kubectl completion (w/ refresh cache every 48-hours)
-# TODO(2022-04-19): moved here to actually reflect the version of kubectl that's going to be used
-# in the shell is the one we generate completion script from.
+# kubectl completion
 if command -v kubectl > /dev/null; then
-	kcomp="$HOME/.kube/.zsh_completion"
-	if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(gstat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
-		mkdir -p "$(dirname "$kcomp")"
-		kubectl completion zsh > "$kcomp"
-    log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
-	fi
-	. "$kcomp"
+    kcomp="$HOME/.kube/.zsh_completion"
+    if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(gstat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
+        mkdir -p "$(dirname "$kcomp")"
+        kubectl completion zsh > "$kcomp"
+        log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
+    fi
+    . "$kcomp"
 fi
-
-# if command -v kubectl > /dev/null; then
-# 	eval "$(atuin init zsh)"
-# else
-# 	log "WARNING: skipped loading atuin"
-# fi
 
 # kubecolor
 if command -v kubecolor > /dev/null; then
@@ -177,7 +154,5 @@ if command -v kubecolor > /dev/null; then
     compdef kubecolor=kubectl
 fi
 
-# finally, export the PATH
+# Export final PATH and other environment variables
 export PATH
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"

@@ -84,7 +84,6 @@ alias grom='_git_dbg rebase origin/master'
 alias gpoh='_git_dbg push origin HEAD'
 alias gcae='_git_dbg commit --amend --edit'
 alias gbv="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
-unalias grv
 alias gitroot='cd $(git rev-parse --show-toplevel)'
 
 # kubectl

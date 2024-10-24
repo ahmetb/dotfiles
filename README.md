@@ -53,7 +53,8 @@ defaults write 'Apple Global Domain' NSAutomaticPeriodSubstitutionEnabled 0
 
 ## Shell
 
-Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
+- Make sure zsh is installed.
+- TODO: fill out if there are any zinit related instructions.
 
 ## Package manager
 
