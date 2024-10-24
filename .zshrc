@@ -33,8 +33,12 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 # Initialize completion system
+# use caching for some speedup https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
 autoload -Uz compinit
-compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 # Load plugins with zinit
 zinit ice wait lucid
