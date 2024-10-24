@@ -47,7 +47,7 @@ zinit snippet OMZP::git
 zinit ice wait lucid
 zinit snippet OMZP::colored-man-pages
 
-zinit ice wait lucid
+# Load vi mode synchronously because we need it for key bindings
 zinit load jeffreytse/zsh-vi-mode
 
 # Syntax highlighting and autosuggestions
@@ -62,8 +62,8 @@ zinit ice pick"themes/geoffgarside.zsh-theme"
 zinit load ohmyzsh/ohmyzsh
 
 # Key bindings and FZF setup
-zvm_after_init_commands+=("bindkey '^[[A' up-line-or-beginning-search"
-    "bindkey '^[[B' down-line-or-beginning-search"
+zvm_after_init_commands+=( #"bindkey '^[[A' up-line-or-beginning-search"
+    # "bindkey '^[[B' down-line-or-beginning-search"
     'eval "$(fzf --zsh)"'
     "autoload -U edit-command-line"
     "zle -N edit-command-line"
