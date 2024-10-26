@@ -1,22 +1,7 @@
+# enable profiling
+zmodload zsh/zprof
+
 SELF_DIR="$HOME/workspace/dotfiles"
-
-# Load Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing Zinit...%f"
-    command mkdir -p "$(dirname $ZINIT_HOME)"
-    command git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f"
-fi
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Load zinit annexes
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
 
 HISTSIZE=50000
 SAVEHIST=50000
@@ -29,16 +14,8 @@ setopt HIST_IGNORE_ALL_DUPS     # Delete old recorded entry if new entry is a du
 setopt HIST_FIND_NO_DUPS        # Do not display a line previously found
 setopt HIST_SAVE_NO_DUPS        # Don't write duplicate entries
 setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks before recording entry
+setopt HIST_IGNORE_SPACE
 
-# LS_COLORS
-zinit light trapd00r/LS_COLORS
-zinit pack for ls_colors
-zinit lucid reset \
- atclone"[[ -z ${commands[dircolors]} ]] && local P=g
-    \${P}sed -i '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
-    \${P}dircolors -b LS_COLORS > clrs.zsh" \
- atpull'%atclone' pick"clrs.zsh" nocompile'!' for \
-    trapd00r/LS_COLORS
 
 # Directory navigation
 setopt AUTO_PUSHD               # Push the old directory onto the stack on cd
@@ -64,6 +41,36 @@ setopt NOTIFY               # Report status of background jobs immediately
 setopt CORRECT              # Try to correct the spelling of commands
 setopt INTERACTIVE_COMMENTS  # Allow comments in interactive shells
 setopt RC_QUOTES           # Allow 'Henry''s Garage' instead of 'Henry'\''s Garage'
+
+# Load Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing Zinit...%f"
+    command mkdir -p "$(dirname $ZINIT_HOME)"
+    command git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
+fi
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Load zinit annexes
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+
+# LS_COLORS
+zinit light trapd00r/LS_COLORS
+zinit pack for ls_colors
+zinit lucid reset \
+ atclone"[[ -z ${commands[dircolors]} ]] && local P=g
+    \${P}sed -i '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
+    \${P}dircolors -b LS_COLORS > clrs.zsh" \
+ atpull'%atclone' pick"clrs.zsh" nocompile'!' for \
+    trapd00r/LS_COLORS
+
 
 # Case-insensitive completion matching
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -110,11 +117,16 @@ zinit snippet OMZP::colored-man-pages
 
 # Load vi mode synchronously because we need it for key bindings
 zinit load jeffreytse/zsh-vi-mode
-
-# Syntax highlighting and autosuggestions
+n
+# Autosuggestions
 zinit ice wait lucid
 zinit load zsh-users/zsh-autosuggestions
 
+# Fast syntax highlighting - better than standard zsh syntax highlighting
+zinit ice wait lucid atinit"zicompinit; zicdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
+# zinit ice wait lucid
+# zinit load zsh-users/zsh-syntax-highlighting
 
 # z(1) support
 zinit ice wait lucid
@@ -140,18 +152,7 @@ else
     echo >&2 "WARNING: can't load shell aliases"
 fi
 
-# Initialize completion system
-# use caching for some speedup https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
-autoload -Uz compinit
-compinit
-zi cdreplay -q # <- execute compdefs provided by rest of plugins
-# zi cdlist # look at gathered compdefs
 
-# Fast syntax highlighting - better than standard zsh syntax highlighting
-zinit ice wait lucid atinit"zicompinit; zicdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
-# zinit ice wait lucid
-# zinit load zsh-users/zsh-syntax-highlighting
 
 
 # direnv hook
@@ -233,11 +234,24 @@ PATH="$HOMEBREW_PREFIX/bin:$PATH"
 #     . "$kcomp"
 # fi
 
+# Initialize completion system
+# use caching for some speedup https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
+
 # kubecolor to override kubectl
 if command -v kubecolor > /dev/null; then
     alias kubectl=kubecolor
     compdef kubecolor=kubectl
 fi
+
+
+zi cdreplay -q # <- execute compdefs provided by rest of plugins
+# zi cdlist # look at gathered compdefs
 
 # Export final PATH and other environment variables
 export PATH
