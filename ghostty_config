@@ -2,7 +2,7 @@ font-family = Berkeley Mono
 font-thicken = true
 font-size = 16
 
-theme = iTerm2 Dark Background
+theme = JetBrains Darcula 
 # unfocused-split-opacity = 0.4
 unfocused-split-fill = "#444444"
 
@@ -15,7 +15,7 @@ copy-on-select = clipboard
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/vcr.glsl
-custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/crt.glsl
+# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/crt.glsl
 custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/bloom.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/mcrt.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/glitch.glsl

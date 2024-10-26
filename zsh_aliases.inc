@@ -16,9 +16,14 @@ alias 'gh?'='gh copilot suggest -t gh'
 alias 'explain'='gh copilot explain'
 
 # convenience aliases
+local LS=ls
+if [[ -z ${commands[gls]} ]]; then
+    LS='gls'
+fi
+
 alias cd..='cd ..'
 alias cd...='cd ../..'
-alias ls='ls --color'
+alias ls="$LS --color"
 alias l='ls -lF'
 alias dir='ls'
 alias la='ls -lah'
@@ -99,6 +104,7 @@ alias kk='kubectl krew'
 
 # github aliases
 alias prc='gh pr create --web'
+alias prd='gh pr create --draft --web'
 alias prw='gh pr view --web'
 alias prco='gh pr checkout'
 alias prl='gh pr list -s all'
