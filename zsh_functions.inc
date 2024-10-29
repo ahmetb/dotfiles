@@ -154,3 +154,11 @@ isolatectx() {
 function record {
   ( echo $@; echo; eval $@ ) | tee /dev/stderr |pasteit
 }
+
+nimbussh() {
+    host = $1
+    justification = $2
+    ssh-ca-cli fastaccess --with-sudo=root --request \
+    -j "my name is $USER and i'm debugging some stuff probably"
+    -n "$host"
+}

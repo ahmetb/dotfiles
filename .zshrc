@@ -60,7 +60,6 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-
 # LS_COLORS
 zinit light trapd00r/LS_COLORS
 zinit pack for ls_colors
@@ -70,7 +69,6 @@ zinit lucid reset \
     \${P}dircolors -b LS_COLORS > clrs.zsh" \
  atpull'%atclone' pick"clrs.zsh" nocompile'!' for \
     trapd00r/LS_COLORS
-
 
 # Case-insensitive completion matching
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -97,13 +95,28 @@ else
     export HOMEBREW_NO_INSECURE_REDIRECT=1
 fi
 
-# Add zsh completion scripts installed via Homebrew (disabled in favor of zsh-users/zsh-completions)
-# fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
-# fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+# Add zsh completion scripts installed via Homebrew
+[[ ! -d ${ZSH_CACHE_DIR}/completions ]] && mkdir -p ${ZSH_CACHE_DIR}/completions
+fpath=(
+    "$HOMEBREW_PREFIX/share/zsh-completions"
+    "$HOMEBREW_PREFIX/share/zsh/site-functions"
+    "${ZSH_CACHE_DIR}/completions"
+    $fpath
+)
 
-# zsh-completions - additional completion definitions
-zinit ice wait lucid blockf atpull'zinit creinstall -q .'
-zinit light zsh-users/zsh-completions
+# Core ZSH configuration
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+# Essential plugins
+zinit wait lucid light-mode for \
+    zdharma-continuum/fast-syntax-highlighting \
+    zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-completions
 
 # Load plugins with zinit
 zinit ice wait lucid
@@ -117,16 +130,10 @@ zinit snippet OMZP::colored-man-pages
 
 # Load vi mode synchronously because we need it for key bindings
 zinit load jeffreytse/zsh-vi-mode
-n
-# Autosuggestions
-zinit ice wait lucid
-zinit load zsh-users/zsh-autosuggestions
 
-# Fast syntax highlighting - better than standard zsh syntax highlighting
-zinit ice wait lucid atinit"zicompinit; zicdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
+# Autosuggestions
 # zinit ice wait lucid
-# zinit load zsh-users/zsh-syntax-highlighting
+# zinit load zsh-users/zsh-autosuggestions
 
 # z(1) support
 zinit ice wait lucid
@@ -138,6 +145,7 @@ zinit snippet OMZP::kubectl
 # Enhanced cd command
 zinit ice wait lucid
 zinit light b4b4r07/enhancd
+
 
 if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
   zinit ice wait lucid
@@ -151,9 +159,6 @@ if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
 else
     echo >&2 "WARNING: can't load shell aliases"
 fi
-
-
-
 
 # direnv hook
 zinit snippet OMZP::direnv
@@ -234,24 +239,12 @@ PATH="$HOMEBREW_PREFIX/bin:$PATH"
 #     . "$kcomp"
 # fi
 
-# Initialize completion system
-# use caching for some speedup https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2308206
-autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-	compinit;
-else
-	compinit -C;
-fi;
-
 # kubecolor to override kubectl
 if command -v kubecolor > /dev/null; then
     alias kubectl=kubecolor
     compdef kubecolor=kubectl
 fi
 
-
-zi cdreplay -q # <- execute compdefs provided by rest of plugins
-# zi cdlist # look at gathered compdefs
 
 # Export final PATH and other environment variables
 export PATH

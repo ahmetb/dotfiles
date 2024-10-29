@@ -16,8 +16,8 @@ keybind = global:ctrl+grave_accent=toggle_quick_terminal
 
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/vcr.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/crt.glsl
-custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/cubes.glsl
-custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/bloom.glsl
+# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/cubes.glsl
+# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/bloom.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/mcrt.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/glitch.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/noise4D.glsl
