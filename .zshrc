@@ -28,8 +28,9 @@ setopt AUTO_MENU              # Show completion menu on successive tab press
 setopt COMPLETE_IN_WORD       # Complete from both ends of a word
 setopt PATH_DIRS              # Perform path search even on command names with slashes
 
-# Colorize completion menus (disabled in favor of fzf-tab)
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# Colorize completion menus
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no # honestly not sure what this does
 
 # Job control
 setopt LONG_LIST_JOBS         # List jobs in long format
@@ -190,9 +191,11 @@ zinit snippet OMZP::fzf
 zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:_cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
 zstyle ':fzf-tab:complete:ls:*' fzf-preview 'cat $realpath'
+zstyle ':fzf-tab:complete:less:*' fzf-preview 'cat $realpath'
+zstyle ':fzf-tab:complete:vi:*' fzf-preview 'cat $realpath'
+zstyle ':fzf-tab:complete:cat:*' fzf-preview 'cat $realpath'
 
 # oh-my-posh-prompt
 export ITERM2_SQUELCH_MARK=1
