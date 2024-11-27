@@ -1,80 +1,74 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-"$schema": https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-final_space: true
-version: 2
+
 console_title_template: "{{ .Shell }} in {{ .Folder }}"
-final_space: true
-
 blocks:
-  - type: prompt
-    alignment: left
-    segments:
-      - type: iterm
-        interactive: true
-        style: plain
-        foreground: "#80ffea"
-        template: "{{ .PromptMark }}"
-
-      - type: kubectl
-        properties:
-          cache_timeout: 0
-        style: powerline
-        # powerline_symbol: "⎈ "
-        template: "<b>{{.Context}}</b>{{with .Namespace}}{{if not (eq . \"default\")}}:{{abbrev 25 .}}{{end}}{{end}}"
-        foreground: "#C6FF00"
-        background: "#33691E"
-        background_templates:
-        - '{{if or (contains "prod" .Context) (contains "grid" .Context) }}#B71C1C{{end}}'
-        - '{{if hasPrefix "ei" .Context }}#30336b{{end}}'
-        foreground_templates:
-        - '{{if or (contains "prod" .Context) (contains "grid" .Context) }}#FFCDD2{{end}}'
-        - '{{if hasPrefix "ei" .Context }}#FFFFFF{{end}}'
-
-      - type: git
-        style: powerline
-        background: "#fffb38"
-        background_templates:
-        - "{{ if or (.Working.Changed) (.Staging.Changed) }}#bdc810{{ end }}"
-        - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}"
-        - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
-        - "{{ if gt .Behind 0 }}#B388FF{{ end }}"
-        foreground: "#193549"
-        powerline_symbol: ""
-        properties:
-          branch_max_length: 35
-          fetch_stash_count: true
-          fetch_status: true
-          fetch_upstream_icon: true
-        template: >
-          {{ .UpstreamIcon }}{{ .HEAD }}
-          {{- if .BranchStatus }} {{ .BranchStatus }}{{ end }}
-          {{- if .Working.Changed }}  {{ .Working.String }}{{ end -}}
-          {{- if and (.Working.Changed) (.Staging.Changed) }}{{ end -}}
-          {{- if .Staging.Changed }}  {{ .Staging.String }}{{ end -}}
-
-      - type: path
-        style: powerline
-        powerline_symbol: ""
-        foreground: "#ffffff"
-        background: "#448AFF"
-        properties:
-          home_icon: "\uf015"
-          style: "folder"
-
-      - type: executiontime
-        style: powerline
-        background: "#83769c"
-        foreground: "#ffffff"
-        powerline_symbol: ""
-        properties:
-          threshold: 500
-        template: "  {{ .FormattedMs }}"
-
-      - type: status
-        style: powerline
-        foreground: "#ffffff"
-        background: "#00897b"
-        powerline_symbol: ""
-        background_templates:
-          - "{{ if .Error }}#e91e63{{ end }}"
-        template: "{{ if and (.Error) (and (ne .Code 130) (ne .Code 0))}} \uea87 {{.Code}}{{ end }}"
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      cache_duration: none
+    template: "{{ .PromptMark }}"
+    foreground: "#80ffea"
+    type: iterm
+    style: plain
+    interactive: true
+  - properties:
+      cache_duration: none
+    template: <b>{{.Context}}</b>{{with .Namespace}}{{if not (eq . "default")}}:{{abbrev 45 .}}{{end}}{{end}}
+    foreground: "#C6FF00"
+    background: "#33691E"
+    type: kubectl
+    style: powerline
+    foreground_templates:
+    - "{{if or (contains \"prod\" .Context) (contains \"grid\" .Context) }}#FFCDD2{{end}}"
+    - "{{if hasPrefix \"ei\" .Context }}#FFFFFF{{end}}"
+    background_templates:
+    - "{{if or (contains \"prod\" .Context) (contains \"grid\" .Context) }}#B71C1C{{end}}"
+    - "{{if hasPrefix \"ei\" .Context }}#30336b{{end}}"
+  - properties:
+      branch_max_length: 35
+      cache_duration: none
+      fetch_stash_count: true
+      fetch_status: true
+      fetch_upstream_icon: true
+    template: "{{ .UpstreamIcon }}{{ .HEAD }} {{- if .BranchStatus }} {{ .BranchStatus }}{{ end }} {{- if .Working.Changed }} \uf044 {{ .Working.String }}{{ end -}} {{- if and (.Working.Changed) (.Staging.Changed) }}{{ end -}} {{- if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end -}}"
+    foreground: "#193549"
+    powerline_symbol: 
+    background: "#fffb38"
+    type: git
+    style: powerline
+    background_templates:
+    - "{{ if or (.Working.Changed) (.Staging.Changed) }}#bdc810{{ end }}"
+    - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}"
+    - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
+    - "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+  - properties:
+      cache_duration: none
+      home_icon: 
+      style: folder
+    foreground: "#ffffff"
+    powerline_symbol: 
+    background: "#448AFF"
+    type: path
+    style: powerline
+  - properties:
+      cache_duration: none
+      threshold: 500
+    template: " \ueba2 {{ .FormattedMs }}"
+    foreground: "#ffffff"
+    powerline_symbol: 
+    background: "#83769c"
+    type: executiontime
+    style: powerline
+  - properties:
+      cache_duration: none
+    template: "{{ if and (.Error) (and (ne .Code 130) (ne .Code 0))}} \uea87 {{.Code}}{{ end }}"
+    foreground: "#ffffff"
+    powerline_symbol: 
+    background: "#00897b"
+    type: status
+    style: powerline
+    background_templates:
+    - "{{ if .Error }}#e91e63{{ end }}"
+version: 3
+final_space: true

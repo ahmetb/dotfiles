@@ -1,18 +1,23 @@
 font-family = Berkeley Mono
 font-thicken = true
 font-size = 16
+# adjust-cell-height = 0%
 
-theme = JetBrains Darcula
-# unfocused-split-opacity = 0.4
-unfocused-split-fill = "#444444"
+macos-titlebar-style = tabs
+theme = kanagawabones
+background-opacity = 1
+unfocused-split-opacity = 0.5
+# unfocused-split-fill = "#444444"
 
-window-width = 100
+window-width = 120
 window-height = 30
 
 scrollback-limit = 100000000
 copy-on-select = clipboard
 
+# Quick terminal
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
 
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/vcr.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/crt.glsl

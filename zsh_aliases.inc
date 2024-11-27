@@ -23,7 +23,7 @@ fi
 
 alias cd..='cd ..'
 alias cd...='cd ../..'
-alias ls="$LS --color"
+alias ls="$LS --color=auto"
 alias l='ls -lF'
 alias dir='ls'
 alias la='ls -lah'

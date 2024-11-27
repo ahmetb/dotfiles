@@ -16,11 +16,10 @@ setopt HIST_SAVE_NO_DUPS        # Don't write duplicate entries
 setopt HIST_REDUCE_BLANKS       # Remove superfluous blanks before recording entry
 setopt HIST_IGNORE_SPACE
 
-
 # Directory navigation
 setopt AUTO_PUSHD               # Push the old directory onto the stack on cd
 setopt PUSHD_IGNORE_DUPS        # Do not store duplicates in the stack
-setopt PUSHD_SILENT            # Do not print directory stack after pushd/popd
+setopt PUSHD_SILENT             # Do not print directory stack after pushd/popd
 setopt AUTO_CD                  # Use cd by just typing directory name
 
 # Completion settings
@@ -52,6 +51,9 @@ if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
         print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
 source "${ZINIT_HOME}/zinit.zsh"
+
+autoload -U select-word-style
+select-word-style bash
 
 # Load zinit annexes
 zinit light-mode for \
@@ -98,7 +100,6 @@ fi
 # Add zsh completion scripts installed via Homebrew
 [[ ! -d ${ZSH_CACHE_DIR}/completions ]] && mkdir -p ${ZSH_CACHE_DIR}/completions
 fpath=(
-    "$HOMEBREW_PREFIX/share/zsh-completions"
     "$HOMEBREW_PREFIX/share/zsh/site-functions"
     "${ZSH_CACHE_DIR}/completions"
     $fpath
@@ -126,14 +127,16 @@ zinit ice wait lucid
 zinit snippet OMZL::directories.zsh
 
 zinit ice wait lucid
+zinit snippet OMZL::completion.zsh
+
+zinit ice wait lucid
+zinit snippet OMZL::git.zsh
+
+zinit ice wait lucid
 zinit snippet OMZP::colored-man-pages
 
 # Load vi mode synchronously because we need it for key bindings
 zinit load jeffreytse/zsh-vi-mode
-
-# Autosuggestions
-# zinit ice wait lucid
-# zinit load zsh-users/zsh-autosuggestions
 
 # z(1) support
 zinit ice wait lucid
@@ -142,10 +145,9 @@ zinit light agkozak/zsh-z
 zinit ice wait lucid
 zinit snippet OMZP::kubectl
 
-# Enhanced cd command
-zinit ice wait lucid
-zinit light b4b4r07/enhancd
-
+# url quoting on paste
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
 
 if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
   zinit ice wait lucid
@@ -161,6 +163,7 @@ else
 fi
 
 # direnv hook
+zinit ice wait lucid
 zinit snippet OMZP::direnv
 
 # Key bindings and FZF setup
@@ -186,8 +189,10 @@ zinit snippet OMZP::fzf
 # install fzf-tab completion
 zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
-zstyle ':fzf-tab:*' fzf-flags '--height=40%'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:_cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
+zstyle ':fzf-tab:complete:ls:*' fzf-preview 'cat $realpath'
 
 # oh-my-posh-prompt
 export ITERM2_SQUELCH_MARK=1
@@ -248,3 +253,5 @@ fi
 
 # Export final PATH and other environment variables
 export PATH
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
