@@ -76,6 +76,9 @@ zinit lucid reset \
 # Case-insensitive completion matching
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
+# Don't sort CLI options
+zstyle ':completion:complete:*:options' sort false
+
 # Format completion messages
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
@@ -116,9 +119,12 @@ fi
 
 # Essential plugins
 zinit wait lucid light-mode for \
-    zdharma-continuum/fast-syntax-highlighting \
     zsh-users/zsh-autosuggestions \
     zsh-users/zsh-completions
+
+zinit ice wait'0c' lucid atinit'zpcompinit;zpcdreplay'
+zinit light zdharma-continuum/fast-syntax-highlighting
+
 
 # Load plugins with zinit
 zinit ice wait lucid
@@ -165,9 +171,13 @@ else
     echo >&2 "WARNING: can't load shell aliases"
 fi
 
-# direnv hook
-zinit ice wait lucid
+# direnv hook (do not use "zinit ice wait lucid" here, we want it working from the get go)
 zinit snippet OMZP::direnv
+
+zinit ice wait lucid
+zinit load wfxr/forgit
+export FORGIT_CHECKOUT_BRANCH_BRANCH_GIT_OPTS='--sort=-committerdate'
+forgit_stash_show=gst
 
 # Key bindings and FZF setup
 zvm_after_init_commands+=(
@@ -255,6 +265,9 @@ if command -v kubecolor > /dev/null; then
     compdef kubecolor=kubectl
 fi
 
+
+# FZF settings
+export FZF_CTRL_T_OPTS='--preview="bat --color=always --style=header {} 2>/dev/null" --preview-window=right:60%:wrap'
 
 # Export final PATH and other environment variables
 export PATH
