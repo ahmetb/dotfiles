@@ -147,8 +147,10 @@ zinit ice wait lucid
 zinit snippet OMZP::kubectl
 
 # url quoting on paste
-autoload -U url-quote-magic
+autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
 
 if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
   zinit ice wait lucid
