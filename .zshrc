@@ -102,28 +102,26 @@ else
 fi
 
 # Add zsh completion scripts installed via Homebrew
-[[ ! -d ${ZSH_CACHE_DIR}/completions ]] && mkdir -p ${ZSH_CACHE_DIR}/completions
-fpath=(
-    "$HOMEBREW_PREFIX/share/zsh/site-functions"
-    "${ZSH_CACHE_DIR}/completions"
-    $fpath
-)
+# [[ ! -d ${ZSH_CACHE_DIR}/completions ]] && mkdir -p ${ZSH_CACHE_DIR}/completions
+# fpath=(
+#     "$HOMEBREW_PREFIX/share/zsh/site-functions"
+#     "${ZSH_CACHE_DIR}/completions"
+#     $fpath
+# )
 
-# Core ZSH configuration
-autoload -Uz compinit
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-  compinit
-else
-  compinit -C
-fi
+zinit wait lucid light-mode for \
+    hlissner/zsh-autopair \
+    atinit"zicompinit; zicdreplay" \
+        zdharma-continuum/fast-syntax-highlighting \
+        OMZP::colored-man-pages \
+    atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' zsh-users/zsh-completions
 
 # Essential plugins
 zinit wait lucid light-mode for \
     zsh-users/zsh-autosuggestions \
     zsh-users/zsh-completions
 
-zinit ice wait'0c' lucid atinit'zpcompinit;zpcdreplay'
-zinit light zdharma-continuum/fast-syntax-highlighting
 
 
 # Load plugins with zinit
@@ -273,3 +271,4 @@ export FZF_CTRL_T_OPTS='--preview="bat --color=always --style=header {} 2>/dev/n
 export PATH
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+zprof
