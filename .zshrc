@@ -23,14 +23,16 @@ setopt PUSHD_SILENT             # Do not print directory stack after pushd/popd
 setopt AUTO_CD                  # Use cd by just typing directory name
 
 # Completion settings
-setopt ALWAYS_TO_END           # Move cursor to end of word if completed in-word
+setopt ALWAYS_TO_END          # Move cursor to end of word if completed in-word
 setopt AUTO_MENU              # Show completion menu on successive tab press
 setopt COMPLETE_IN_WORD       # Complete from both ends of a word
 setopt PATH_DIRS              # Perform path search even on command names with slashes
+setopt AUTO_PARAM_SLASH       # If completed parameter is a directory, add a trailing slash.
+
 
 # Colorize completion menus
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' menu no # honestly not sure what this does
+zstyle ':completion:*' menu select
 
 # Job control
 setopt LONG_LIST_JOBS         # List jobs in long format
@@ -109,6 +111,10 @@ fi
 #     $fpath
 # )
 
+autoload -Uz compinit
+compinit
+
+
 zinit wait lucid light-mode for \
     hlissner/zsh-autopair \
     atinit"zicompinit; zicdreplay" \
@@ -175,7 +181,8 @@ zinit snippet OMZP::direnv
 zinit ice wait lucid
 zinit load wfxr/forgit
 export FORGIT_CHECKOUT_BRANCH_BRANCH_GIT_OPTS='--sort=-committerdate'
-forgit_stash_show=gst
+forgit_stash_show=gst # don't shadow gss
+forgit_checkout_commit=gcoc # don't shadow gco
 
 # Key bindings and FZF setup
 zvm_after_init_commands+=(
@@ -257,18 +264,32 @@ PATH="$HOMEBREW_PREFIX/bin:$PATH"
 #     . "$kcomp"
 # fi
 
+
+
 # kubecolor to override kubectl
 if command -v kubecolor > /dev/null; then
-    alias kubectl=kubecolor
-    compdef kubecolor=kubectl
+  # normally this would just be "alias kubectl=kubecolor; compdef kubecolor=kubectl"
+  # but for whatever reason this is what works in zinit.
+  zinit as'program' wait'0a' depth'1' lucid light-mode for \
+    id-as'kubecolor-init' \
+      has'kubecolor' \
+      atload'alias kubectl="kubecolor"' \
+      @zdharma-continuum/null
+  zinit as'program' depth'1' lucid light-mode for \
+    id-as'kubecolor' \
+      has'kubectl' \
+      from'gh-r' \
+      atclone'./kubecolor completion zsh | sed "s/kubectl/kubecolor/g" > _kubecolor' \
+      atpull'%atclone' \
+      @kubecolor/kubecolor
 fi
 
+
+# Load completions provided by plugins.
+zinit cdreplay -q
 
 # FZF settings
 export FZF_CTRL_T_OPTS='--preview="bat --color=always --style=header {} 2>/dev/null" --preview-window=right:60%:wrap'
 
 # Export final PATH and other environment variables
 export PATH
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-zprof
