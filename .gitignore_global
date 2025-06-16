@@ -1,4 +1,6 @@
 gomock_reflect**
+out
+.cursorignore
 
 # Editors #
 ###########
@@ -67,3 +69,7 @@ dump.rdb
 *.cert
 *.key
 *.p12
+
+
+# some dummy thought checking these in is a good idea
+.vscode/settings.json

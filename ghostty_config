@@ -18,7 +18,7 @@ scrollback-limit = 10000000
 copy-on-select = clipboard
 
 # Quick terminal
-keybind = global:ctrl+grave_accent=toggle_quick_terminal
+keybind = global:option+grave_accent=toggle_quick_terminal
 
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/vcr.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/crt.glsl

@@ -29,7 +29,6 @@ setopt COMPLETE_IN_WORD       # Complete from both ends of a word
 setopt PATH_DIRS              # Perform path search even on command names with slashes
 setopt AUTO_PARAM_SLASH       # If completed parameter is a directory, add a trailing slash.
 
-
 # Colorize completion menus
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
@@ -114,7 +113,6 @@ fi
 autoload -Uz compinit
 compinit
 
-
 zinit wait lucid light-mode for \
     hlissner/zsh-autopair \
     atinit"zicompinit; zicdreplay" \
@@ -127,8 +125,6 @@ zinit wait lucid light-mode for \
 zinit wait lucid light-mode for \
     zsh-users/zsh-autosuggestions \
     zsh-users/zsh-completions
-
-
 
 # Load plugins with zinit
 zinit ice wait lucid
@@ -174,122 +170,3 @@ if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
 else
     echo >&2 "WARNING: can't load shell aliases"
 fi
-
-# direnv hook (do not use "zinit ice wait lucid" here, we want it working from the get go)
-zinit snippet OMZP::direnv
-
-zinit ice wait lucid
-zinit load wfxr/forgit
-export FORGIT_CHECKOUT_BRANCH_BRANCH_GIT_OPTS='--sort=-committerdate'
-forgit_stash_show=gst # don't shadow gss
-forgit_checkout_commit=gcoc # don't shadow gco
-
-# Key bindings and FZF setup
-zvm_after_init_commands+=(
-    "bindkey '^[[A' up-line-or-beginning-search"
-    "bindkey '^[[B' down-line-or-beginning-search"
-    "bindkey '^X' edit-command-line"
-)
-
-# enable prefix searches in up/down cmds (binding in zvm_after_init_commands)
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-# enable ctrl+X to edit command line
-autoload -U edit-command-line
-zle -N edit-command-line
-
-# enable fzf integration (ctrl+R for history search)
-zinit ice lucid wait
-zinit snippet OMZP::fzf
-
-# install fzf-tab completion
-zinit ice wait lucid
-zinit light Aloxaf/fzf-tab
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
-zstyle ':fzf-tab:complete:ls:*' fzf-preview 'cat $realpath'
-zstyle ':fzf-tab:complete:less:*' fzf-preview 'cat $realpath'
-zstyle ':fzf-tab:complete:vi:*' fzf-preview 'cat $realpath'
-zstyle ':fzf-tab:complete:cat:*' fzf-preview 'cat $realpath'
-
-# oh-my-posh-prompt
-export ITERM2_SQUELCH_MARK=1
-eval "$(oh-my-posh init zsh --config ~/.oh-my-posh.omp.yaml)"
-
-# use system paths (e.g. /etc/paths.d/)
-# [[ -f "/usr/libexec/path_helper" ]] && eval "$(/usr/libexec/path_helper -s)"
-
-# go tools
-PATH="$HOME/gotools/bin:$PATH"
-
-# overwrite macOS utils with coreutils
-PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
-
-# git: use system ssh for git, otherwise UseKeychain option doesn't work
-# export GIT_SSH=/usr/bin/ssh
-
-# python: replace system python
-PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
-
-# kubectl aliases
-[ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
-
-# Add various paths
-PATH="${SELF_DIR}/bin:${PATH}"
-PATH="${KREW_ROOT:-$HOME/.krew}/bin:${PATH}"
-PATH="${HOME}/go/bin:${PATH}"
-PATH="${HOME}/.cargo/bin:${PATH}"
-
-# User configuration
-export EDITOR="vim"
-export VISUAL="$VISUAL"
-export BAT_PAGER="less -RF" # bat pager for scrolling support
-
-# Work priority
-PATH=/usr/local/\li\nk\ed\in/bin:${PATH}
-
-# Prioritize homebrew bins
-PATH="$HOMEBREW_PREFIX/bin:$PATH"
-
-# kubectl completion (disabled in favor of OMZP::kubectl)
-# if command -v kubectl > /dev/null; then
-#     kcomp="$HOME/.kube/.zsh_completion"
-#     if [ ! -f "$kcomp" ] ||  [ "$(( $(date +"%s") - $(gstat -c "%Y" "$kcomp") ))" -gt "172800" ]; then
-#         mkdir -p "$(dirname "$kcomp")"
-#         kubectl completion zsh > "$kcomp"
-#         log "refreshing kubectl zsh completion at $kcomp ($(which kubectl))"
-#     fi
-#     . "$kcomp"
-# fi
-
-
-
-# kubecolor to override kubectl
-if command -v kubecolor > /dev/null; then
-  # normally this would just be "alias kubectl=kubecolor; compdef kubecolor=kubectl"
-  # but for whatever reason this is what works in zinit.
-  zinit as'program' wait'0a' depth'1' lucid light-mode for \
-    id-as'kubecolor-init' \
-      has'kubecolor' \
-      atload'alias kubectl="kubecolor"' \
-      @zdharma-continuum/null
-  zinit as'program' depth'1' lucid light-mode for \
-    id-as'kubecolor' \
-      has'kubectl' \
-      from'gh-r' \
-      atclone'./kubecolor completion zsh | sed "s/kubectl/kubecolor/g" > _kubecolor' \
-      atpull'%atclone' \
-      @kubecolor/kubecolor
-fi
-
-
-# Load completions provided by plugins.
-zinit cdreplay -q
-
-# FZF settings
-export FZF_CTRL_T_OPTS='--preview="bat --color=always --style=header {} 2>/dev/null" --preview-window=right:60%:wrap'
-
-# Export final PATH and other environment variables
-export PATH

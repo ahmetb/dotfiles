@@ -162,3 +162,11 @@ nimbussh() {
     -j "my name is $USER and i'm debugging some stuff probably"
     -n "$host"
 }
+
+tmobile_on() {
+    networksetup -setmanual Wi-Fi 172.20.10.3 255.255.255.240 172.20.10.1
+}
+
+tmobile_off() {
+    networksetup -setdhcp Wi-Fi
+}
