@@ -1,6 +1,7 @@
 gomock_reflect**
 out
 .cursorignore
+__debug_bin**
 
 # Editors #
 ###########
