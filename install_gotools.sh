@@ -2,14 +2,6 @@
 IFS=$'\n\t'
 set -xeou pipefail
 
-GOCLONE="/Users/$USER/workspace/goclone/goclone"
-if [[ -L /usr/local/bin/goclone ]]; then
-	if [[ "$(readlink -f /usr/local/bin/goclone)" != "$GOCLONE" ]]; then
-		sudo unlink /usr/local/bin/goclone
-		sudo ln -s "$GOCLONE" /usr/local/bin/goclone
-	fi
-fi
-
 GOTOOLS=~/gotools
 mkdir -p "$GOTOOLS"
 GOPKGS=(

@@ -1,10 +1,7 @@
 # vim: syntax=ruby filetype=ruby
-tap 'homebrew/bundle'
-tap 'homebrew/core'
 tap 'ldez/tap'
 tap 'sigstore/tap'
 tap 'homeport/tap' # dyff
-
 
 # System tools
 brew 'gettext'
@@ -38,6 +35,7 @@ cask 'visual-studio-code'
 cask 'goland'
 brew 'bash'
 brew 'bash-completion'
+brew 'ghostty'
 brew 'zsh-syntax-highlighting'
 brew 'zsh-autosuggestions'
 brew 'zsh-completions'
@@ -101,13 +99,11 @@ brew 'kubernetes-cli'
 brew 'helm'
 brew 'kubectx'
 brew 'kube-ps1'
-brew 'minikube'
 brew 'kind'
-brew 'docker-machine-driver-hyperkit'
 brew 'skaffold'
 brew 'kustomize'
 brew 'cfssl'
-cask 'docker' # docker for desktop
+cask 'docker-desktop'
 brew 'ko'
 brew 'dive'
 brew 'crane'
@@ -123,22 +119,19 @@ cask 'maccy'
 cask 'jordanbaird-ice'
 cask 'vimac'
 cask 'zoomus'
-cask 'slack'
-cask 'rectangle'
+# cask 'slack'
+# cask 'rectangle' # we use pro
 cask 'monitorcontrol'
 cask 'spotify'
 cask '1password'
-cask 'dropbox'
-cask 'google-chrome'
-cask 'firefox'
+# cask 'dropbox'
+# cask 'google-chrome'
+# cask 'firefox'
 cask 'discord'
 
 # Hardware support
 brew 'ykman'
-brew 'zsa-wally'
 
 # Streaming software
 cask 'obs'
-cask 'loopback'
-cask 'gopro-webcam'
 cask 'vlc'

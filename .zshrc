@@ -1,7 +1,7 @@
 # enable profiling
 # zmodload zsh/zprof
 
-SELF_DIR="$HOME/workspace/dotfiles"
+SELF_DIR="$HOME/oss/dotfiles"
 
 HISTSIZE=50000
 SAVEHIST=50000
@@ -120,6 +120,14 @@ zinit wait lucid light-mode for \
         OMZP::colored-man-pages \
     atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q .' zsh-users/zsh-completions
+
+# prompt customization
+# OH-MY-POSH
+zinit lucid \
+  as"program" from"gh-r"  \
+  cp'posh-* -> oh-my-posh' pick'oh-my-posh' \
+  atload'eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh.omp.yaml)"' \
+  light-mode for @JanDeDobbeleer/oh-my-posh
 
 # Essential plugins
 zinit wait lucid light-mode for \
