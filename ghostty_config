@@ -3,11 +3,11 @@ font-thicken = true
 font-size = 16
 # adjust-cell-height = 0%
 
-# theme = PencilLight
+theme = Chalk
 auto-update-channel = stable
 
 macos-titlebar-style = tabs
-# kbackground-opacity = 1
+# background-opacity = 1
 # unfocused-split-opacity = 0.5
 # unfocused-split-fill = "#444444"
 
@@ -27,3 +27,4 @@ keybind = global:option+grave_accent=toggle_quick_terminal
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/mcrt.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/glitch.glsl
 # custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/noise4D.glsl
+keybind = shift+enter=text:\x1b\r

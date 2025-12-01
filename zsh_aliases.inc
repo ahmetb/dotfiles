@@ -100,7 +100,7 @@ alias pkr='pbpaste | kubectl delete -f-'
 alias pkd='pbpaste | kubectl describe -f-'
 alias kpl='kubectl plugin'
 alias krew_install_clipboard='kubectl krew install --manifest <(pbpaste)'
-alias kk='kubectl krew'
+alias kk='kubectl klock --hide-deleted=60s'
 
 # github aliases
 alias prc='gh pr create --web'
@@ -117,3 +117,4 @@ alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 
 # alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 # alias youtube-dl='docker run --rm -i -t -v $PWD:/data vimagick/youtube-dl'
 alias decodecert='openssl x509 -in /dev/stdin -text -noout'
+alias bgo='bazel run @rules_go//go:go -- '

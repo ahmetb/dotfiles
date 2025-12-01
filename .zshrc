@@ -1,5 +1,5 @@
 # enable profiling
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 SELF_DIR="$HOME/workspace/dotfiles"
 
