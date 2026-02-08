@@ -8,6 +8,15 @@ blocks:
   alignment: left
   segments:
   - properties:
+      cache_duration: none
+      home_icon: 
+      style: folder
+    foreground: "#ffffff"
+    powerline_symbol: 
+    background: "#448AFF"
+    type: path
+    style: powerline
+  - properties:
       branch_max_length: 35
       cache_duration: none
       fetch_stash_count: true
@@ -15,7 +24,6 @@ blocks:
       fetch_upstream_icon: true
     template: "{{ .UpstreamIcon }}{{ .HEAD }} {{- if .BranchStatus }} {{ .BranchStatus }}{{ end }} {{- if .Working.Changed }} \uf044 {{ .Working.String }}{{ end -}} {{- if and (.Working.Changed) (.Staging.Changed) }}{{ end -}} {{- if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end -}}"
     foreground: "#193549"
-    powerline_symbol: 
     trailing_diamond: 
     background: "#fffb38"
     type: git

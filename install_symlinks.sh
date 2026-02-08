@@ -30,4 +30,13 @@ fi
 mkdir -p "$(dirname "$ghostty_config")"
 ln -sf -- "$SCRIPT_DIR/ghostty_config" "$ghostty_config"
 
+# Claude config directory (symlink files preserving directory structure)
+while IFS= read -r -d '' f; do
+	relative="${f#$SCRIPT_DIR/.claude/}"
+	target="$HOME/.claude/$relative"
+	mkdir -p "$(dirname "$target")"
+	if [ -e "$target" ] || [ -L "$target" ]; then rm "$target"; fi
+	ln -sf "$f" "$target"
+done < <(find "$SCRIPT_DIR/.claude" -type f -print0)
+
 echo "DONE"
