@@ -3,28 +3,24 @@ font-thicken = true
 font-size = 16
 # adjust-cell-height = 0%
 
-theme = Chalk
+# theme = Idea
 auto-update-channel = stable
 
 macos-titlebar-style = tabs
 # background-opacity = 1
-# unfocused-split-opacity = 0.5
-# unfocused-split-fill = "#444444"
+unfocused-split-opacity = 0.7
+unfocused-split-fill = "#333333"
 
 window-width = 120
 window-height = 30
 
-scrollback-limit = 10000000
+scrollback-limit = 30000000
 copy-on-select = clipboard
 
 # Quick terminal
 keybind = global:option+grave_accent=toggle_quick_terminal
 
-# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/vcr.glsl
-# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/crt.glsl
-# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/cubes.glsl
-# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/bloom.glsl
-# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/mcrt.glsl
-# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/glitch.glsl
-# custom-shader = /Users/abalkan/workspace/dotfiles/ghostty-shader/noise4D.glsl
 keybind = shift+enter=text:\x1b\r
+
+# disable programming ligatures
+font-feature = -calt

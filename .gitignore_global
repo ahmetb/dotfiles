@@ -11,6 +11,9 @@ __debug_bin**
 *~
 *.profraw
 
+# Coding Agents
+.claude/settings.local.json
+
 # Compiled source #
 ###################
 # *.com # this shit is causing vendor/cloud.google.com to be ignored.

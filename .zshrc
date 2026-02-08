@@ -305,3 +305,4 @@ zle -N expand-alias
 
 # Export final PATH and other environment variables
 export PATH
+export PATH="$HOME/.local/bin:$PATH"

@@ -7,7 +7,9 @@ alias stat='gstat'
 
 # Tool overrides
 alias watch='viddy'
-alias ssh='ssh -o StrictHostKeyChecking=no'
+
+# disabling the following because it doesn't work at LI
+# alias ssh='ssh -o StrictHostKeyChecking=no'
 
 # Github Copilot aliases
 alias '??'='gh copilot suggest -t shell'

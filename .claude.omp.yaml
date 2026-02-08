@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 3
+console_title_template: "{{ .Shell }} in {{ .Folder }}"
+final_space: true
+blocks:
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      branch_max_length: 35
+      cache_duration: none
+      fetch_stash_count: true
+      fetch_status: true
+      fetch_upstream_icon: true
+    template: "{{ .UpstreamIcon }}{{ .HEAD }} {{- if .BranchStatus }} {{ .BranchStatus }}{{ end }} {{- if .Working.Changed }} \uf044 {{ .Working.String }}{{ end -}} {{- if and (.Working.Changed) (.Staging.Changed) }}{{ end -}} {{- if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end -}}"
+    foreground: "#193549"
+    powerline_symbol: 
+    trailing_diamond: 
+    background: "#fffb38"
+    type: git
+    style: diamond
+    background_templates:
+    - "{{ if or (.Working.Changed) (.Staging.Changed) }}#bdc810{{ end }}"
+    - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}"
+    - "{{ if gt .Ahead 0 }}#B388FF{{ end }}"
+    - "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+  - type: claude
+    style: diamond
+    foreground: "#FF6B35"
+    background: "#1e272e"
+    template: " 󰯉 {{ .Model.DisplayName }}"
+    trailing_diamond: 
+  - type: claude
+    style: diamond
+    powerline_symbol: 
+    trailing_diamond: 
+    template: " Context: {{ .TokenUsagePercent }}%/{{.ContextWindow.ContextWindowSize}}"
+    foreground: "#7f8fa6"
+    background: "#273c75"
+    background_templates:
+    - "{{if gt .TokenUsagePercent 50 }}#eccc68{{end}}"
+    - "{{if gt .TokenUsagePercent 70 }}#ff6348{{end}}"
+    - "{{if gt .TokenUsagePercent 85 }}#ff4757{{end}}"
+  - type: claude
+    style: diamond
+    powerline_symbol: 
+    trailing_diamond: 
+    foreground: "#dcdde1"
+    background: "#079992"
+    template: " {{ .FormattedCost }}"

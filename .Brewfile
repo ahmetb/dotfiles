@@ -2,6 +2,7 @@
 tap 'ldez/tap'
 tap 'sigstore/tap'
 tap 'homeport/tap' # dyff
+tap 'ahmetb/iris'
 
 # System tools
 brew 'gettext'
@@ -62,6 +63,8 @@ brew 'go'
 brew 'fzf'
 brew 'grv'
 brew 'jq'
+brew 'gron'
+brew 'yq'
 brew 'jless'
 brew 'node'
 brew 'rust'
@@ -90,9 +93,8 @@ brew 'mitmproxy'
 brew 'fortio'
 
 # Commit signing
-brew 'pinentry-mac'
-brew 'gnupg'
-cask 'keybase'
+# brew 'pinentry-mac'
+# brew 'gnupg'
 
 # Containers
 brew 'kubernetes-cli'
@@ -100,14 +102,13 @@ brew 'helm'
 brew 'kubectx'
 brew 'kube-ps1'
 brew 'kind'
-brew 'skaffold'
 brew 'kustomize'
 brew 'cfssl'
 cask 'docker-desktop'
 brew 'ko'
 brew 'dive'
 brew 'crane'
-brew 'cosign'
+brew 'stern'
 
 # Fun tools
 brew 'asciinema'
@@ -128,6 +129,7 @@ cask '1password'
 # cask 'google-chrome'
 # cask 'firefox'
 cask 'discord'
+cask 'iris'
 
 # Hardware support
 brew 'ykman'
