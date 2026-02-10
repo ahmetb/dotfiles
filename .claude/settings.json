@@ -12,6 +12,14 @@
       }
     ]
   },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest", "--extension"
+      ]
+    }
+  },
   "statusLine": {
     "type": "command",
     "padding":0,
