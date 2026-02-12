@@ -94,13 +94,18 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 
 # Homebrew install path customization
-if ! command -v brew &>/dev/null; then
-    echo >&2 "Skipping homebrew initialization in shell."
-else
-    # brew shellenv exports HOMEBREW_PREFIX, PATH etc.
-    eval $(brew shellenv)
+# Reference brew by absolute path since /opt/homebrew/bin isn't in the
+# default system PATH (/etc/paths) and brew shellenv is what adds it.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     export HOMEBREW_NO_ANALYTICS=1
     export HOMEBREW_NO_INSECURE_REDIRECT=1
+elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_INSECURE_REDIRECT=1
+else
+    echo >&2 "Skipping homebrew initialization in shell."
 fi
 
 # Add zsh completion scripts installed via Homebrew
@@ -304,5 +309,5 @@ function expand-alias() {
 zle -N expand-alias
 
 # Export final PATH and other environment variables
-export PATH
 export PATH="$HOME/.local/bin:$PATH"
+export PATH
