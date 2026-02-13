@@ -1,0 +1,8 @@
+{
+  "name": "sound-manager",
+  "version": "1.0.0",
+  "description": "Manage notification sound themes (pokemon, aoe)",
+  "commands": [
+    "commands/use-sound.md"
+  ]
+}

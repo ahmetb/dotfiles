@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Claude Code notification hook — port of ajoslin/dot opencode notification plugin.
-// Assigns each session a unique AoE2 civilization via round-robin,
-// then plays a random villager sound from that civ on each event.
+// Supports multiple sound themes:
+// - aoe: Assigns each session a unique AoE2 civilization via round-robin,
+//        then plays a random villager sound from that civ on each event (default)
+// - pokemon: Plays Charizard cry on each event
 
 const { mkdir, readFile, writeFile, readdir } = require("node:fs/promises");
 const { homedir } = require("node:os");
@@ -9,9 +11,12 @@ const { join } = require("node:path");
 const { execFile } = require("node:child_process");
 
 const soundsDir = join(homedir(), ".claude", "sounds");
+const aoeSoundsDir = join(soundsDir, "aoe");
+const pokemonSoundsDir = join(soundsDir, "pokemon");
 const stateDir = join(homedir(), ".claude", "state", "notify");
-const soundPoolPath = join(soundsDir, "aoe2_click_pool.json");
+const soundPoolPath = join(aoeSoundsDir, "aoe2_click_pool.json");
 const configPath = join(soundsDir, "notify-config.json");
+const soundThemePath = join(stateDir, "sound-theme.json");
 const sessionMapPath = join(stateDir, "civ-session-map.json");
 const lastIndexPath = join(stateDir, "civ-last-index.json");
 
@@ -97,8 +102,27 @@ async function loadConfig() {
   return cachedConfig;
 }
 
+async function loadSoundTheme() {
+  const themeData = await readJson(soundThemePath, { theme: "aoe" });
+  return themeData.theme || "aoe";
+}
+
+async function playPokemonSound() {
+  try {
+    const files = await readdir(pokemonSoundsDir);
+    const audioFiles = files.filter(
+      (f) => f.endsWith(".ogg") || f.endsWith(".mp3")
+    );
+    if (audioFiles.length === 0) return;
+    const pick = audioFiles[Math.floor(Math.random() * audioFiles.length)];
+    await playSound(join(pokemonSoundsDir, pick));
+  } catch {
+    return;
+  }
+}
+
 async function getRandomVillagerSound(civ, gender) {
-  const civDir = join(soundsDir, civ.toLowerCase());
+  const civDir = join(aoeSoundsDir, civ.toLowerCase());
   const config = await loadConfig();
   const soundTypes = config.soundTypes || DEFAULT_SOUND_TYPES;
   try {
@@ -129,7 +153,7 @@ function playSound(soundPath) {
   });
 }
 
-async function playSessionSound(sessionID) {
+async function playAoeSound(sessionID) {
   const info = await getSessionInfo(sessionID);
   if (!info) return;
 
@@ -161,7 +185,15 @@ async function main() {
     process.exit(0);
   }
 
-  await playSessionSound(sessionID);
+  // Load sound theme preference (defaults to aoe)
+  const theme = await loadSoundTheme();
+
+  if (theme === "aoe") {
+    await playAoeSound(sessionID);
+  } else {
+    // Default to pokemon
+    await playPokemonSound();
+  }
 }
 
 main().then(() => process.exit(0)).catch(() => process.exit(0));
