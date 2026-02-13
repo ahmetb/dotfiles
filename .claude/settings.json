@@ -35,23 +35,25 @@
       }
     ]
   },
-  "mcpServers": {
-    "playwright": {
-      "command": "npx",
-      "args": [
-        "@playwright/mcp@latest", "--extension"
-      ]
-    }
-  },
   "statusLine": {
     "type": "command",
-    "padding":0,
-    "command": "~/go/bin/oh-my-posh claude --config ~/.claude.omp.yaml"
+    "command": "~/go/bin/oh-my-posh claude --config ~/.claude.omp.yaml",
+    "padding": 0
   },
   "enabledPlugins": {
     "ralph-loop@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "playground@claude-plugins-official": true
-  }
+  },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--extension"
+      ]
+    }
+  },
+  "skipDangerousModePermissionPrompt": true
 }
