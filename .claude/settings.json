@@ -1,5 +1,5 @@
 {
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -44,8 +44,12 @@
     "ralph-loop@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "playground@claude-plugins-official": true
+    "playground@claude-plugins-official": true,
+    "nimbus-agent@linkedin-plugins": true,
+    "frontend-design@claude-plugins-official": true,
+    "unit-testing-cookbook@linkedin-plugins": true
   },
+  "skipDangerousModePermissionPrompt": true,
   "mcpServers": {
     "playwright": {
       "command": "npx",
@@ -54,6 +58,5 @@
         "--extension"
       ]
     }
-  },
-  "skipDangerousModePermissionPrompt": true
+  }
 }
