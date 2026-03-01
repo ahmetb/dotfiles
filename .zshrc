@@ -237,6 +237,7 @@ PATH="$HOME/gotools/bin:$PATH"
 
 # overwrite macOS utils with coreutils
 PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin:$PATH"
 
 # git: use system ssh for git, otherwise UseKeychain option doesn't work
 # export GIT_SSH=/usr/bin/ssh

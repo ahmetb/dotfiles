@@ -1,5 +1,7 @@
 {
-  "model": "opus[1m]",
+  "includeCoAuthoredBy": false,
+  "cleanupPeriodDays": 99999,
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
