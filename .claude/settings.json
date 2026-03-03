@@ -1,5 +1,4 @@
 {
-  "includeCoAuthoredBy": false,
   "cleanupPeriodDays": 99999,
   "model": "opus",
   "hooks": {
