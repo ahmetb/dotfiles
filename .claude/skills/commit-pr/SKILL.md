@@ -5,7 +5,7 @@ description: How to name branches, writing commit titles/messages and sending PR
 
 ## Branch names
 
-- All git branches should start with `abalkan/`
+- All git branches should start with `$USER/` (see `whoami` if $USER env var not set)
 
 ## Commit messages/titles
 
