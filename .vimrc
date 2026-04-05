@@ -1,4 +1,5 @@
 syntax on
+filetype plugin indent on
 
 " relative line numbers in navigation mode
 :set number relativenumber
@@ -49,4 +50,18 @@ autocmd FileType gitcommit set colorcolumn+=51
 
 " kubectl edit borking out
 set maxmempattern=2000000
+
+" Go-specific settings
+autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd FileType go setlocal colorcolumn=100
+autocmd FileType go setlocal nolist
+function! GoFmt()
+  let lines = systemlist('gofmt', getline(1, '$'))
+  if v:shell_error == 0
+    let view = winsaveview()
+    call setline(1, lines)
+    call winrestview(view)
+  endif
+endfunction
+autocmd FileType go autocmd BufWritePre <buffer> call GoFmt()
 
