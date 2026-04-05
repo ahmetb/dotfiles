@@ -1,6 +1,6 @@
 {
   "cleanupPeriodDays": 99999,
-  "model": "opus",
+  "model": "sonnet[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -48,7 +48,8 @@
     "playground@claude-plugins-official": true,
     "nimbus-agent@linkedin-plugins": true,
     "frontend-design@claude-plugins-official": true,
-    "unit-testing-cookbook@linkedin-plugins": true
+    "unit-testing-cookbook@linkedin-plugins": true,
+    "sitehub@linkedin-plugins": true
   },
   "skipDangerousModePermissionPrompt": true,
   "mcpServers": {

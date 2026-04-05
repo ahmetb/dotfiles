@@ -199,6 +199,8 @@ zvm_after_init_commands+=(
     "bindkey '^[[A' up-line-or-beginning-search"
     "bindkey '^[[B' down-line-or-beginning-search"
     "bindkey '^X^E' edit-command-line"
+    "bindkey '-M' vicmd 'G' end-of-buffer-or-history"
+
     # "bindkey -M main ' ' expand-alias"
 )
 

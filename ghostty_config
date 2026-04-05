@@ -1,12 +1,16 @@
+# nightly
+auto-update-channel = tip
+
 font-family = TX-02
 font-thicken = true
 font-size = 16
 # adjust-cell-height = 0%
 
-# theme = Idea
+theme = Cobalt Next Minimal
 auto-update-channel = stable
 
 macos-titlebar-style = tabs
+title = " "
 # background-opacity = 1
 unfocused-split-opacity = 0.7
 unfocused-split-fill = "#333333"
