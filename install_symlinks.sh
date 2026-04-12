@@ -22,6 +22,10 @@ for f in .zshrc \
 	ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
+# Vim config directory
+if [ -e "$HOME/.vim" ] || [ -L "$HOME/.vim" ]; then rm -rf "$HOME/.vim"; fi
+ln -sf "$SCRIPT_DIR/.vim" "$HOME/.vim"
+
 # Ghostty config file
 ghostty_config="/Users/$USER/Library/Application Support/com.mitchellh.ghostty/config"
 if [[ -e "$ghostty_config" ]]; then

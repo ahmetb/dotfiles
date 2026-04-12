@@ -2,6 +2,7 @@ gomock_reflect**
 out
 .cursorignore
 __debug_bin**
+.cursor/rules/captain.mdc
 
 # Editors #
 ###########

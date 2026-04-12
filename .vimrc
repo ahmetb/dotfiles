@@ -1,6 +1,17 @@
 syntax on
 filetype plugin indent on
 
+" vim-plug plugin manager. plug.vim is stored in this dotfiles repo at
+" .vim/autoload/plug.vim so no separate install is needed — just run
+" install_symlinks.sh to symlink ~/.vim, then run:
+"
+"   vim +PlugInstall +GoInstallBinaries +qall
+"
+" to download plugins and Go tooling binaries (gopls, goimports, etc.)
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+call plug#end()
+
 " relative line numbers in navigation mode
 :set number relativenumber
 :augroup numbertoggle
@@ -51,17 +62,30 @@ autocmd FileType gitcommit set colorcolumn+=51
 " kubectl edit borking out
 set maxmempattern=2000000
 
-" Go-specific settings
+" Go-specific settings (via vim-go plugin)
+"
+" Use goimports instead of gofmt on save. goimports is a superset of gofmt:
+" it formats the code identically but also adds/removes import lines as needed.
+let g:go_fmt_command = "goimports"
+"
+" Auto-format the buffer with goimports on every :w.
+let g:go_fmt_autosave = 1
+"
+" Use gopls (the official Go language server) for go-to-definition (:GoDef / gd)
+" instead of the older godef tool. gopls is module-aware and more accurate.
+let g:go_def_mode = 'gopls'
+"
+" Use gopls for type info displayed by :GoInfo (bound to K by vim-go).
+let g:go_info_mode = 'gopls'
+"
+" Go mandates tabs for indentation (enforced by gofmt). Override the global
+" expandtab setting so vim doesn't silently convert tabs to spaces in Go files.
 autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
+"
+" Go community convention is 100 chars, not the general-purpose 80 set globally.
 autocmd FileType go setlocal colorcolumn=100
+"
+" Disable the tab/whitespace markers (set list) for Go files. Since goimports
+" enforces correct indentation on every save, the visual noise isn't useful.
 autocmd FileType go setlocal nolist
-function! GoFmt()
-  let lines = systemlist('gofmt', getline(1, '$'))
-  if v:shell_error == 0
-    let view = winsaveview()
-    call setline(1, lines)
-    call winrestview(view)
-  endif
-endfunction
-autocmd FileType go autocmd BufWritePre <buffer> call GoFmt()
 

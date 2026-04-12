@@ -108,6 +108,10 @@ pip install virtualenvwrapper
   - Hide from Menu Bar
   - Set history size to 200
   - Set paste key to <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>
+- **vim** plugins (vim-go + gopls):
+
+      vim +PlugInstall +GoInstallBinaries +qall
+
 - **fzf** completion scripts:
 
       "$HOMEBREW_PREFIX"/opt/fzf/install
