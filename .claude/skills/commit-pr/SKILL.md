@@ -11,6 +11,9 @@ description: How to name branches, writing commit titles/messages and sending PR
 
 - Keep commit titles short if possible (like Linux kernel patches)
 
+- Do not make commits with just title+bug number; add a short explanation that
+  is a summary of the PR description.
+
 - Use conventionalcommits style when possible and pragmatic in commit titles
   (you can sometimes omit the component name)
 
@@ -43,6 +46,11 @@ BUG=[...] (if available, otherwise omit)
 keep it brief. if we're relying on existing test execution in the CI pipeline,
 just mention that>
 ```
+
+## Confirmation step for commit/PRs
+
+Before sending a PR show me the title/description you're using in a nice way
+and let me approve or edit in a prompt.
 
 ## PR stacks
 

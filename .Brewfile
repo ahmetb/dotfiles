@@ -51,6 +51,7 @@ brew 'diff-so-fancy'
 brew 'difftastic'
 brew 'git-delta'
 brew 'dyff'
+brew 'yh'
 brew 'git' # no force-bottle: git --exec-path doesn't work, remote helpers missing from path
 brew 'gitsign'
 brew 'gh'

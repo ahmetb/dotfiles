@@ -3,6 +3,8 @@ out
 .cursorignore
 __debug_bin**
 .cursor/rules/captain.mdc
+# Some linkedin CC thing is causing logs/
+logs/
 
 # Editors #
 ###########

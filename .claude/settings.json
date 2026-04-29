@@ -48,9 +48,17 @@
     "playground@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "sitehub@linkedin-plugins": true,
-    "observe-agent@linkedin-plugins": true
+    "observe-agent@linkedin-plugins": true,
+    "li-plugin-tool@linkedin-plugins": true,
+    "linkedin-cli-tools@linkedin-plugins": true,
+    "linkedin-dev-workflow@linkedin-plugins": true,
+    "linkedin-framework@linkedin-plugins": true,
+    "unit-tests@linkedin-plugins": true,
+    "observe-metrics@linkedin-plugins": true
   },
+  "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
   "mcpServers": {
     "playwright": {
       "command": "npx",

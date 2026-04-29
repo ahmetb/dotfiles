@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/abalkan/.claude/plans'
+let g:netrw_dirhist_5='/Users/abalkan/workspace/k8s-crt-workflow-generator/workflow_defs/logs'
+let g:netrw_dirhist_4='/Users/abalkan/workspace/nimbus/dispatcher/.linkedin/lcd'
+let g:netrw_dirhist_3='/Users/abalkan/workspace/nimbus/dispatcher/.linkedin/lcd/logs'
+let g:netrw_dirhist_2='/Users/abalkan/workspace/nimbus/dispatcher/.linkedin/lcd'
 let g:netrw_dirhist_1='/Users/abalkan/.config/sketchybar'
