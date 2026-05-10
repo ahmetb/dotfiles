@@ -28,3 +28,10 @@ keybind = shift+enter=text:\x1b\r
 
 # disable programming ligatures
 font-feature = -calt
+
+# VT100 / retro CRT shader.
+# Symlinked to ~/junk/ghostty-vt100-shader/vt100-crt.glsl — tune via the
+# bundled playground.html and paste the CONFIG block back into the shader.
+# custom-shader = ~/.config/ghostty/shaders/vt100-crt.glsl
+# custom-shader = ~/.config/ghostty/shaders/in-game-crt.glsl
+custom-shader-animation = true
