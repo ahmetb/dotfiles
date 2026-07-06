@@ -96,14 +96,14 @@ zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 # Homebrew install path customization
 # Reference brew by absolute path since /opt/homebrew/bin isn't in the
 # default system PATH (/etc/paths) and brew shellenv is what adds it.
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
 if [[ -x /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    export HOMEBREW_NO_ANALYTICS=1
-    export HOMEBREW_NO_INSECURE_REDIRECT=1
 elif [[ -x /usr/local/bin/brew ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
-    export HOMEBREW_NO_ANALYTICS=1
-    export HOMEBREW_NO_INSECURE_REDIRECT=1
+elif [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then # WSL
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 else
     echo >&2 "Skipping homebrew initialization in shell."
 fi
