@@ -26,13 +26,15 @@ done
 if [ -e "$HOME/.vim" ] || [ -L "$HOME/.vim" ]; then rm -rf "$HOME/.vim"; fi
 ln -sf "$SCRIPT_DIR/.vim" "$HOME/.vim"
 
-# Ghostty config file
-ghostty_config="/Users/$USER/Library/Application Support/com.mitchellh.ghostty/config"
-if [[ -e "$ghostty_config" ]]; then
-    unlink "$ghostty_config"
+# Ghostty config file (macOS only)
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    ghostty_config="/Users/$USER/Library/Application Support/com.mitchellh.ghostty/config"
+    if [[ -e "$ghostty_config" ]] || [[ -L "$ghostty_config" ]]; then
+        unlink "$ghostty_config"
+    fi
+    mkdir -p "$(dirname "$ghostty_config")"
+    ln -sf -- "$SCRIPT_DIR/ghostty_config" "$ghostty_config"
 fi
-mkdir -p "$(dirname "$ghostty_config")"
-ln -sf -- "$SCRIPT_DIR/ghostty_config" "$ghostty_config"
 
 # Claude config directory (symlink files preserving directory structure)
 while IFS= read -r -d '' f; do

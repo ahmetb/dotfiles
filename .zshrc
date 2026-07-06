@@ -2,6 +2,7 @@
 # zmodload zsh/zprof
 
 SELF_DIR="$HOME/oss/dotfiles"
+[[ -d "$SELF_DIR" ]] || SELF_DIR="$HOME/workspace/dotfiles"
 
 HISTSIZE=50000
 SAVEHIST=50000
