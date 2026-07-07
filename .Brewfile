@@ -1,6 +1,4 @@
 # vim: syntax=ruby filetype=ruby
-tap 'ldez/tap'
-tap 'sigstore/tap'
 tap 'homeport/tap' # dyff
 tap 'ahmetb/iris'
 

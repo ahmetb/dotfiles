@@ -312,8 +312,10 @@ function expand-alias() {
 }
 zle -N expand-alias
 
+
+# opencode
+export PATH=/home/ahmetb/.opencode/bin:$PATH
+
 # Export final PATH and other environment variables
 export PATH="$HOME/.local/bin:$PATH"
 export PATH
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
