@@ -1,7 +1,7 @@
 [user]
 	# signingkey = D6B55F79FA3E5337008D6EBD07BA366BF4164719
 	name = Ahmet Alp Balkan
-	email = ahmet@linkedin.com
+	email = ahmet@baseten.co
 
 [core]
 	# editor = code --wait
@@ -59,8 +59,8 @@
 [http]
 	postBuffer = 524288000
 [credential "https://github.com"]
-	helper = 
-	helper = !gh auth git-credential
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "ssh://github.com"]
 	helper = !gh auth git-credential
 [advice]

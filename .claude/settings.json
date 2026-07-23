@@ -3,22 +3,10 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"/Users/abalkan/.claude/hooks/gsd-check-update.js\""
-          }
-        ]
-      }
-    ]
-  },
+  "model": "claude-fable-5[1m]",
   "statusLine": {
     "type": "command",
-    "command": "~/go/bin/oh-my-posh claude --config ~/.claude.omp.yaml",
+    "command": "oh-my-posh claude --config ~/.claude.omp.yaml",
     "padding": 0
   },
   "enabledPlugins": {
@@ -39,6 +27,7 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "editorMode": "vim",
   "skipAutoPermissionPrompt": true,
   "_disabledHooks": {

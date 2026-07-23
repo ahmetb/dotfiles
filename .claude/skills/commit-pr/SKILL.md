@@ -5,7 +5,7 @@ description: How to name branches, writing commit titles/messages and sending PR
 
 ## Branch names
 
-- All git branches should start with `$USER/` (see `whoami` if $USER env var not set)
+- All git branches should start with `ahmet/`
 
 ## Commit messages/titles
 
@@ -15,7 +15,8 @@ description: How to name branches, writing commit titles/messages and sending PR
   is a summary of the PR description.
 
 - Use conventionalcommits style when possible and pragmatic in commit titles
-  (you can sometimes omit the component name)
+  (you can sometimes omit the component name). Look at the last PRs in the
+  repo to understand the convention but err on the side of conventionalcommits.
 
 - Do not be super specific in commit messages, don't mention stuff like method
   names, variable names etc. Focus on why we did this commit and what problem

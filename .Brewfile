@@ -70,6 +70,7 @@ brew 'node'
 brew 'rust'
 brew 'ruby'
 brew 'python3'
+brew 'uv'
 brew 'openssl'
 brew 'openssh'
 brew 'protobuf'
@@ -117,23 +118,23 @@ brew 'lolcat'
 
 # Desktop Software
 cask 'maccy'
-cask 'jordanbaird-ice'
+cask 'thaw'
 cask 'vimac'
-cask 'zoomus'
+# cask 'zoomus'
 # cask 'slack'
 # cask 'rectangle' # we use pro
 cask 'monitorcontrol'
-cask 'spotify'
+# cask 'spotify'
 cask '1password'
 # cask 'dropbox'
 # cask 'google-chrome'
 # cask 'firefox'
-cask 'discord'
-cask 'iris'
+# cask 'discord'
+cask 'ahmetb/iris/iris'
 
 # Hardware support
 brew 'ykman'
 
 # Streaming software
-cask 'obs'
-cask 'vlc'
+# cask 'obs'
+# cask 'vlc'
