@@ -120,6 +120,7 @@ brew 'lolcat'
 cask 'maccy'
 cask 'thaw'
 cask 'vimac'
+cask 'caffeinate'
 # cask 'zoomus'
 # cask 'slack'
 # cask 'rectangle' # we use pro

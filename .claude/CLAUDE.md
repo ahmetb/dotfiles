@@ -16,6 +16,11 @@ Clearly illustrate the logical flows and the details in the knowledge, pay
 attention to conciseness, language clarity. Don't make it like a marketing page
 though.
 
+# Writing reports
+
+When writing an HTML report, deep dive, or technical writeup, use the
+`report-styling` skill as the design/style guide.
+
 # Uploading artifacts to share
 
 When you generate a report (html, markdown) use the `/here-now-publish` skill

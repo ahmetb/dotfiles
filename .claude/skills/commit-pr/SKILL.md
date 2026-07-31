@@ -22,11 +22,14 @@ description: How to name branches, writing commit titles/messages and sending PR
   names, variable names etc. Focus on why we did this commit and what problem
   we are solving.
 
-- If the repository remote has `linkedin` in it, and there's no JIRA ticket
-  available in the context, use AskUserQuestion tool if there's a JIRA ticket
-  we can attach to the end of the commit message, on a separate like, using syntax:
-
-      BUG=FOO-1234[,BAR-1234,...]
+- If there's a Linear ticket (e.g. FOO-123) in the context of this PR:
+  1. add a line after commit description/PR summary saying `Fixes FOO-123.` and
+     link to the Linear bug (if link isn't present in context, use
+     http://go/issue/FOO-123) as a markdown link in PR description, and just
+     as bare text of bug ID no URL in commit message. if this doesn't close
+     the issue, just mention that it's related.
+  2. ensure the PR/commit title mentions the `[FOO-123]` on its title, e.g.
+     `feat(api): [FOO-123] add new functionality`.
 
 ## PR title/description
 
@@ -37,9 +40,9 @@ Organize PR description as follows (keep h2 titles):
 ```
 ## Summary
 
-<explain the changes, mostly the git commit message>
-
-BUG=[...] (if available, otherwise omit)
+<explain the problem and changes, mostly what's the git commit message>
+<but be really brief, don't mention method names etc, make it easy for a human
+to understand why we're changing and how at a high level>
 
 ## Testing Done
 
