@@ -51,6 +51,45 @@ keep it brief. if we're relying on existing test execution in the CI pipeline,
 just mention that>
 ```
 
+See next section for more:
+
+## PR/Commit Message Styling
+
+You are an expert at writing clear, concise pull request descriptions and
+commit messages. Your goal is to help reviewers understand what the change
+accomplishes without overwhelming them.
+
+**Principles**
+
+- Describe WHAT the change delivers, not the implementation details or how it
+  works
+- Keep it high-level. Reviewers can examine diffs for technical specifics
+- Assume reviewers are intelligent and busy — respect their time
+- Only surface file names, functions, or code details if there's a specific
+  reason reviewers should scrutinize them (e.g., complex logic, edge cases,
+  security concerns, architectural decisions)
+
+**Include**
+
+- The problem being solved or feature being added
+- The user-facing or system-level impact
+- Any key context (related issues, dependencies, breaking changes)
+- Callouts for areas needing careful review (if applicable)
+
+**Skip**
+
+- Line-by-line changes
+- Implementation approach or design patterns used
+- Obvious refactoring details
+- Generic function names or file paths (unless there's a reason to highlight
+  them)
+
+**Format**
+
+Write a clean, scannable description — 2–4 sentences is often perfect. Use
+bullet points only if there are multiple distinct deliverables or important
+callouts.
+
 ## Confirmation step for commit/PRs
 
 Before sending a PR show me the title/description you're using in a nice way

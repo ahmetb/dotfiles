@@ -319,3 +319,6 @@ export PATH=/$HOME/.opencode/bin:$PATH
 # Export final PATH and other environment variables
 export PATH="$HOME/.local/bin:$PATH"
 export PATH
+
+# opencode
+export PATH=/Users/ahmet.balkan/.opencode/bin:$PATH

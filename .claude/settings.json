@@ -1,74 +1,65 @@
 {
-  "cleanupPeriodDays": 99999,
-  "permissions": {
-    "defaultMode": "auto"
-  },
-  "model": "claude-fable-5[1m]",
-  "statusLine": {
-    "type": "command",
-    "command": "oh-my-posh claude --config ~/.claude.omp.yaml",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "ralph-loop@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true,
-    "playground@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "sitehub@linkedin-plugins": true,
-    "observe-agent@linkedin-plugins": true,
-    "li-plugin-tool@linkedin-plugins": true,
-    "linkedin-cli-tools@linkedin-plugins": true,
-    "linkedin-dev-workflow@linkedin-plugins": true,
-    "linkedin-framework@linkedin-plugins": true,
-    "unit-tests@linkedin-plugins": true,
-    "observe-metrics@linkedin-plugins": true,
-    "context-repo@linkedin-plugins": true
-  },
-  "effortLevel": "xhigh",
-  "skipDangerousModePermissionPrompt": true,
-  "theme": "dark",
-  "editorMode": "vim",
-  "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
   "_disabledHooks": {
-    "_note": "Sound/notification hooks disabled. To re-enable, move these entries back into the \"hooks\" key above.",
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "node \"$HOME/.claude/hooks/notify.js\"",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "permission_prompt"
+      }
+    ],
     "Stop": [
       {
         "hooks": [
           {
-            "type": "command",
             "command": "node \"$HOME/.claude/hooks/notify.js\"",
-            "timeout": 10
+            "timeout": 10,
+            "type": "command"
           }
         ]
       }
     ],
-    "Notification": [
-      {
-        "matcher": "permission_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$HOME/.claude/hooks/notify.js\"",
-            "timeout": 10
-          }
-        ]
-      }
-    ]
+    "_note": "Sound/notification hooks disabled. To re-enable, move these entries back into the \"hooks\" key above."
+  },
+  "agentPushNotifEnabled": true,
+  "cleanupPeriodDays": 99999,
+  "editorMode": "vim",
+  "effortLevel": "xhigh",
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "playground@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true
   },
   "mcpServers": {
     "playwright": {
-      "command": "npx",
       "args": [
         "@playwright/mcp@latest",
         "--extension"
-      ]
+      ],
+      "command": "npx"
     }
   },
-  "voiceEnabled": true,
+  "model": "claude-fable-5[1m]",
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "skipAutoPermissionPrompt": true,
+  "skipDangerousModePermissionPrompt": true,
+  "statusLine": {
+    "command": "oh-my-posh claude --config ~/.claude.omp.yaml",
+    "padding": 0,
+    "type": "command"
+  },
+  "theme": "dark",
   "voice": {
     "enabled": true,
     "mode": "hold"
-  }
+  },
+  "voiceEnabled": true
 }
