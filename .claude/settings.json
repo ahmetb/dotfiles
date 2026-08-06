@@ -26,6 +26,11 @@
     "_note": "Sound/notification hooks disabled. To re-enable, move these entries back into the \"hooks\" key above."
   },
   "agentPushNotifEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "cleanupPeriodDays": 99999,
   "editorMode": "vim",
   "effortLevel": "xhigh",
