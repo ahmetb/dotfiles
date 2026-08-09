@@ -136,5 +136,6 @@ cask 'ahmetb/iris/iris'
 brew 'ykman'
 
 # Streaming software
+cask 'lolgato'
 # cask 'obs'
 # cask 'vlc'
