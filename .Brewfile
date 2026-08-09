@@ -30,7 +30,6 @@ brew 'dust'
 brew 'z'
 
 # Development & Power Tools
-cask 'iterm2'
 cask 'visual-studio-code'
 cask 'goland'
 brew 'bash'

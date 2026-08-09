@@ -33,22 +33,36 @@ description: How to name branches, writing commit titles/messages and sending PR
 
 ## PR title/description
 
-Try to preserve commit titles as PR titles as much as possible
+Try to preserve commit titles as PR titles as much as possible.
+
+IT IS VERY IMPORTANT YOU USE A COMBINATION OF WRITING STYLE:
+1. ASD-STE100 Simplified Technical English
+2. Orwell's rules
+3. GOV. UK house style
+4. Willem Zinsser of "On Writing Well" to redpen it.
 
 Organize PR description as follows (keep h2 titles):
 
 ```
+## Rationale
+
+<why are we making this change, what is it ultimately for>
+<if there are any work tickets, link here>
+
 ## Summary
 
-<explain the problem and changes, mostly what's the git commit message>
-<but be really brief, don't mention method names etc, make it easy for a human
-to understand why we're changing and how at a high level>
+<high-level explain functionally what's changed in the system>
+<someone who's new to the component should be able to understand how we changed to this system>
+<do not go into specifics like method/type names>
+<the section below has more tips on wording>
 
-## Testing Done
+## Testing
 
-<explain how we'll validate this change, or mention if we've added tests,
-keep it brief. if we're relying on existing test execution in the CI pipeline,
-just mention that>
+<if there are important callouts like migrations / changes that need to be done
+ in lockstep, mention them here>
+<explain how we'll validate this change, or mention if we've added tests, keep
+it brief. if we're relying on existing test execution in the CI pipeline, just
+mention that>
 ```
 
 See next section for more:
