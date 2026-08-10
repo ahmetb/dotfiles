@@ -31,4 +31,5 @@ URL). Also you can use this skill when prompted to share files "as a gist".
 
 When you need to explore a repository different than the one we are operating
 in, feel free to clone the repo locally under `~/workspace` (it actually may
-already be cloned, in that case, ensure it's fast-forwarded).
+already be cloned, in that case, ensure it's fast-forwarded) --and if the repo
+is public/open source, clone it under ~/oss.
