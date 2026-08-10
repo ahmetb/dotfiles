@@ -39,10 +39,21 @@ fi
 # Claude config directory (symlink files preserving directory structure)
 while IFS= read -r -d '' f; do
 	relative="${f#$SCRIPT_DIR/.claude/}"
+	case "$relative" in
+		skills/*) continue ;;
+	esac
+	parent="$HOME/.claude/$(dirname "$relative")"
+	if [ -L "$parent" ]; then
+		continue
+	fi
 	target="$HOME/.claude/$relative"
 	mkdir -p "$(dirname "$target")"
 	if [ -e "$target" ] || [ -L "$target" ]; then rm "$target"; fi
 	ln -sf "$f" "$target"
 done < <(find "$SCRIPT_DIR/.claude" -type f -print0)
+
+# Claude skills directory (symlink the whole directory)
+if [ -e "$HOME/.claude/skills" ] || [ -L "$HOME/.claude/skills" ]; then rm -rf "$HOME/.claude/skills"; fi
+ln -sf "$SCRIPT_DIR/.claude/skills" "$HOME/.claude/skills"
 
 echo "DONE"
