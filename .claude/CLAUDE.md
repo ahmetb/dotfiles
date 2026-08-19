@@ -23,9 +23,12 @@ When writing an HTML report, deep dive, or technical writeup, use the
 
 # Uploading artifacts to share
 
-When you generate a report (html, markdown) use the `/here-now-publish` skill
+When you generate a report (html, markdown) use the `/here-now-internal` skill
 to share the artifact for easier reading on the browser (and type the generated
 URL). Also you can use this skill when prompted to share files "as a gist".
+
+If asked to share PUBLICLY (or the repository being worked on is public/open source,
+use `/here-now` skill).
 
 # Repository Cloning
 

@@ -1,5 +1,5 @@
 ---
-name: here-now-publish
+name: here-now-internal
 description: >-
   Upload and share files on here.now (https://here-now.chimera-logarithm.ts.net),
   Baseten's internal artifact-sharing service. Use when the user wants to publish

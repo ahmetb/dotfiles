@@ -174,14 +174,14 @@ autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
 if [[ -f "${SELF_DIR}/zsh_functions.inc" ]]; then
-  zinit ice wait lucid
+  zinit ice wait lucid link
   zinit snippet "${SELF_DIR}/zsh_functions.inc"
 fi
 
 # Load custom aliases
 if [[ -f "${SELF_DIR}/zsh_aliases.inc" ]]; then
-    zinit ice wait lucid
-    zinit snippet "${SELF_DIR}/zsh_aliases.inc"
+  zinit ice wait lucid link
+  zinit snippet "${SELF_DIR}/zsh_aliases.inc"
 else
     echo >&2 "WARNING: can't load shell aliases"
 fi

@@ -110,6 +110,13 @@ kr() {
     	--image="${image}" tmp-"${RANDOM}" $@
 }
 
+ssh_node() {
+    local node="${1:?Need to specify a node name}"
+    kubectl debug "node/$node" --stdin --tty --profile=sysadmin --image=ubuntu -- \
+        nsenter --target 1 --mount --uts --ipc --net --pid -- \
+        bash
+}
+
 demo() {
     PS1=$(tput setaf 2)\$\ $(tput sgr0)
     export PS1
