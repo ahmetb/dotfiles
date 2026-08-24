@@ -106,7 +106,7 @@ callouts.
 
 ## Confirmation step for commit/PRs
 
-Before sending a PR show me the title/description you're using in a nice way
+Before sending a PR show me the title/description and also you're using in a nice way
 and let me approve or edit in a prompt.
 
 ## PR stacks
