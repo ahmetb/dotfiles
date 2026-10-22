@@ -322,3 +322,10 @@ export PATH
 
 # opencode
 export PATH=/Users/ahmet.balkan/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/Users/ahmet.balkan/.bun/_bun" ] && source "/Users/ahmet.balkan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

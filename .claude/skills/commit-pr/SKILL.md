@@ -104,11 +104,6 @@ Write a clean, scannable description — 2–4 sentences is often perfect. Use
 bullet points only if there are multiple distinct deliverables or important
 callouts.
 
-## Confirmation step for commit/PRs
-
-Before sending a PR show me the title/description and also you're using in a nice way
-and let me approve or edit in a prompt.
-
 ## PR stacks
 
 If the PRs are stacked, make sure each PR has a section like this that marks

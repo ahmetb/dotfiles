@@ -52,6 +52,15 @@ while IFS= read -r -d '' f; do
 	ln -sf "$f" "$target"
 done < <(find "$SCRIPT_DIR/.claude" -type f -print0)
 
+# opencode config files (symlink files preserving directory structure)
+while IFS= read -r -d '' f; do
+	relative="${f#$SCRIPT_DIR/.config/opencode/}"
+	target="$HOME/.config/opencode/$relative"
+	mkdir -p "$(dirname "$target")"
+	if [ -e "$target" ] || [ -L "$target" ]; then rm "$target"; fi
+	ln -sf "$f" "$target"
+done < <(find "$SCRIPT_DIR/.config/opencode" -type f ! -name package.json ! -name package-lock.json -print0)
+
 # Claude skills directory (symlink the whole directory)
 if [ -e "$HOME/.claude/skills" ] || [ -L "$HOME/.claude/skills" ]; then rm -rf "$HOME/.claude/skills"; fi
 ln -sf "$SCRIPT_DIR/.claude/skills" "$HOME/.claude/skills"

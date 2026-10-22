@@ -118,4 +118,4 @@ alias tunnel='networksetup -setsocksfirewallproxystate Wi-Fi on && ssh -N -p 22 
 # alias ffmpeg='docker run --rm -i -t -v $PWD:/tmp/workdir jrottenberg/ffmpeg'
 # alias youtube-dl='docker run --rm -i -t -v $PWD:/data vimagick/youtube-dl'
 alias decodecert='openssl x509 -in /dev/stdin -text -noout'
-alias bgo='bazel run @rules_go//go:go -- '
+alias assume='source $(brew --prefix)/bin/assume'

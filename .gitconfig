@@ -70,3 +70,8 @@
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [alias]
 	stack = !python ~/.local/share/gitstack.py
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

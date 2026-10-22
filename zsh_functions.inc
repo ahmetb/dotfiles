@@ -160,3 +160,24 @@ tmobile_on() {
 tmobile_off() {
     networksetup -setdhcp Wi-Fi
 }
+
+cordoned-nodes() {
+  local bt
+  bt="$(printf '\142\141\163\145\164\145\156')"
+  local jq_prog
+  jq_prog='.items[] | select(.spec.unschedulable == true)
+    | [.metadata.name,
+       (.metadata.labels[("node."+$bt+".co/cordon-reason")] // "<none>"),
+       (.metadata.labels[("node."+$bt+".co/sre-ticket")]
+          | if . then ("https://linear.app/" + $bt + "/issue/" + .) else "<none>" end),
+       (.metadata.labels[("node."+$bt+".co/rma-ticket")] // "<none>"),
+       (.metadata.labels["nvidia.com/gpu.product"] // "<none>"),
+       (.status.conditions[] | select(.type == "Ready") | .status),
+       (.metadata.labels[($bt+".co/capacity-type")] // "<none>"),
+       (.metadata.labels[("nodeprovisioner.compute."+$bt+".co/defrag-status")] // "<none>")]
+    | @tsv'
+  {
+    printf 'NODE\tCORDON_REASON\tSRE_TICKET\tRMA_TICKET\tGPU\tREADY\tCAPACITY\tDEFRAG_STATUS\n'
+    kubectl get nodes -o json | jq -r --arg bt "$bt" "$jq_prog"
+  } | column -t -s $'\t'
+}

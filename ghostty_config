@@ -1,13 +1,13 @@
-font-family = TX-02
+# font-family = Berkeley Mono
+font-family = "Iosevka Term"
 font-thicken = true
-font-size = 16
+font-size = 15
 # adjust-cell-height = 0%
 
 theme = Cobalt Next Minimal
 auto-update-channel = stable
 
-macos-titlebar-style = tabs
-title = " "
+# title = " "
 # background-opacity = 1
 unfocused-split-opacity = 0.7
 unfocused-split-fill = "#333333"
@@ -19,9 +19,11 @@ scrollback-limit = 30000000
 copy-on-select = clipboard
 
 # Quick terminal
-keybind = global:option+grave_accent=toggle_quick_terminal
+# keybind = global:option+grave_accent=toggle_quick_terminal
 
 keybind = shift+enter=text:\x1b\r
+keybind = cmd+shift+enter=toggle_fullscreen
+keybind = cmd+enter=unbind
 
 # disable programming ligatures
 font-feature = -calt
@@ -31,4 +33,4 @@ font-feature = -calt
 # bundled playground.html and paste the CONFIG block back into the shader.
 # custom-shader = ~/.config/ghostty/shaders/vt100-crt.glsl
 # custom-shader = ~/.config/ghostty/shaders/in-game-crt.glsl
-custom-shader-animation = true
+# custom-shader-animation = true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explainer Video"
+  short_description: "Narrated Manim explainer videos with a local Kokoro voice"
+  default_prompt: "Use $explainer-video to make a narrated explainer video of this system."

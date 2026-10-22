@@ -1,0 +1,20 @@
+[project]
+name = "explainer-video"
+version = "0.1.0"
+description = "Narrated Manim explainer"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "en-core-web-sm",
+    "kokoro>=0.9.4",
+    "manim>=0.19",
+    "manim-voiceover>=0.3.7",
+    "soundfile>=0.14.0",
+    "tokenizers>=0.20",
+    "transformers>=4.45",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" }
