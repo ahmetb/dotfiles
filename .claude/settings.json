@@ -8,7 +8,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "oh-my-posh claude --config ~/.claude.omp.yaml",
@@ -19,18 +18,39 @@
     "gopls-lsp@claude-plugins-official": true,
     "playground@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "ralph-loop@claude-plugins-official": true
+    "ralph-loop@claude-plugins-official": true,
+    "plannotator@plannotator": true,
+  },
+  "extraKnownMarketplaces": {
+    "plannotator": {
+      "source": {
+        "source": "github",
+        "repo": "backnotprop/plannotator"
+      }
+    }
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  },
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "editorMode": "vim",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(gofmt:*)"
+    ],
+  },
   "voiceEnabled": true,
   "_disabledHooks": {
     "Notification": [
@@ -66,6 +86,5 @@
       ],
       "command": "npx"
     }
-  },
-  "skipWorkflowUsageWarning": true
+  }
 }

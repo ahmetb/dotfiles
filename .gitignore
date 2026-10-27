@@ -3,6 +3,8 @@
 *.swp
 .audio/
 ghostty-shader/
-.claude/ralph-loop.local.md
+.claude/skills/.trash
+.claude/skills/synced
 .vim/.netrwhist
-.config/opencode/opencode.jsonc
+.config/opencode
+
